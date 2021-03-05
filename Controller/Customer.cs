@@ -7,7 +7,8 @@ namespace Controller
     /// <summary>
     /// Represents the Customer Business Rules
     /// </summary>
-    public static class Customer {
+    public static class Customer
+    {
         /// <summary>
         /// Handles and saves customer information
         /// </summary>
@@ -22,16 +23,19 @@ namespace Controller
             string Birth,
             string Identification,
             string ReturnDays
-        ) {
+        )
+        {
             // Checks if the Identification is in the pattern 999.999.999-99
             Regex rgx = new Regex("^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$");
-            if (!rgx.IsMatch(Identification)) {
+            if (!rgx.IsMatch(Identification))
+            {
                 throw new Exception("C.P.F. Inválido");
             }
 
             // Checks if the Birth is in the pattern 99/99/9999
             Regex rgxDate = new Regex("^\\d{2}\\/\\d{2}\\/\\d{4}$");
-            if (!rgxDate.IsMatch(Birth)) {
+            if (!rgxDate.IsMatch(Birth))
+            {
                 throw new Exception("Data de Nascimento Inválida");
             }
 
@@ -56,8 +60,23 @@ namespace Controller
         /// Gets the customer's lits
         /// </summary>
         /// <returns>Returns the customer list collection</returns>
-        public static List<Model.Customer> ListCustomers() {
+
+        public static List<Model.Customer> ListCustomers()
+        {
             return Model.Customer.GetCustomers();
         }
+
+        public static Model.Customer GetCustomers(int Id)
+        {
+            if (Id < 0 || Model.Customer.GetCustomer().Count <= Id)
+            {
+                throw new Exception("Id informado é invalido.");
+            }
+
+            return Model.Customer.GetCustomer(Id);
+        }
+
+
+
     }
 }

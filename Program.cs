@@ -22,6 +22,8 @@ namespace csharp_vehicles
                 Console.WriteLine("4 - Lista de Veículos Pesados");
                 Console.WriteLine("5 - Cadastrar Veículo Leve");
                 Console.WriteLine("6 - Lista de Veículos Leves");
+                Console.WriteLine("5 - Cadastrar Locação");
+                Console.WriteLine("6 - Lista de locações por id");
 
 
                 Console.WriteLine("0 - Sair");
@@ -49,6 +51,12 @@ namespace csharp_vehicles
                         break;
                     case 6:
                         View.LightVehicle.ListVehicles();
+                        break;
+                    case 7:
+
+                        break;
+                    case 8:
+
                         break;
                     default:
                         Console.WriteLine("Operação Inválida.");
