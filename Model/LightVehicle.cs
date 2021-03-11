@@ -8,6 +8,8 @@ namespace Model
         public string Color { set; get; }
 
         public static readonly List<LightVehicle> LightVehicles = new List<LightVehicle>();
+
+          public static readonly List<RentsLightVeichle> LightVeichle = new ();
         public LightVehicle(
             string Brand,
             string Model,
