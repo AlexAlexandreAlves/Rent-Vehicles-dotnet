@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Model
-{
+namespace Model {
     public class RentLightVehicle {
         public string Id { set; get; }
         public int RentId { set; get; }
@@ -10,9 +9,9 @@ namespace Model
         public int LightVehicleId { set; get; }
         public LightVehicle LightVehicle { set; get; }
 
-        public static readonly List<RentLightVehicle> database = new ();
+        public static readonly List<RentLightVehicle> database = new List<RentLightVehicle> ();
 
-        public RentLightVehicle(
+        public RentLightVehicle (
             Rent Rent,
             LightVehicle LightVehicle
         ) {
@@ -21,7 +20,7 @@ namespace Model
             this.LightVehicle = LightVehicle;
             this.LightVehicleId = LightVehicle.Id;
 
-            LightVehicle.Rents.Add(this);
+            LightVehicle.Rents.Add (this);
         }
     }
 }

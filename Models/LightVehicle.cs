@@ -7,7 +7,7 @@ namespace Model {
         public string Color { set; get; }
         public List<RentLightVehicle> Rents { set; get; }
 
-        public static readonly List<LightVehicle> LightVehicles = new ();
+        public static readonly List<LightVehicle> LightVehicles = new List<LightVehicle> ();
         public LightVehicle (
             string Brand,
             string Model,
@@ -17,13 +17,13 @@ namespace Model {
         ) : base (Brand, Model, Year, Price) {
             this.Id = LightVehicles.Count;
             this.Color = Color;
-            this.Rents = new ();
+            this.Rents = new List<RentLightVehicle> ();
 
             LightVehicles.Add (this);
         }
 
         public override string ToString () {
-            return "Id: " + this.Id + "\n" + base.ToString () + "\nCor: " + this.Color;
+            return "Id: " + this.Id + " - " + base.ToString () + " - Cor: " + this.Color;
         }
 
         public override bool Equals (object obj) {
@@ -45,7 +45,7 @@ namespace Model {
             return LightVehicles;
         }
 
-        public static LightVehicle GetLightVehicle(int Id) {
+        public static LightVehicle GetLightVehicle (int Id) {
             return LightVehicles[Id];
         }
     }

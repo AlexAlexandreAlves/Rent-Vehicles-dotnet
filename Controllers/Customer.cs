@@ -23,7 +23,7 @@ namespace Controller {
             string ReturnDays
         ) {
             // Checks if the Identification is in the pattern 999.999.999-99
-            Regex rgx = new ("^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$");
+            Regex rgx = new Regex ("^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$");
             if (!rgx.IsMatch (Identification)) {
                 throw new Exception ("C.P.F. Inválido");
             }
@@ -31,7 +31,7 @@ namespace Controller {
             DateTime Birth;
 
             try {
-                Birth = Convert.ToDateTime(StringBirth);
+                Birth = Convert.ToDateTime (StringBirth);
             } catch {
                 throw new Exception ("Data de Nascimento Inválida");
             }
@@ -61,14 +61,14 @@ namespace Controller {
             return Model.Customer.GetCustomers ();
         }
 
-        public static Model.Customer GetCustomer(int Id) {
-            int ListLenght = Model.Customer.GetCustomers().Count;
-            
+        public static Model.Customer GetCustomer (int Id) {
+            int ListLenght = Model.Customer.GetCustomers ().Count;
+
             if (Id < 0 || ListLenght <= Id) {
-                throw new Exception("Id informado é inválido.");
+                throw new Exception ("Id informado é inválido.");
             }
 
-            return Model.Customer.GetCustomer(Id);
+            return Model.Customer.GetCustomer (Id);
         }
     }
 }
