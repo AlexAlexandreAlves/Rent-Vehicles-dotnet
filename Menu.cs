@@ -1,11 +1,8 @@
 using System;
 
-namespace csharp_vehicles {
-    public class Program {
-        /// <summary>
-        /// Start the system
-        /// </summary>
-        /// <param name="args"></param>
+namespace Programa {
+    public class Menu {
+       
         public static void Main () {
             int opt;
             Console.WriteLine ("======= Bem vindo a nossa revenda =======");
@@ -21,7 +18,6 @@ namespace csharp_vehicles {
                 Console.WriteLine ("| 6 - Lista de Veículos Leves   |");
                 Console.WriteLine ("| 7 - Cadastrar Locação         |");
                 Console.WriteLine ("| 8 - Lista de Locações         |");
-                Console.WriteLine ("| 9 - Importar Informações      |");
                 Console.WriteLine ("| 0 - Sair                      |");
                 Console.WriteLine ("+-------------------------------+");
                 // Get the user option
@@ -32,31 +28,28 @@ namespace csharp_vehicles {
                         // Close system
                         break;
                     case 1:
-                        View.Customer.CreateCustomer ();
+                        View.Cliente.CriarCliente();
                         break;
                     case 2:
-                        View.Customer.ListCustomers ();
+                        View.Cliente.ListarClientes ();
                         break;
                     case 3:
-                        View.HeavyVehicle.CreateVehicle ();
+                        View.VeiculoPesado.CriarVeiculoPesado ();
                         break;
                     case 4:
-                        View.HeavyVehicle.ListVehicles ();
+                        View.VeiculoPesado.ListarVeiculosPesados();
                         break;
                     case 5:
-                        View.LightVehicle.CreateVehicle ();
+                        View.VeiculoLeve.CriarVeiculoLeve ();
                         break;
                     case 6:
-                        View.LightVehicle.ListVehicles ();
+                        View.VeiculoLeve.ListarVeiculosLeves ();
                         break;
                     case 7:
-                        View.Rent.CreateRent ();
+                        View.Locacao.CriarLocacao ();
                         break;
                     case 8:
-                        View.Rent.ListRents ();
-                        break;
-                    case 9:
-                        View.Import.DBImport ();
+                        View.Locacao.ListarLocacao ();
                         break;
                     default:
                         Console.WriteLine ("Operação Inválida.");

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Programas_em_.Net_Cs</RootNamespace>
+    <RootNamespace>Programa</RootNamespace>
   </PropertyGroup>
 
 </Project>
