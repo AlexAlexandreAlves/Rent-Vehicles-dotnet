@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Repository;
+using System.Linq;
+
 
 namespace Model {
     public class LocacaoVeiculoLeve {
@@ -9,7 +12,6 @@ namespace Model {
         public int IdVeiculoLeve { set; get; }
         public VeiculoLeve VeiculoLeve { set; get; }
 
-        public static readonly List<LocacaoVeiculoLeve> bancoDeDados = new List<LocacaoVeiculoLeve> ();
 
         public LocacaoVeiculoLeve (
             Locacao Locacao,
@@ -20,7 +22,20 @@ namespace Model {
             this.VeiculoLeve = VeiculoLeve;
             this.IdVeiculoLeve = VeiculoLeve.Id;
 
-            VeiculoLeve.Locacao.Add (this);
+            Context.locacaoVeiculoLeves.Add(this);
         }
+
+            public static IEnumerable<LocacaoVeiculoLeve> GetVeiculosLeves(int IdLocacao){
+                return from Veiculo in Context.locacaoVeiculoLeves where Veiculo.IdLocacao == IdLocacao select Veiculo;
+
+            }
+
+            public static int GetCount(int IdLocacao) {
+                return GetVeiculosLeves(IdLocacao).Count();
+            }
+
+
+
+
     }
 }

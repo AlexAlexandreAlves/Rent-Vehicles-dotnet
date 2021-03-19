@@ -19,6 +19,7 @@ namespace Controller
 
             /// <summary>
             /// Trabalhando com exceções, para preço e ano
+
             int ConverterAno = Convert.ToInt32(Ano);
             double ConverterPreco = Convert.ToDouble(Preco);
 
@@ -43,17 +44,17 @@ namespace Controller
                 Restricoes
             );
         }
-        /// <summary>
-        ///Listando os Veiculos Pesados puxando as informações do Model
-        public static List<Model.VeiculoPesado> GetVeiculosPesados()
+
+        public static IEnumerable<Model.VeiculoPesado> GetVeiculosPesados()
         {
-            return Model.VeiculoPesado.GetVeiculosPesados();
+            {
+                return Model.VeiculoPesado.GetVeiculosPesados();
+            }
         }
-        /// <summary>
-        ///Testando se o Id informado é menor que 0
+
         public static Model.VeiculoPesado GetVeiculoPesado(int Id)
         {
-            int ListLenght = Model.VeiculoPesado.GetVeiculosPesados().Count;
+            int ListLenght = Model.VeiculoPesado.GetCount();
 
             if (Id < 0 || ListLenght <= Id)
             {

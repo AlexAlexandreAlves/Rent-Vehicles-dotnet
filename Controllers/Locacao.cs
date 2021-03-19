@@ -41,9 +41,9 @@ namespace Controller
 
             return new Model.Locacao(Cliente, DataLocacao, VeiculosLeves, VeiculosPesados);
         }
-     
-       ///Passando a listagem de locações através do List
-        public static List<Model.Locacao> GetLocacoes()
+
+        ///Passando a listagem de locações através do List
+        public static IEnumerable<Model.Locacao> GetLocacoes()
         {
             return Model.Locacao.GetLocacoes();
         }

@@ -46,7 +46,7 @@ namespace Controller
         /// <summary>
         ///Listando os Veiculos Leves puxando as informações do Model
 
-        public static List<Model.VeiculoLeve> GetVeiculosLeves()
+        public static IEnumerable<Model.VeiculoLeve> GetVeiculosLeves()
         {
             return Model.VeiculoLeve.GetVeiculosLeves();
         }
@@ -56,7 +56,7 @@ namespace Controller
 
         public static Model.VeiculoLeve GetVeiculosLeves(int Id)
         {
-            int ListLenght = Model.VeiculoLeve.GetVeiculosLeves().Count;
+            int ListLenght = Model.VeiculoLeve.GetCount();
 
             if (Id < 0 || ListLenght <= Id)
             {

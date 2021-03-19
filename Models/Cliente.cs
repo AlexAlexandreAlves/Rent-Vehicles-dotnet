@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Repository;
+using System.Linq;
 
 namespace Model
 {
@@ -11,9 +12,6 @@ namespace Model
         public DateTime DtNascimento { set; get; }
         public string Cpf { set; get; }
         public int DiasParaRetorno { set; get; }
-        public List<Locacao> Locacoes { set; get; }
-
-        private static readonly List<Cliente> Clientes = new List<Cliente>();
 
         public Cliente(string Nome, DateTime DtNascimento, string Cpf, int DiasParaRetorno)
         {
@@ -23,9 +21,9 @@ namespace Model
             this.DtNascimento = DtNascimento;
             this.Cpf = Cpf;
             this.DiasParaRetorno = DiasParaRetorno;
-            this.Locacoes = new List<Locacao>();
 
-            Clientes.Add(this);
+
+            Context.clientes.Add(this);
         }
 
         public override string ToString()
@@ -36,7 +34,7 @@ namespace Model
                 this.Nome,
                 this.DtNascimento,
                 this.DiasParaRetorno,
-                this.Locacoes.Count
+                Locacao.GetCount(this.Id)
             );
         }
 
@@ -65,35 +63,35 @@ namespace Model
             }
         }
 
-        public static List<Cliente> GetClientes(){
-            return Clientes;
+        public static IEnumerable<Cliente> GetClientes()
+        {
+            return from Cliente in Context.clientes select Cliente;
         }
 
-        public static void AddCliente (Cliente cliente){
-            Cliente.AddCliente(cliente);
+        public static int GetCount()
+        {
+            return GetClientes().Count();
         }
 
-        public static Cliente GetCliente(int Id) {
-            return Clientes[Id];
+        public static void AddCliente(Cliente cliente)
+        {
+            Context.clientes.Add(cliente);
         }
 
+        public static Cliente GetCliente(int Id)
+        {
 
+            // Context db = new Context();
 
+            // SELECT * FROM clientes;
+            // from cliente in Context.clientes select cliente;
 
+            // "SELECT * FROM cliente WHERE id = '" + Id + "'";
 
+            IEnumerable<Cliente> query = from cliente in Context.clientes where cliente.Id == Id select cliente;
 
+            return query.First();
 
-
-
-
-
-
-
-
-
-
-
-
-
+        }
     }
 }

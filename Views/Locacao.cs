@@ -76,9 +76,8 @@ namespace View
 
         public static void ListarLocacao()
         {
-            List<Model.Locacao> Locacoes = Controller.Locacao.GetLocacoes();
 
-            foreach (Model.Locacao locacao in Locacoes)
+            foreach (Model.Locacao locacao in Controller.Locacao.GetLocacoes())
             {
                 Console.WriteLine("---------------------------");
                 Console.WriteLine(locacao);

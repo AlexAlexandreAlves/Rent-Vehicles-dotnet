@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Repository;
+using System.Linq;
 
 namespace Model
 {
@@ -8,24 +9,22 @@ namespace Model
     {
         public int Id { set; get; }
         public string Restricoes { set; get; }
-        public List<LocacaoVeiculoPesado> Locacao { set; get; }
 
-        public static readonly List<VeiculoPesado> VeiculoPesados = new List<VeiculoPesado>();
         public VeiculoPesado(
-            string Marca,
-            string Modelo,
-            int Ano,
-            double Preco,
-            string Restricoes
-        ) : base(Marca, Modelo, Ano, Preco)
+        string Marca,
+        string Modelo,
+        int Ano,
+        double Preco,
+        string Restricoes
+    ) : base(Marca, Modelo, Ano, Preco)
         {
 
             this.Id = Context.veiculosPesados.Count;
             this.Restricoes = Restricoes;
-            this.Locacao = new List<LocacaoVeiculoPesado>();
 
-            VeiculoPesados.Add(this);
+            Context.veiculosPesados.Add(this);
         }
+
         public override string ToString()
         {
             return "Id: " + this.Id + " - " + base.ToString() + " - Restrições: " + this.Restricoes;
@@ -50,14 +49,22 @@ namespace Model
             return HashCode.Combine(this.Id);
         }
 
-        public static List<VeiculoPesado> GetVeiculosPesados()
+
+        public static IEnumerable<VeiculoPesado> GetVeiculosPesados()
         {
-            return VeiculoPesados;
+            return from VeiculoPesado in Context.veiculosPesados select VeiculoPesado;
         }
 
+        public static int GetCount()
+        {
+            return GetVeiculosPesados().Count();
+        }
         public static VeiculoPesado GetVeiculoPesado(int Id)
         {
-            return VeiculoPesados[Id];
+            return (from VeiculoPesado in Context.veiculosPesados
+                    where VeiculoPesado.Id == Id
+                    select VeiculoPesado
+            ).First();
         }
 
 

@@ -40,14 +40,14 @@ namespace Controller
              );
         }
 
-        public static List<Model.Cliente> ListarClientes()
+        public static IEnumerable<Model.Cliente> ListarClientes()
         {
             return Model.Cliente.GetClientes();
         }
 
         public static Model.Cliente GetCliente(int Id)
         {
-            int ListLenght = Model.Cliente.GetClientes().Count;
+            int ListLenght = Model.Cliente.GetCount();
 
             if (Id < 0 || ListLenght <= Id)
             {

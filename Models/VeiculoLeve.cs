@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Repository;
+using System.Linq;
 
 
 namespace Model
@@ -9,10 +10,7 @@ namespace Model
     {
         public int Id { set; get; }
         public string Cor { set; get; }
-        public List<LocacaoVeiculoLeve> Locacao { set; get; }
 
-
-        public static readonly List<VeiculoLeve> VeiculosLeves = new List<VeiculoLeve>();
         public VeiculoLeve(
             string Marca,
             string Modelo,
@@ -23,10 +21,9 @@ namespace Model
         {
             this.Id = Context.veiculosLeves.Count;
             this.Cor = Cor;
-            this.Locacao = new List<LocacaoVeiculoLeve>();
 
 
-            VeiculosLeves.Add(this);
+            Context.veiculosLeves.Add(this);
         }
 
 
@@ -54,14 +51,18 @@ namespace Model
             return HashCode.Combine(this.Id);
         }
 
-        public static List<VeiculoLeve> GetVeiculosLeves()
+        public static IEnumerable<VeiculoLeve> GetVeiculosLeves()
         {
-            return VeiculosLeves;
+            return from VeiculoLeve in Context.veiculosLeves select VeiculoLeve;
         }
 
+        public static int GetCount()
+        {
+            return GetVeiculosLeves().Count();
+        }
         public static VeiculoLeve GetVeiculoLeve(int Id)
         {
-            return VeiculosLeves[Id];
+            return (from VeiculoLeve in Context.veiculosLeves where VeiculoLeve.Id == Id select VeiculoLeve).First();
         }
     }
 }

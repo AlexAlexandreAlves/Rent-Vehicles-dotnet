@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace View
 {
@@ -30,14 +29,10 @@ namespace View
                 Console.WriteLine($"Informações digitadas são incorretas: {e.Message}");
             }
         }
-        /// <summary>
-        /// Shows the customer's list
-        /// </summary>
+      
         public static void ListarClientes()
         {
-            List<Model.Cliente> Clientes = Controller.Cliente.ListarClientes();
-
-            foreach (Model.Cliente cliente in Clientes)
+            foreach (Model.Cliente cliente in Controller.Cliente.ListarClientes())
             {
                 Console.WriteLine("---------------------------");
                 Console.WriteLine(cliente);
