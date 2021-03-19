@@ -18,6 +18,7 @@ namespace Model
 
 
             this.Id = Context.clientes.Count;
+            this.Nome = Nome;
             this.DtNascimento = DtNascimento;
             this.Cpf = Cpf;
             this.DiasParaRetorno = DiasParaRetorno;
@@ -29,13 +30,15 @@ namespace Model
         public override string ToString()
         {
             return String.Format(
-                "Id: {0} - Nome: {1} - Data de Nascimento: {2:d} - Dias p/ Devolução: {3} - Qtd. Locações {4}",
+                "Id: {0} - Nome do Cliente: {1} - Data de Nascimento: {2:d} - Dias p/ Devolução: {3} - Qtd. Locações {4}",
+                
                 this.Id,
                 this.Nome,
                 this.DtNascimento,
                 this.DiasParaRetorno,
                 Locacao.GetCount(this.Id)
             );
+            
         }
 
         public override bool Equals(object obj)
