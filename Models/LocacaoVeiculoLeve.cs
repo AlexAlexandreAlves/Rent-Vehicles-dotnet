@@ -12,21 +12,29 @@ namespace Model {
         public int IdVeiculoLeve { set; get; }
         public VeiculoLeve VeiculoLeve { set; get; }
 
+        public LocacaoVeiculoLeve(){
+
+        }
+
 
         public LocacaoVeiculoLeve (
             Locacao Locacao,
             VeiculoLeve VeiculoLeve
         ) {
+            Context db = new Context();
             this.Locacao = Locacao;
             this.IdLocacao = Locacao.Id;
             this.VeiculoLeve = VeiculoLeve;
             this.IdVeiculoLeve = VeiculoLeve.Id;
 
-            Context.locacaoVeiculoLeves.Add(this);
+            db.LocacaoVeiculoLeve.Add(this);
+            db.SaveChages();
+
         }
 
             public static IEnumerable<LocacaoVeiculoLeve> GetVeiculosLeves(int IdLocacao){
-                return from Veiculo in Context.locacaoVeiculoLeves where Veiculo.IdLocacao == IdLocacao select Veiculo;
+                Context.db = new Context();
+                return from Veiculo in db.LocacaoVeiculoLeves where Veiculo.IdLocacao == IdLocacao select Veiculo;
 
             }
 

@@ -13,28 +13,35 @@ namespace Model
         public int IdVeiculoPesado { set; get; }
         public VeiculoPesado VeiculoPesado { set; get; }
 
+        public LocacaoVeiculoPesado(){
+
+        }
         public LocacaoVeiculoPesado(
             Locacao Locacao,
             VeiculoPesado VeiculoPesado
         )
         {
+            Context db = new Context ();
             this.Locacao = Locacao;
             this.IdLocacao = Locacao.Id;
             this.VeiculoPesado = VeiculoPesado;
             this.IdVeiculoPesado = VeiculoPesado.Id;
 
-            Context.locacaoVeiculoPesados.Add(this);
+           db.LocacaoVeiculoPesados.Add(this);
+           db.SaveChaens();
         }
 
         public static IEnumerable<LocacaoVeiculoPesado> GetVeiculosPesados(int IdLocacao)
         {
-            return from Veiculo in Context.locacaoVeiculoPesados where Veiculo.IdLocacao == IdLocacao select Veiculo;
+            Context.db = new Context();
+            return from Veiculo in db.LocacaoVeiculoPesados where Veiculo.IdLocacao == IdLocacao select Veiculo;
         }
 
         public static double GetTotal(int IdLocacao)
         {
+            Context db = new Context();
             return (
-                from Veiculo in Context.locacaoVeiculoPesados
+                from Veiculo in db.LocacaoVeiculoPesados
                 where Veiculo.IdLocacao == IdLocacao
                 select Veiculo.VeiculoPesado.Preco
             ).Sum();

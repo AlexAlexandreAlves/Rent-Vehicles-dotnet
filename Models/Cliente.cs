@@ -13,18 +13,23 @@ namespace Model
         public string Cpf { set; get; }
         public int DiasParaRetorno { set; get; }
 
+        public Cliente(){
+
+        }
+
         public Cliente(string Nome, DateTime DtNascimento, string Cpf, int DiasParaRetorno)
         {
 
 
-            this.Id = Context.clientes.Count;
+            Context db = new Context();
             this.Nome = Nome;
             this.DtNascimento = DtNascimento;
             this.Cpf = Cpf;
             this.DiasParaRetorno = DiasParaRetorno;
 
 
-            Context.clientes.Add(this);
+            db.Clientes.Add(this);
+            db.SaveChanges();
         }
 
         public override string ToString()
@@ -68,7 +73,8 @@ namespace Model
 
         public static IEnumerable<Cliente> GetClientes()
         {
-            return from Cliente in Context.clientes select Cliente;
+            Context db = new Context();
+            return from Cliente in db.Clientes select Cliente;
         }
 
         public static int GetCount()
@@ -78,7 +84,8 @@ namespace Model
 
         public static void AddCliente(Cliente cliente)
         {
-            Context.clientes.Add(cliente);
+            Context db = new Context();
+            db.Clientes.Add(cliente);
         }
 
         public static Cliente GetCliente(int Id)
@@ -90,8 +97,8 @@ namespace Model
             // from cliente in Context.clientes select cliente;
 
             // "SELECT * FROM cliente WHERE id = '" + Id + "'";
-
-            IEnumerable<Cliente> query = from cliente in Context.clientes where cliente.Id == Id select cliente;
+            Context db = new Context();
+            IEnumerable<Cliente> query = from cliente in db.Clientes where cliente.Id == Id select cliente;
 
             return query.First();
 

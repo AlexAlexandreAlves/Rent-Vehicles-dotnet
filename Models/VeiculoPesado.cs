@@ -10,6 +10,10 @@ namespace Model
         public int Id { set; get; }
         public string Restricoes { set; get; }
 
+        public VeiculoPesado(){
+
+        }
+
         public VeiculoPesado(
         string Marca,
         string Modelo,
@@ -19,10 +23,11 @@ namespace Model
     ) : base(Marca, Modelo, Ano, Preco)
         {
 
-            this.Id = Context.veiculosPesados.Count;
+            Context db = new Context();
             this.Restricoes = Restricoes;
 
-            Context.veiculosPesados.Add(this);
+            db.VeiculosPesados.Add(this);
+            db.SaveChanges();
         }
 
         public override string ToString()
@@ -52,7 +57,8 @@ namespace Model
 
         public static IEnumerable<VeiculoPesado> GetVeiculosPesados()
         {
-            return from VeiculoPesado in Context.veiculosPesados select VeiculoPesado;
+            Context db = new Context();
+            return from VeiculoPesado in db.VeiculosPesados select VeiculoPesado;
         }
 
         public static int GetCount()
@@ -61,7 +67,8 @@ namespace Model
         }
         public static VeiculoPesado GetVeiculoPesado(int Id)
         {
-            return (from VeiculoPesado in Context.veiculosPesados
+            Context db = new Context();
+            return (from VeiculoPesado in db.VeiculosPesados
                     where VeiculoPesado.Id == Id
                     select VeiculoPesado
             ).First();

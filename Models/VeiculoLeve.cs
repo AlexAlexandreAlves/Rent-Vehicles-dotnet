@@ -11,6 +11,10 @@ namespace Model
         public int Id { set; get; }
         public string Cor { set; get; }
 
+        public VeiculoLeve() : base(){
+
+        }
+
         public VeiculoLeve(
             string Marca,
             string Modelo,
@@ -19,11 +23,12 @@ namespace Model
             string Cor
         ) : base(Marca, Modelo, Ano, Preco)
         {
-            this.Id = Context.veiculosLeves.Count;
+            Context db = new Context();
             this.Cor = Cor;
 
 
-            Context.veiculosLeves.Add(this);
+           db.VeiculosLeves.Add(this);
+           db.SaveChanges();
         }
 
 
@@ -53,7 +58,8 @@ namespace Model
 
         public static IEnumerable<VeiculoLeve> GetVeiculosLeves()
         {
-            return from VeiculoLeve in Context.veiculosLeves select VeiculoLeve;
+            Context db = new Context();
+            return from VeiculoLeve in db.VeiculosLeves select VeiculoLeve;
         }
 
         public static int GetCount()
@@ -62,7 +68,8 @@ namespace Model
         }
         public static VeiculoLeve GetVeiculoLeve(int Id)
         {
-            return (from VeiculoLeve in Context.veiculosLeves where VeiculoLeve.Id == Id select VeiculoLeve).First();
+            Context db = new Context();   
+            return (from VeiculoLeve in db.VeiculosLeves where VeiculoLeve.Id == Id select VeiculoLeve).First();
         }
     }
 }

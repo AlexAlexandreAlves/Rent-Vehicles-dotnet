@@ -12,6 +12,9 @@ namespace Model
         public Cliente Cliente { set; get; } // Cliente
         public DateTime DataLocacao { set; get; }
 
+        public Locacao(){
+
+        }
 
         public Locacao(
            Cliente Cliente,
@@ -20,7 +23,7 @@ namespace Model
            List<VeiculoPesado> VeiculosPesados
        )
         {
-            this.Id = Context.locacoes.Count;
+            Context db= new Context();
             this.Cliente = Cliente;
             this.ClienteId = Cliente.Id;
             this.DataLocacao = DataLocacao;
@@ -36,7 +39,8 @@ namespace Model
 
             }
 
-            Context.locacoes.Add(this);
+            db.Locacoes.Add(this);
+            db.SaveChanges();
         }
 
         public double GetValorLocacao()
@@ -121,12 +125,14 @@ namespace Model
 
         public static IEnumerable<Locacao> GetLocacoes()
         {
-            return from Locacao in Context.locacoes select Locacao;
+            Context db = new Context();
+            return from Locacao in db.Locacoes select Locacao;
         }
 
         public static int GetCount(int ClienteId)   
         {
-            return (from Locacao in Context.locacoes where Locacao.ClienteId == ClienteId select Locacao).Count();
+            Context db = new Context();
+            return (from Locacao in db.Locacoes where Locacao.ClienteId == ClienteId select Locacao).Count();
         }
     }
 
