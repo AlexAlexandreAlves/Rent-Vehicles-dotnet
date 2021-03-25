@@ -27,13 +27,13 @@ namespace Model {
             this.VeiculoLeve = VeiculoLeve;
             this.IdVeiculoLeve = VeiculoLeve.Id;
 
-            db.LocacaoVeiculoLeve.Add(this);
-            db.SaveChages();
+            db.LocacaoVeiculoLeves.Add(this);
+            db.SaveChanges();
 
         }
 
             public static IEnumerable<LocacaoVeiculoLeve> GetVeiculosLeves(int IdLocacao){
-                Context.db = new Context();
+                Context db = new Context();
                 return from Veiculo in db.LocacaoVeiculoLeves where Veiculo.IdLocacao == IdLocacao select Veiculo;
 
             }

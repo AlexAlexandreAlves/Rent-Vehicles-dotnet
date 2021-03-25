@@ -28,12 +28,12 @@ namespace Model
             this.IdVeiculoPesado = VeiculoPesado.Id;
 
            db.LocacaoVeiculoPesados.Add(this);
-           db.SaveChaens();
+           db.SaveChanges();
         }
 
         public static IEnumerable<LocacaoVeiculoPesado> GetVeiculosPesados(int IdLocacao)
         {
-            Context.db = new Context();
+            Context db = new Context();
             return from Veiculo in db.LocacaoVeiculoPesados where Veiculo.IdLocacao == IdLocacao select Veiculo;
         }
 
