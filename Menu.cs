@@ -12,12 +12,14 @@ namespace Programa {
                 Console.WriteLine ("| Digite a operação de Menu     |");
                 Console.WriteLine ("| 1 - Cadastrar Cliente         |");
                 Console.WriteLine ("| 2 - Lista de Clientes         |");
-                Console.WriteLine ("| 3 - Cadastrar Veículo Pesado  |");
-                Console.WriteLine ("| 4 - Lista de Veículos Pesados |");
-                Console.WriteLine ("| 5 - Cadastrar Veículo Leve    |");
-                Console.WriteLine ("| 6 - Lista de Veículos Leves   |");
-                Console.WriteLine ("| 7 - Cadastrar Locação         |");
-                Console.WriteLine ("| 8 - Lista de Locações         |");
+                Console.WriteLine ("| 3 - Atualizar Cliente         |");
+                Console.WriteLine ("| 4 - Remover Clientes          |");
+                Console.WriteLine ("| 5 - Cadastrar Veículo Pesado  |");
+                Console.WriteLine ("| 6 - Lista de Veículos Pesados |");
+                Console.WriteLine ("| 7 - Cadastrar Veículo Leve    |");
+                Console.WriteLine ("| 8 - Lista de Veículos Leves   |");
+                Console.WriteLine ("| 9 - Cadastrar Locação         |");
+                Console.WriteLine ("| 10 - Lista de Locações        |");
                 Console.WriteLine ("| 0 - Sair                      |");
                 Console.WriteLine ("+-------------------------------+");
                 // Get the user option
@@ -31,25 +33,31 @@ namespace Programa {
                         View.Cliente.CriarCliente();
                         break;
                     case 2:
-                        View.Cliente.ListarClientes ();
+                        View.Cliente.ListarClientes();
                         break;
                     case 3:
-                        View.VeiculoPesado.CriarVeiculoPesado ();
+                       // View.Cliente.AtualizarClientes();
                         break;
                     case 4:
-                        View.VeiculoPesado.ListarVeiculosPesados();
+                       // View.Cliente.RemoverClientes();
                         break;
                     case 5:
-                        View.VeiculoLeve.CriarVeiculoLeve ();
+                        View.VeiculoPesado.CriarVeiculoPesado();
                         break;
                     case 6:
-                        View.VeiculoLeve.ListarVeiculosLeves ();
+                        View.VeiculoPesado.ListarVeiculosPesados();
                         break;
                     case 7:
-                        View.Locacao.CriarLocacao ();
+                        View.VeiculoLeve.CriarVeiculoLeve();
                         break;
                     case 8:
-                        View.Locacao.ListarLocacao ();
+                        View.VeiculoLeve.ListarVeiculosLeves();
+                        break;
+                    case 9:
+                        View.Locacao.CriarLocacao();
+                        break;
+                    case 10:
+                        View.Locacao.ListarLocacao();
                         break;
                     default:
                         Console.WriteLine ("Operação Inválida.");

@@ -29,7 +29,42 @@ namespace View
                 Console.WriteLine($"Informações digitadas são incorretas: {e.Message}");
             }
         }
-      
+
+        public static void AtualizarClientes()
+        {
+            Model.Cliente cliente;
+            try
+            {
+                Console.WriteLine("Informe o ID do cliente: ");
+                string Id = Console.ReadLine();
+                cliente = Controller.Cliente.GetCliente(Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw new Exception(e.Message);
+            }
+
+            Console.WriteLine("Digite o campo que deseja alterar: 1- Nome 2- CPF: ");
+            string stringCampo = Console.ReadLine();
+            Console.WriteLine("Digite a informação: ");
+            string stringValor = Console.ReadLine();
+
+            try
+            {
+                Controller.Cliente.AtualizarClientes(cliente, campo, valor);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }   
+
+            public static void RemoverClientes(){
+
+            }
+
+
         public static void ListarClientes()
         {
             foreach (Model.Cliente cliente in Controller.Cliente.ListarClientes())

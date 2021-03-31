@@ -13,7 +13,8 @@ namespace Model
         public string Cpf { set; get; }
         public int DiasParaRetorno { set; get; }
 
-        public Cliente(){
+        public Cliente()
+        {
 
         }
 
@@ -36,14 +37,14 @@ namespace Model
         {
             return String.Format(
                 "Id: {0} - Nome do Cliente: {1} - Data de Nascimento: {2:d} - Dias p/ Devolução: {3} - Qtd. Locações {4}",
-                
+
                 this.Id,
                 this.Nome,
                 this.DtNascimento,
                 this.DiasParaRetorno,
                 Locacao.GetCount(this.Id)
             );
-            
+
         }
 
         public override bool Equals(object obj)
@@ -62,10 +63,10 @@ namespace Model
 
         public override int GetHashCode()
         {
-            unchecked // Overflow is fine, just wrap
+            unchecked
             {
                 int hash = (int)2166136261;
-                // Suitable nullity checks etc, of course :)
+
                 hash = (hash * 16777619) ^ this.Id.GetHashCode();
                 return hash;
             }
@@ -91,16 +92,39 @@ namespace Model
         public static Cliente GetCliente(int Id)
         {
 
-            // Context db = new Context();
-
-            // SELECT * FROM clientes;
-            // from cliente in Context.clientes select cliente;
-
-            // "SELECT * FROM cliente WHERE id = '" + Id + "'";
             Context db = new Context();
             IEnumerable<Cliente> query = from cliente in db.Clientes where cliente.Id == Id select cliente;
 
             return query.First();
+
+        }
+        public static Cliente AtualizarClientes(
+          Cliente cliente,
+          string valor,
+          string campo
+      )
+        {
+            int Campo = Convert.ToInt32(stringCampo);
+            switch (Campo)
+            {
+                case 1:
+                    Cliente.Nome = valor;
+                    break;
+                case 2:
+                    Cliente.Cpf = valor;
+                    break;
+
+
+            }
+            Context db = new Context();
+            db.Clientes.Update(cliente);
+            db.SaveChanges();
+            return Cliente;
+
+
+        }
+
+        public static void RemoverClientes(){
 
         }
     }
