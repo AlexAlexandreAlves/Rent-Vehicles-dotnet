@@ -47,5 +47,50 @@ namespace Controller
         {
             return Model.Locacao.GetLocacoes();
         }
+
+        public static Model.Locacao AtualizarLocacao(
+            Model.Locacao locacao,
+            string stringValor,
+            string stringCampo
+        )
+        {
+            int Campo = Convert.ToInt32(stringCampo);
+           
+            switch (Campo)
+            {
+                case 1: //Data de locação;
+
+                return Model.Locacao.AtualizarLocacao(locacao, stringValor, stringCampo);
+                   
+                
+                default:
+                throw new Exception("Operação inválida");
+            }
+        }
+
+               //Remoção de clientes no banco de dados
+
+        public static void RemoverLocacao(string StringId)
+        {
+            int Id = Convert.ToInt32(StringId);
+            try
+            {
+                Model.Locacao.RemoverLocacao(Id);
+            }
+            catch
+            {
+                throw new Exception("Não foi permitido concluir a exclusão ou ID inválido ");
+            }
+        }
+
+         public static Locacao GetLocacao(int Id)
+        {
+
+            Context db = new Context();
+            IEnumerable<Locacao> query = from locacao in db.Locacao where locacao.Id == Id select locacao;
+
+            return query.First();
+
+        }
     }
 }

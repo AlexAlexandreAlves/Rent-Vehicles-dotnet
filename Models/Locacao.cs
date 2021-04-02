@@ -134,6 +134,39 @@ namespace Model
             Context db = new Context();
             return (from Locacao in db.Locacoes where Locacao.ClienteId == ClienteId select Locacao).Count();
         }
+
+        public static Locacao AtualizarLocacao(
+          Locacao locacao,
+          string stringValor,
+          string stringCampo
+      )
+        {
+            int Campo = Convert.ToInt32(stringCampo);
+            switch (Campo)
+            {
+                case 1:
+                   locacao.DataLocacao = Convert.ToDateTime(stringValor);
+                break;
+        
+
+            }
+            Context db = new Context();
+            db.Locacoes.Update(locacao);
+            db.SaveChanges();
+            return locacao;
+
+
+        }
+
+        //Remoção de clientes no banco de dados
+
+
+        public static void RemoverLocacao(int Id) {
+            Locacao locacao = GetLocacao(Id);
+            Context db = new Context();
+            db.Locacoes.Remove(locacao);
+            db.SaveChanges();
+        }
     }
 
 }

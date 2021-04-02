@@ -82,12 +82,12 @@ namespace Programa
                     case 14:
                         View.Locacao.ListarLocacao();
                         break;
-                    //case 15:
-                        //View.Locacao.AtualizarLocacao();
-                        //break;
-                    //case 16:
-                        //View.Locacao.RemoverLocacao();
-                        //break;
+                    case 15:
+                        View.Locacao.AtualizarLocacao();
+                        break;
+                    case 16:
+                        View.Locacao.RemoverLocacao();
+                        break;
                     default:
                         Console.WriteLine("Operação Inválida.");
                         break;
