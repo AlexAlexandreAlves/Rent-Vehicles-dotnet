@@ -70,11 +70,12 @@ namespace Programa
                     case 10:
                         View.VeiculoLeve.ListarVeiculosLeves();
                         break;
-                    //case 11:
-                        //View.VeiculoLeve.AtualizarVeiculoLeve();
-                        //break;
-                    //case 12:
-                       //View.VeiculoLeve.RemoverVeiculosLeves();
+                    case 11:
+                        View.VeiculoLeve.AtualizarVeiculoLeve();
+                        break;
+                    case 12:
+                       View.VeiculoLeve.RemoverVeiculosLeves();
+                       break;
                     case 13:
                         View.Locacao.CriarLocacao();
                         break;

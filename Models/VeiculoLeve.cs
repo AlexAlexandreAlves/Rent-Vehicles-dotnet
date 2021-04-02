@@ -71,5 +71,41 @@ namespace Model
             Context db = new Context();   
             return (from VeiculoLeve in db.VeiculosLeves where VeiculoLeve.Id == Id select VeiculoLeve).First();
         }
+
+        public static VeiculoLeve AtualizarVeiculoLeve(
+          VeiculoLeve veiculoLeve,
+          string stringValor,
+          string stringCampo
+      )
+        {
+            int Campo = Convert.ToInt32(stringCampo);
+            switch (Campo)
+            {
+                case 1:
+                   veiculoLeve.Marca = stringValor;
+                    break;
+                case 2:
+                   veiculoLeve.Modelo = stringValor;
+                    break;
+
+
+            }
+            Context db = new Context();
+            db.VeiculosLeves.Update(veiculoLeve);
+            db.SaveChanges();
+            return veiculoLeve;
+
+
+        }
+
+        //Remoção de clientes no banco de dados
+
+
+        public static void RemoverVeiculosLeves(int Id) {
+            VeiculoLeve veiculoLeve = GetVeiculoLeve(Id);
+            Context db = new Context();
+            db.VeiculosLeves.Remove(veiculoLeve);
+            db.SaveChanges();
+        }
     }
 }

@@ -31,5 +31,50 @@ namespace View
             }
             Console.WriteLine("---------------------------\n");
         }
+
+        public static void AtualizarVeiculoLeve()
+        {
+            Model.VeiculoLeve veiculoLeve;
+            try
+            {
+                Console.WriteLine("Informe o ID do Veiculo Leve: ");
+                string Id = Console.ReadLine();
+                veiculoLeve = Controller.VeiculoLeve.GetVeiculosLeves(Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw new Exception(e.Message);
+            }
+
+            Console.WriteLine("Digite o campo que deseja alterar: 1- Marca 2- Modelo: ");
+            string stringCampo = Console.ReadLine();
+            Console.WriteLine("Digite a informação: ");
+            string stringValor = Console.ReadLine();
+
+            try
+            {
+                Controller.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, stringCampo, stringValor);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }   
+
+            public static void RemoverVeiculosLeves(){
+
+                  try
+            {
+                Console.WriteLine("Informe o ID do Veiculo Leve: ");
+                string Id = Console.ReadLine();
+                Controller.VeiculoLeve.RemoverVeiculosLeves(Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            }
     }
 }

@@ -26,7 +26,7 @@ namespace View
                     Console.WriteLine("Informe o Id do Veículo Leve: ");
                     try
                     {
-                        int VeiculoId = Convert.ToInt32(Console.ReadLine());
+                       string VeiculoId = Console.ReadLine();
 
                         Model.VeiculoLeve veiculo = Controller.VeiculoLeve.GetVeiculosLeves(VeiculoId);
                         VeiculosLeves.Add(veiculo);
