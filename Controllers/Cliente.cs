@@ -39,29 +39,38 @@ namespace Controller
                  Convert.ToInt32(DiasParaRetorno)
              );
         }
-
+            //Atualização de clientes no banco de dados
         public static Model.Cliente AtualizarClientes(
             Model.Cliente cliente,
-            string stringCampo,
-            string stringValor
+            string stringValor,
+            string stringCampo
         )
         {
             int Campo = Convert.ToInt32(stringCampo);
             switch (Campo)
             {
                 case 1: //Nome;
-                    break;
-                case 2: //CPF;
-                    break;
 
+                return Model.Cliente.AtualizarClientes(cliente, stringValor, stringCampo);
+                   
+                  
+                case 2: //CPF;
+                    
                     Regex rgx = new Regex("^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$");
-                    if (!rgx.IsMatch(Cpf))
+                    if (!rgx.IsMatch(stringValor))
                     {
                         throw new Exception("C.P.F. Inválido");
                     }
-                    break;
+
+                   return Model.Cliente.AtualizarClientes(cliente, stringValor, stringCampo);
+                   
+                  
+                    default:
+                    throw new Exception("Operação inválida");
             }
         }
+
+               //Remoção de clientes no banco de dados
 
         public static void RemoverClientes(string StringId)
         {

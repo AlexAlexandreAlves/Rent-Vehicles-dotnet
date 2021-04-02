@@ -52,7 +52,7 @@ namespace View
 
             try
             {
-                Controller.Cliente.AtualizarClientes(cliente, campo, valor);
+                Controller.Cliente.AtualizarClientes(cliente, stringCampo, stringValor);
             }
             catch (Exception e)
             {
@@ -61,6 +61,17 @@ namespace View
         }   
 
             public static void RemoverClientes(){
+
+                  try
+            {
+                Console.WriteLine("Informe o ID do cliente: ");
+                string Id = Console.ReadLine();
+                Controller.Cliente.RemoverClientes(Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             }
 

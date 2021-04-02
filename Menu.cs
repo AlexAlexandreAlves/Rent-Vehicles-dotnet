@@ -6,7 +6,7 @@ namespace Programa {
         public static void Main () {
             int opt;
             Console.WriteLine ("======= Bem vindo a nossa revenda =======");
-            // Always repeat until the user leaves
+           
             do {
                 Console.WriteLine ("+-------------------------------+");
                 Console.WriteLine ("| Digite a operação de Menu     |");
@@ -22,12 +22,12 @@ namespace Programa {
                 Console.WriteLine ("| 10 - Lista de Locações        |");
                 Console.WriteLine ("| 0 - Sair                      |");
                 Console.WriteLine ("+-------------------------------+");
-                // Get the user option
+                
                 opt = Convert.ToInt32 (Console.ReadLine ());
                 switch (opt) {
                     case 0:
                         Console.WriteLine ("======= Até a próxima! =======");
-                        // Close system
+                        
                         break;
                     case 1:
                         View.Cliente.CriarCliente();
@@ -36,10 +36,10 @@ namespace Programa {
                         View.Cliente.ListarClientes();
                         break;
                     case 3:
-                       // View.Cliente.AtualizarClientes();
+                        View.Cliente.AtualizarClientes();
                         break;
                     case 4:
-                       // View.Cliente.RemoverClientes();
+                        View.Cliente.RemoverClientes();
                         break;
                     case 5:
                         View.VeiculoPesado.CriarVeiculoPesado();

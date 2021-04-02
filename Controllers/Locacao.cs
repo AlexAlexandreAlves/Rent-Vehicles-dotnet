@@ -18,7 +18,7 @@ namespace Controller
         )
         {
             Model.Cliente Cliente = Controller.Cliente
-                .GetCliente(Convert.ToInt32(ClienteId));
+                .GetCliente(ClienteId);
 
             ///No RentDate estamos trabalhando com a converção da entrada da data de locação para calcular os dias
             ///a partir da data de entrada que for inserida no terminal, utilizando o método DateTime.Now

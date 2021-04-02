@@ -98,20 +98,24 @@ namespace Model
             return query.First();
 
         }
+
+
+        //Atualização de clientes no banco de dados
+            
         public static Cliente AtualizarClientes(
           Cliente cliente,
-          string valor,
-          string campo
+          string stringValor,
+          string stringCampo
       )
         {
             int Campo = Convert.ToInt32(stringCampo);
             switch (Campo)
             {
                 case 1:
-                    Cliente.Nome = valor;
+                   cliente.Nome = stringValor;
                     break;
                 case 2:
-                    Cliente.Cpf = valor;
+                   cliente.Cpf = stringValor;
                     break;
 
 
@@ -119,13 +123,19 @@ namespace Model
             Context db = new Context();
             db.Clientes.Update(cliente);
             db.SaveChanges();
-            return Cliente;
+            return cliente;
 
 
         }
 
-        public static void RemoverClientes(){
+        //Remoção de clientes no banco de dados
 
+
+        public static void RemoverClientes(int Id) {
+            Cliente cliente = GetCliente(Id);
+            Context db = new Context();
+            db.Clientes.Remove(cliente);
+            db.SaveChanges();
         }
     }
 }
