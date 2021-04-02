@@ -1,33 +1,44 @@
 using System;
 
-namespace Programa {
-    public class Menu {
-       
-        public static void Main () {
+namespace Programa
+{
+    public class Menu
+    {
+
+        public static void Main()
+        {
             int opt;
-            Console.WriteLine ("======= Bem vindo a nossa revenda =======");
-           
-            do {
-                Console.WriteLine ("+-------------------------------+");
-                Console.WriteLine ("| Digite a operação de Menu     |");
-                Console.WriteLine ("| 1 - Cadastrar Cliente         |");
-                Console.WriteLine ("| 2 - Lista de Clientes         |");
-                Console.WriteLine ("| 3 - Atualizar Cliente         |");
-                Console.WriteLine ("| 4 - Remover Clientes          |");
-                Console.WriteLine ("| 5 - Cadastrar Veículo Pesado  |");
-                Console.WriteLine ("| 6 - Lista de Veículos Pesados |");
-                Console.WriteLine ("| 7 - Cadastrar Veículo Leve    |");
-                Console.WriteLine ("| 8 - Lista de Veículos Leves   |");
-                Console.WriteLine ("| 9 - Cadastrar Locação         |");
-                Console.WriteLine ("| 10 - Lista de Locações        |");
-                Console.WriteLine ("| 0 - Sair                      |");
-                Console.WriteLine ("+-------------------------------+");
-                
-                opt = Convert.ToInt32 (Console.ReadLine ());
-                switch (opt) {
+            Console.WriteLine("======= Bem vindo a nossa revenda =======");
+
+            do
+            {
+                Console.WriteLine("+---------------------------------+");
+                Console.WriteLine("| Digite a operação de Menu       |");
+                Console.WriteLine("| 1 - Cadastrar Cliente           |");
+                Console.WriteLine("| 2 - Lista de Clientes           |");
+                Console.WriteLine("| 3 - Atualizar Cliente           |");
+                Console.WriteLine("| 4 - Remover Clientes            |");
+                Console.WriteLine("| 5 - Cadastrar Veículo Pesado    |");
+                Console.WriteLine("| 6 - Lista de Veículos Pesados   |");
+                Console.WriteLine("| 7 - Atualizar Veículos Pesados  |");
+                Console.WriteLine("| 8 - Remover Veículos Pesados    |");
+                Console.WriteLine("| 9 - Cadastrar Veículo Leve      |");
+                Console.WriteLine("| 10 - Lista de Veículos Leves    |");
+                Console.WriteLine("| 11 - Atualizar Veículos Leves   |");
+                Console.WriteLine("| 12 - Remover Veículos Leves     |");
+                Console.WriteLine("| 13 - Cadastrar Locação          |");
+                Console.WriteLine("| 14 - Lista de Locações          |");
+                Console.WriteLine("| 15 -  Atualizar Locação         |");
+                Console.WriteLine("| 16 - Remover Locações           |");
+                Console.WriteLine("|  0 - Sair                       |");
+                Console.WriteLine("+---------------------------------+");
+
+                opt = Convert.ToInt32(Console.ReadLine());
+                switch (opt)
+                {
                     case 0:
-                        Console.WriteLine ("======= Até a próxima! =======");
-                        
+                        Console.WriteLine("======= Até a próxima! =======");
+
                         break;
                     case 1:
                         View.Cliente.CriarCliente();
@@ -48,19 +59,36 @@ namespace Programa {
                         View.VeiculoPesado.ListarVeiculosPesados();
                         break;
                     case 7:
-                        View.VeiculoLeve.CriarVeiculoLeve();
+                        View.VeiculoPesado.AtualizarVeiculoPesado();
                         break;
                     case 8:
-                        View.VeiculoLeve.ListarVeiculosLeves();
+                        View.VeiculoPesado.RemoverVeiculosPesados();
                         break;
                     case 9:
-                        View.Locacao.CriarLocacao();
+                        View.VeiculoLeve.CriarVeiculoLeve();
                         break;
                     case 10:
+                        View.VeiculoLeve.ListarVeiculosLeves();
+                        break;
+                    //case 11:
+                        //View.VeiculoLeve.AtualizarVeiculoLeve();
+                        //break;
+                    //case 12:
+                       //View.VeiculoLeve.RemoverVeiculosLeves();
+                    case 13:
+                        View.Locacao.CriarLocacao();
+                        break;
+                    case 14:
                         View.Locacao.ListarLocacao();
                         break;
+                    //case 15:
+                        //View.Locacao.AtualizarLocacao();
+                        //break;
+                    //case 16:
+                        //View.Locacao.RemoverLocacao();
+                        //break;
                     default:
-                        Console.WriteLine ("Operação Inválida.");
+                        Console.WriteLine("Operação Inválida.");
                         break;
                 }
             } while (opt != 0);

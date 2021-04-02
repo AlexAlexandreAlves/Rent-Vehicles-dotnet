@@ -52,8 +52,9 @@ namespace Controller
             }
         }
 
-        public static Model.VeiculoPesado GetVeiculoPesado(int Id)
-        {
+        public static Model.VeiculoPesado GetVeiculoPesado(string StringId)
+        {   
+            int Id = Convert.ToInt32(StringId);
             int ListLenght = Model.VeiculoPesado.GetCount();
 
             if (Id < 0 || ListLenght <= Id)
@@ -62,6 +63,45 @@ namespace Controller
             }
 
             return Model.VeiculoPesado.GetVeiculoPesado(Id);
+        }
+
+         public static Model.VeiculoPesado AtualizarVeiculoPesado(
+            Model.VeiculoPesado veiculoPesado,
+            string stringValor,
+            string stringCampo
+        )
+        {
+            int Campo = Convert.ToInt32(stringCampo);
+            switch (Campo)
+            {
+                case 1: //Nome;
+
+                return Model.VeiculoPesado.AtualizarVeiculoPesado(veiculoPesado, stringValor, stringCampo);
+                   
+                  
+                case 2: //CPF;
+                    
+                     return Model.VeiculoPesado.AtualizarVeiculoPesado(veiculoPesado, stringValor, stringCampo);
+                    
+                    default:
+                    throw new Exception("Operação inválida");
+                   
+            }
+        }
+
+               //Remoção de clientes no banco de dados
+
+        public static void RemoverVeiculosPesados(string StringId)
+        {
+            int Id = Convert.ToInt32(StringId);
+            try
+            {
+                Model.VeiculoPesado.RemoverVeiculosPesados(Id);
+            }
+            catch
+            {
+                throw new Exception("Não foi permitido concluir a exclusão ou ID inválido ");
+            }
         }
     }
 }

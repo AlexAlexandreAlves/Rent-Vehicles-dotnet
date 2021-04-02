@@ -51,7 +51,7 @@ namespace View
                     Console.WriteLine("Informe o Id do Veículo Pesado: ");
                     try
                     {
-                        int VeiculoId = Convert.ToInt32(Console.ReadLine());
+                        string VeiculoId = Console.ReadLine();
                         Model.VeiculoPesado veiculo = Controller.VeiculoPesado.GetVeiculoPesado(VeiculoId);
                         VeiculosPesados.Add(veiculo);
                     }

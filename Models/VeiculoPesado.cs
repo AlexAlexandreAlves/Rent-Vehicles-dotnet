@@ -74,6 +74,42 @@ namespace Model
             ).First();
         }
 
+        
+        public static VeiculoPesado AtualizarVeiculoPesado(
+          VeiculoPesado veiculoPesado,
+          string stringValor,
+          string stringCampo
+      )
+        {
+            int Campo = Convert.ToInt32(stringCampo);
+            switch (Campo)
+            {
+                case 1:
+                   veiculoPesado.Marca = stringValor;
+                    break;
+                case 2:
+                   veiculoPesado.Modelo = stringValor;
+                    break;
+
+
+            }
+            Context db = new Context();
+            db.VeiculosPesados.Update(veiculoPesado);
+            db.SaveChanges();
+            return veiculoPesado;
+
+
+        }
+
+        //Remoção de clientes no banco de dados
+
+
+        public static void RemoverVeiculosPesados(int Id) {
+            VeiculoPesado veiculoPesado = GetVeiculoPesado(Id);
+            Context db = new Context();
+            db.VeiculosPesados.Remove(veiculoPesado);
+            db.SaveChanges();
+        }
 
     }
 }
