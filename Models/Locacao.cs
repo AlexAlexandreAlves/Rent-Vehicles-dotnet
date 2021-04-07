@@ -135,6 +135,16 @@ namespace Model
             return (from Locacao in db.Locacoes where Locacao.ClienteId == ClienteId select Locacao).Count();
         }
 
+        public static Locacao GetLocacao(int Id)
+        {
+
+            Context db = new Context();
+            IEnumerable<Locacao> query = from locacao in db.Locacoes where locacao.Id == Id select locacao;
+
+            return query.First();
+
+        }
+
         public static Locacao AtualizarLocacao(
           Locacao locacao,
           string stringValor,

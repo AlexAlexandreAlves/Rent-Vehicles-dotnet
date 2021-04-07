@@ -83,13 +83,10 @@ namespace Controller
             }
         }
 
-         public static Locacao GetLocacao(int Id)
+         public static Model.Locacao GetLocacao(string Id)
         {
 
-            Context db = new Context();
-            IEnumerable<Locacao> query = from locacao in db.Locacao where locacao.Id == Id select locacao;
-
-            return query.First();
+            return Model.Locacao.GetLocacao(Convert.ToInt32(Id));
 
         }
     }

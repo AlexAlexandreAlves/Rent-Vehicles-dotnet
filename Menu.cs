@@ -1,11 +1,16 @@
 using System;
+using System.Windows.Forms;
 
 namespace Programa
 {
     public class Menu
     {
+        public static void Main(){
+            Application.EnableVisualStyles();
+            Application.Run(new VisualMenu());
 
-        public static void Main()
+        }
+        public static void Terminal()
         {
             int opt;
             Console.WriteLine("======= Bem vindo a nossa revenda =======");
