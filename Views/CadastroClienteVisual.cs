@@ -2,7 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace Programa
+namespace View
 {
     public class CadastroClienteVisual : Form
     {
@@ -15,7 +15,7 @@ namespace Programa
             Label lblNome = new Label();
             lblNome.Text = "Nome do cliente:";           //Inserindo nome do cliente
             lblNome.Location = new Point(20, 15);             //Trabalhando com a localização da string inserida acima
-            lblNome.Size = new Size(300, 40);                     //Trabalhando com o tamanho do valor inserido
+            lblNome.Size = new Size(300, 40);                        //Trabalhando com o tamanho do valor inserido
 
             TextBox txtNome = new TextBox();                  //TextBox cria caixas para inserção de texto
             txtNome.Location = new Point(20, 60);               //Trabalhando com a localização da caixa de texto
@@ -65,6 +65,7 @@ namespace Programa
             btnConfirmar.Text = "Confirmar Cadastro";
             btnConfirmar.Size = new Size(200, 30);
             btnConfirmar.Location = new Point(18, 450);
+            btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
 
             Button btnCancelar = new Button();     //Criando botões
             btnCancelar.Text = "Cancelar";
@@ -86,9 +87,10 @@ namespace Programa
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
 
+        }   
 
-
-
+        private void btnConfirmarClick(object sender, EventArgs e){
+            this.Close();
         }
     }
 }

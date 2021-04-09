@@ -9,7 +9,6 @@ namespace Programa
         public static void Main(){
             Application.EnableVisualStyles();
             Application.Run(new View.Menu());
-            Application.Run(new CadastroClienteVisual());
 
         }
         public static void Terminal()
