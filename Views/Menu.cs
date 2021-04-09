@@ -15,6 +15,7 @@ namespace View
             this.BackColor = Color.LightBlue;
             
             
+            
             Button btnCadastrarCliente = new Button();     //Criando botões
             btnCadastrarCliente.Text = "Cadastrar Cliente";
             btnCadastrarCliente.Size = new Size(200, 30);
