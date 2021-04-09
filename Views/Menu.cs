@@ -12,6 +12,8 @@ namespace View
         {
 
             this.Text = "Menu Principal";
+            this.BackColor = Color.LightBlue;
+            
             
             Button btnCadastrarCliente = new Button();     //Criando botões
             btnCadastrarCliente.Text = "Cadastrar Cliente";

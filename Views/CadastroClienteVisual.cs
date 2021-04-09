@@ -11,6 +11,7 @@ namespace Programa
             //Visual Cadastrar Nome do cliente
 
             this.Text = "Cadastro de Cliente";      //Inserindo titulo da página
+            this.BackColor = Color.LightBlue;
             Label lblNome = new Label();
             lblNome.Text = "Nome do cliente:";           //Inserindo nome do cliente
             lblNome.Location = new Point(20, 15);             //Trabalhando com a localização da string inserida acima
