@@ -1,14 +1,14 @@
 using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Programa
 {
-    public class Menu
+    public class Menu : Form
     {
         public static void Main(){
             Application.EnableVisualStyles();
-            Application.Run(new VisualMenu());
-            Application.Run(new CadastroClienteVisual());
+            Application.Run(new View.Menu());
 
         }
         public static void Terminal()
