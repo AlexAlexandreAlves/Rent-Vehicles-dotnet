@@ -127,8 +127,9 @@ namespace View
             this.Controls.Add(txtCpf);
             this.Controls.Add(lblDiasDevolucao);
             this.Controls.Add(cbDiasDevolucao);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.Controls.Add(groupBox1);
+            groupBox1.Controls.Add(radioButton2);
+            groupBox1.Controls.Add(radioButton1);
 
 
             this.Controls.Add(btnConfirmar);
