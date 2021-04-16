@@ -31,7 +31,7 @@ namespace View
 
         private RadioButton radioButton2 = new RadioButton();
 
-        private GroupBox groupBox1 = new GroupBox();   
+        private GroupBox groupBox1 = new GroupBox();
 
 
 
@@ -90,16 +90,16 @@ namespace View
             cbDiasDevolucao.Items.AddRange(new object[] { "2", "4", "6", "8" });
 
 
-            groupBox1.Location = new Point(20,450);
-            groupBox1.Size = new Size(200, 80);
+            groupBox1.Location = new Point(20, 400);
+            groupBox1.Size = new Size(200, 100);
             groupBox1.Text = "Selecione o sexo do solicitante";
 
-            radioButton1.Location = new Point(20,20);
-            radioButton1.Size = new Size(10, 15);
+            radioButton1.Location = new Point(20, 25);
+            radioButton1.Size = new Size(100, 15);
             radioButton1.Text = "Masculino";
 
-            radioButton2.Location = new Point(20,20);
-            radioButton2.Size = new Size(10, 15);
+            radioButton2.Location = new Point(20, 45);
+            radioButton2.Size = new Size(150, 35);
             radioButton2.Text = "Feminino";
 
 
@@ -111,11 +111,15 @@ namespace View
             btnConfirmar.Size = new Size(200, 30);
             btnConfirmar.Location = new Point(18, 550);
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
+            btnConfirmar.BackColor = Color.White;
 
             //Criando botões
             btnCancelar.Text = "Cancelar";
             btnCancelar.Size = new Size(200, 30);
             btnCancelar.Location = new Point(230, 550);
+            btnCancelar.Click += new EventHandler(this.btnCancelarClick);
+            btnCancelar.BackColor = Color.White;
+            
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
@@ -137,11 +141,37 @@ namespace View
 
         }
 
-        private void btnConfirmarClick(object sender, EventArgs e)    //Cria o Evento do botão (Click)
-        {
-            const string message = "Deseja confirmar cadastro?";        //Cria o evento de confirmação sim ou não do botão
-            const string caption = "Confirmar cadastro?";
-            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        private void btnConfirmarClick(object sender, EventArgs e)
+        {  //Cria o Evento do botão (Click)
+            DialogResult resultado = MessageBox.Show("Confirmar cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                MessageBox.Show("Cliente cadastrado com sucesso!");
+            }
+            else if (resultado == DialogResult.No)
+            {
+                MessageBox.Show("Cadastro de cliente não concluído!");
+            }
+            else
+            {
+                MessageBox.Show("Opção desconhecida!");
+            }
+            this.Close();
+
+        }
+
+        private void btnCancelarClick(object sender, EventArgs e)
+        {  //Cria o Evento do botão (Click)
+            DialogResult resultado = MessageBox.Show("Deseja realmente cancelar o cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                MessageBox.Show("Cadastro Cancelado!");
+            }
+            else
+            {
+                MessageBox.Show("Opção desconhecida!");
+            }
+            this.Close();
 
         }
     }
