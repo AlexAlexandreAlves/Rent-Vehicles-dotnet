@@ -1,6 +1,8 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using Views.lib;
+
 
 namespace View
 {
@@ -25,7 +27,7 @@ namespace View
 
         private TextBox txtPreco = new TextBox();
 
-         private TextBox txtCor = new TextBox();
+        private TextBox txtCor = new TextBox();
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
@@ -48,58 +50,43 @@ namespace View
             this.Text = "Cadastro de Veiculos Leves";                      //Inserindo titulo da página
             this.BackColor = Color.LightYellow;
 
-            lblMarca.Text = "Marca do Veiculo:";                                  //Inserindo nome do Veiculo
-            lblMarca.Location = new Point(20, 15);                       //Trabalhando com a localização da string inserida acima
-            lblMarca.Size = new Size(300, 40);                                   //Trabalhando com o tamanho do valor inserido
+            lblMarca = new LibsLabel("Marca do Veiculo:", new Point(20, 15), new Size(300, 40));
 
+            //Inserindo nome do Veiculo
+            //Trabalhando com a localização da string inserida acima
+            //Trabalhando com o tamanho do valor inserido
 
-            txtMarca.Location = new Point(20, 60);                       //Trabalhando com a localização da caixa de texto
-            txtMarca.Size = new Size(200, 80);                               //Trabalhando com o tamanho da caixa de texto
+            txtMarca = new LibsTextBoX(new Point(20, 60), new Size(200, 80));
+            //Trabalhando com a localização da caixa de texto
+            //Trabalhando com o tamanho da caixa de texto
 
 
             //Visual Cadastrar Modelo
 
+            lblModelo = new LibsLabel("Modelo do Veiculo:", new Point(20, 100), new Size(500, 40));
 
-            lblModelo.Text = "Modelo do Veiculo:";
-            lblModelo.Location = new Point(20, 100);
-            lblModelo.Size = new Size(500, 40);
+            txtModelo = new LibsTextBoX(new Point(20, 150), new Size(200, 80));
 
-
-            txtModelo.Location = new Point(20, 150);
-            txtModelo.Size = new Size(200, 80);
 
             //Visual Cadastrar Ano 
 
+            lblAno = new LibsLabel("Ano do Veiculo:", new Point(20, 200), new Size(300, 40));
 
-            lblAno.Text = "Ano do Veiculo:";
-            lblAno.Location = new Point(20, 200);
-            lblAno.Size = new Size(300, 40);
-
-
-            txtAno.Location = new Point(20, 250);
-            txtAno.Size = new Size(200, 80);
+            txtAno = new LibsTextBoX(new Point(20, 250), new Size(200, 80));
 
 
             //Visual Cadastrar Valor de locação
 
+            lblPreco = new LibsLabel("Valor para locação:", new Point(20, 300), new Size(300, 40));
 
-            lblPreco.Text = "Valor para locação:";
-            lblPreco.Location = new Point(20, 300);
-            lblPreco.Size = new Size(300, 40);
+            txtPreco = new LibsTextBoX(new Point(20, 350), new Size(200, 80));
 
-            txtPreco.Location = new Point(20, 350);
-            txtPreco.Size = new Size(200, 80);
+            //Visual Cadastrar Restrições se obter alguma 
 
-             //Visual Cadastrar Restrições se obter alguma 
+            LblCor = new LibsLabel("Cor do veiculo:", new Point(20, 400), new Size(500, 40));
 
+            txtCor = new LibsTextBoX(new Point(20, 450), new Size(200, 80));
 
-            LblCor.Text = "Cor do veiculo:";
-            LblCor.Location = new Point(20, 400);
-            LblCor.Size = new Size(500, 40);
-
-
-            txtCor.Location = new Point(20, 450);
-            txtCor.Size = new Size(200, 80);
 
 
 
@@ -132,7 +119,7 @@ namespace View
             btnCancelar.Location = new Point(230, 700);
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
-            
+
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
