@@ -39,7 +39,7 @@ namespace View
             btnVeiculosLeves.Text = "Veiculos Leves";
             btnVeiculosLeves.Size = new Size(200, 30);
             btnVeiculosLeves.Location = new Point(200, 150);
-            // btnVeiculosLeves.Click += new EventHandler(this.btnVeiculosLevesClick);
+            btnVeiculosLeves.Click += new EventHandler(this.btnVeiculosLevesClick);
 
 
 
@@ -84,11 +84,11 @@ namespace View
         //      cadastroVeicPesado.Show();
         //  }
 
-        //    private void btnVeiculosLeves(object sender, EventArgs e)
-        //   {
-        //      CadastroVeicLeveVisual cadastroVeicLeve = new CadastroVeicLeveVisual();
-        //     cadastroVeicLeve.Show();
-        //   }
+        private void btnVeiculosLevesClick(object sender, EventArgs e)
+        {
+            VeiculoLeveVisual veiculoLeveVisual = new VeiculoLeveVisual();
+            veiculoLeveVisual.Show();
+        }
 
 
         private void btnEncMenuClick(object sender, EventArgs e)
