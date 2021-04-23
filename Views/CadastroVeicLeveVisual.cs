@@ -50,11 +50,16 @@ namespace View
             this.Text = "Cadastro de Veiculos Leves";                      //Inserindo titulo da página
             this.BackColor = Color.LightYellow;
 
+            this.AutoScroll = false;
+            this.HorizontalScroll.Enabled = false;
+            this.HorizontalScroll.Visible = false;
+            this.HorizontalScroll.Maximum = 0;
+            this.AutoScroll = true;
+
             lblMarca = new LibsLabel("Marca do Veiculo:", new Point(20, 15), new Size(300, 40));
 
             //Inserindo nome do Veiculo
-            //Trabalhando com a localização da string inserida acima
-            //Trabalhando com o tamanho do valor inserido
+            
 
             txtMarca = new LibsTextBoX(new Point(20, 60), new Size(200, 80));
             //Trabalhando com a localização da caixa de texto
@@ -107,16 +112,12 @@ namespace View
             //Visual Botão de confirmação
             //Criando botões
 
-            btnConfirmar.Text = "Confirmar Cadastro";
-            btnConfirmar.Size = new Size(200, 30);
-            btnConfirmar.Location = new Point(18, 700);
+            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18,700), new Size(200,30));
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
             btnConfirmar.BackColor = Color.White;
 
             //Criando botões
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.Size = new Size(200, 30);
-            btnCancelar.Location = new Point(230, 700);
+            btnCancelar = new LibsButtons("Cancelar", new Point(230,700), new Size(200,30));
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
 

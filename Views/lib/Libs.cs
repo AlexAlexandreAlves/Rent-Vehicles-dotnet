@@ -31,6 +31,19 @@ namespace Views
             }
 
         }
+
+        public class LibsButtons : Button
+        {
+            public LibsButtons(
+                string Text,
+                Point Location,
+                Size Size)
+            {
+                this.Text = Text;
+                this.Location = Location;
+                this.Size = Size;
+            }
+        }
     }
 
 }

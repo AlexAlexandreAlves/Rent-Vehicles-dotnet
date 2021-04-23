@@ -29,7 +29,7 @@ namespace View
             this.Text = "Cadastro de Locações";                      //Inserindo titulo da página
             this.BackColor = Color.LightYellow;
 
-
+           
             lblNome = new LibsLabel("Nome do cliente:", new Point(20, 15), new Size(300, 40));
             txtNome = new LibsTextBoX(new Point(20, 60), new Size(200, 80));
 
@@ -45,16 +45,12 @@ namespace View
 
             //Criando botões
 
-            btnConfirmar.Text = "Confirmar Cadastro";
-            btnConfirmar.Size = new Size(200, 30);
-            btnConfirmar.Location = new Point(18, 250);
+            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18,250), new Size(200,30));
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
             btnConfirmar.BackColor = Color.White;
 
             //Criando botões
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.Size = new Size(200, 30);
-            btnCancelar.Location = new Point(230, 250);
+            btnCancelar = new LibsButtons("Cancelar", new Point(230,250), new Size(200,30));
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
 

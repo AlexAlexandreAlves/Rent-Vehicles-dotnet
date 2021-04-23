@@ -38,12 +38,20 @@ namespace View
 
 
 
+
+
         public CadastroClienteVisual()
         {
             //Visual Cadastrar Nome do cliente
 
             this.Text = "Cadastro de Cliente";                      //Inserindo titulo da página
             this.BackColor = Color.LightYellow;
+
+            this.AutoScroll = false;
+            this.HorizontalScroll.Enabled = false;
+            this.HorizontalScroll.Visible = false;
+            this.HorizontalScroll.Maximum = 0;
+            this.AutoScroll = true;
 
             lblNome = new LibsLabel("Nome do cliente:", new Point(20, 15), new Size(300, 40));
             //Inserindo nome do cliente string, tabalhando com as posições e tamanho
@@ -90,19 +98,16 @@ namespace View
 
 
 
+
             //Visual Botão de confirmação
             //Criando botões
 
-            btnConfirmar.Text = "Confirmar Cadastro";
-            btnConfirmar.Size = new Size(200, 30);
-            btnConfirmar.Location = new Point(18, 550);
+            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18,550), new Size(200,30));
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
             btnConfirmar.BackColor = Color.White;
 
             //Criando botões
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.Size = new Size(200, 30);
-            btnCancelar.Location = new Point(230, 550);
+            btnCancelar = new LibsButtons("Cancelar", new Point(230,550), new Size(200,30));
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
 
@@ -124,6 +129,7 @@ namespace View
 
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
+
 
         }
 
