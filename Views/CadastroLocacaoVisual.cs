@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
-
+using Views.lib;
 namespace View
 {
     public class CadastroLocacaoVisual : Form
@@ -29,41 +29,28 @@ namespace View
             this.Text = "Cadastro de Locações";                      //Inserindo titulo da página
             this.BackColor = Color.LightYellow;
 
-            lblNome.Text = "Nome do cliente:";                                  //Inserindo nome do cliente
-            lblNome.Location = new Point(20, 15);                       //Trabalhando com a localização da string inserida acima
-            lblNome.Size = new Size(300, 40);                                   //Trabalhando com o tamanho do valor inserido
-
-
-            txtNome.Location = new Point(20, 60);                       //Trabalhando com a localização da caixa de texto
-            txtNome.Size = new Size(200, 80);                               //Trabalhando com o tamanho da caixa de texto
+           
+            lblNome = new LibsLabel("Nome do cliente:", new Point(20, 15), new Size(300, 40));
+            txtNome = new LibsTextBoX(new Point(20, 60), new Size(200, 80));
 
 
             //Visual Cadastrar data de locação 
 
+            lblDataLocacao = new LibsLabel("Data de Locação:", new Point(20, 100), new Size(500, 40));
+            txtDataLocacao = new LibsTextBoX(new Point(20, 150), new Size(200, 80));
 
-            lblDataLocacao.Text = "Data de Locação:";
-            lblDataLocacao.Location = new Point(20, 100);
-            lblDataLocacao.Size = new Size(500, 40);
-
-
-            txtDataLocacao.Location = new Point(20, 150);
-            txtDataLocacao.Size = new Size(200, 80);
 
 
             //Visual Botão de confirmação
 
             //Criando botões
 
-            btnConfirmar.Text = "Confirmar Cadastro";
-            btnConfirmar.Size = new Size(200, 30);
-            btnConfirmar.Location = new Point(18, 250);
+            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18,250), new Size(200,30));
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
             btnConfirmar.BackColor = Color.White;
 
             //Criando botões
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.Size = new Size(200, 30);
-            btnCancelar.Location = new Point(230, 250);
+            btnCancelar = new LibsButtons("Cancelar", new Point(230,250), new Size(200,30));
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
 

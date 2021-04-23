@@ -8,13 +8,6 @@ namespace View
     public class Menu : Form
     {
 
-        private Button btnCadastrarCliente = new Button();
-
-        private Button btnListarCliente = new Button();
-
-        private Button btnAtualizarCliente = new Button();
-
-        private Button btnRemoverCliente = new Button();
 
         private Button btnCadastroVeicPesado = new Button();
 
@@ -32,14 +25,6 @@ namespace View
 
         private Button btnRmvVeicLeve = new Button();
 
-        private Button btnCadastrarLoc = new Button();
-
-        private Button btnListarLoc = new Button();
-
-        private Button btnAtlzLoc = new Button();
-
-        private Button btnRmvLoc = new Button();
-
         private Button  btnEncMenu = new Button();
 
 
@@ -49,32 +34,8 @@ namespace View
             this.Text = "Menu Principal";
             this.BackColor = Color.LightYellow;
 
-            //Cliente
-
-
-            btnCadastrarCliente.Text = "Cadastrar Cliente";
-            btnCadastrarCliente.Size = new Size(200, 30);
-            btnCadastrarCliente.Location = new Point(200, 50);
-            btnCadastrarCliente.Click += new EventHandler(this.btnCadastrarClienteClick);
-
-
-
-            btnListarCliente.Text = "Lista de Clientes Cadastrados";
-            btnListarCliente.Size = new Size(200, 30);
-            btnListarCliente.Location = new Point(200, 100);
-
-
-
-            btnAtualizarCliente.Text = "Atualizar Clientes";
-            btnAtualizarCliente.Size = new Size(200, 30);
-            btnAtualizarCliente.Location = new Point(200, 150);
-
-
-
-            btnRemoverCliente.Text = "Remover Clientes";
-            btnRemoverCliente.Size = new Size(200, 30);
-            btnRemoverCliente.Location = new Point(200, 200);
-
+    
+  
             //Veiculo Pesado
 
 
@@ -118,26 +79,6 @@ namespace View
             btnRmvVeicLeve.Size = new Size(200, 40);
             btnRmvVeicLeve.Location = new Point(200, 600);
 
-            //Locação
-
-
-            btnCadastrarLoc.Text = "Cadastrar Locação";
-            btnCadastrarLoc.Size = new Size(200, 30);
-            btnCadastrarLoc.Location = new Point(200, 650);
-            btnCadastrarLoc.Click += new EventHandler(this.btnCadastrarLocClick);
-
-            btnListarLoc.Text = "Lista De Locações Cadastradas";
-            btnListarLoc.Size = new Size(200, 40);
-            btnListarLoc.Location = new Point(200, 700);
-
-
-            btnAtlzLoc.Text = "Atualizar Locações Cadastrados";
-            btnAtlzLoc.Size = new Size(200, 40);
-            btnAtlzLoc.Location = new Point(200, 750);
-
-            btnRmvLoc.Text = "Remover Locação Cadastrada";
-            btnRmvLoc.Size = new Size(200, 40);
-            btnRmvLoc.Location = new Point(200, 800);
 
             btnEncMenu.Text = "Encerrar Menu";
             btnEncMenu.Size = new Size(200, 30);
@@ -152,13 +93,7 @@ namespace View
 
             this.Size = new Size(600, 900);
 
-            //Buttons Clientes
-
-            this.Controls.Add(btnCadastrarCliente);
-            this.Controls.Add(btnListarCliente);
-            this.Controls.Add(btnAtualizarCliente);
-            this.Controls.Add(btnRemoverCliente);
-
+        
 
             //Buttons Veiculos Pesados
 
@@ -174,24 +109,13 @@ namespace View
             this.Controls.Add(btnAtlzVeicLeve);
             this.Controls.Add(btnRmvVeicLeve);
 
-            //Buttons Locações
-
-            this.Controls.Add(btnCadastrarLoc);
-            this.Controls.Add(btnListarLoc);
-            this.Controls.Add(btnAtlzLoc);
-            this.Controls.Add(btnRmvLoc);
 
             this.Controls.Add(btnEncMenu);
 
 
         }
 
-        private void btnCadastrarClienteClick(object sender, EventArgs e)
-        {
-            CadastroClienteVisual cadastroCliente = new CadastroClienteVisual();
-            cadastroCliente.Show();
-        }
-
+       
         private void btnCadastroVeicPesadoClick(object sender, EventArgs e)
         {
             CadastroVeicPesaVisual cadastroVeicPesado = new CadastroVeicPesaVisual();
@@ -204,11 +128,7 @@ namespace View
             cadastroVeicLeve.Show();
         }
 
-           private void btnCadastrarLocClick(object sender, EventArgs e)
-        {
-            CadastroLocacaoVisual cadastroLocacao = new CadastroLocacaoVisual();
-            cadastroLocacao.Show();
-        }
+
 
          private void btnEncMenuClick(object sender, EventArgs e)
         {  //Cria o Evento do botão (Click)

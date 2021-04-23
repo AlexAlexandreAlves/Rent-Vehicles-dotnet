@@ -8,7 +8,7 @@ namespace Programa
     {
         public static void Main(){
             Application.EnableVisualStyles();
-            Application.Run(new View.Menu());
+            Application.Run(new View.MenuPrincipalVisual());
 
         }
         public static void Terminal()

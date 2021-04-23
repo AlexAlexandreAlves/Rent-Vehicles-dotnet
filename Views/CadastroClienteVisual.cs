@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using Views.lib;
 
 namespace View
 {
@@ -37,6 +38,8 @@ namespace View
 
 
 
+
+
         public CadastroClienteVisual()
         {
             //Visual Cadastrar Nome do cliente
@@ -44,45 +47,36 @@ namespace View
             this.Text = "Cadastro de Cliente";                      //Inserindo titulo da página
             this.BackColor = Color.LightYellow;
 
-            lblNome.Text = "Nome do cliente:";                                  //Inserindo nome do cliente
-            lblNome.Location = new Point(20, 15);                       //Trabalhando com a localização da string inserida acima
-            lblNome.Size = new Size(300, 40);                                   //Trabalhando com o tamanho do valor inserido
+            this.AutoScroll = false;
+            this.HorizontalScroll.Enabled = false;
+            this.HorizontalScroll.Visible = false;
+            this.HorizontalScroll.Maximum = 0;
+            this.AutoScroll = true;
 
+            lblNome = new LibsLabel("Nome do cliente:", new Point(20, 15), new Size(300, 40));
+            //Inserindo nome do cliente string, tabalhando com as posições e tamanho
 
-            txtNome.Location = new Point(20, 60);                       //Trabalhando com a localização da caixa de texto
-            txtNome.Size = new Size(200, 80);                               //Trabalhando com o tamanho da caixa de texto
+            txtNome = new LibsTextBoX(new Point(20, 60), new Size(200, 80));
+            //Trabalhando com a localização da caixa de texto e o tamanho
+
 
 
             //Visual Cadastrar data de nascimento 
 
+            lblDtNascimento = new LibsLabel("Data de Nascimento:", new Point(20, 100), new Size(500, 40));
 
-            lblDtNascimento.Text = "Data de Nascimento:";
-            lblDtNascimento.Location = new Point(20, 100);
-            lblDtNascimento.Size = new Size(500, 40);
-
-
-            txtDataNascimento.Location = new Point(20, 150);
-            txtDataNascimento.Size = new Size(200, 80);
+            txtDataNascimento = new LibsTextBoX(new Point(20, 150), new Size(200, 80));
 
             //Visual Cadastrar CPF 
 
+            lblCpf = new LibsLabel("CPF do Cliente:", new Point(20, 200), new Size(300, 40));
 
-            lblCpf.Text = "CPF do Cliente:";
-            lblCpf.Location = new Point(20, 200);
-            lblCpf.Size = new Size(300, 40);
-
-
-            txtCpf.Location = new Point(20, 250);
-            txtCpf.Size = new Size(200, 80);
+            txtCpf = new LibsTextBoX(new Point(20, 250), new Size(200, 80));
 
 
             //Visual Cadastrar Dias para Devolução
 
-
-            lblDiasDevolucao.Text = "Dias para Devolução:";
-            lblDiasDevolucao.Location = new Point(20, 300);
-            lblDiasDevolucao.Size = new Size(300, 40);
-
+            lblDiasDevolucao = new LibsLabel("Dias para Devolução:", new Point(20, 300), new Size(300, 40));
 
 
             cbDiasDevolucao.Location = new Point(20, 360);
@@ -104,22 +98,19 @@ namespace View
 
 
 
+
             //Visual Botão de confirmação
             //Criando botões
 
-            btnConfirmar.Text = "Confirmar Cadastro";
-            btnConfirmar.Size = new Size(200, 30);
-            btnConfirmar.Location = new Point(18, 550);
+            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18,550), new Size(200,30));
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
             btnConfirmar.BackColor = Color.White;
 
             //Criando botões
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.Size = new Size(200, 30);
-            btnCancelar.Location = new Point(230, 550);
+            btnCancelar = new LibsButtons("Cancelar", new Point(230,550), new Size(200,30));
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
-            
+
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
@@ -138,6 +129,7 @@ namespace View
 
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
+
 
         }
 
