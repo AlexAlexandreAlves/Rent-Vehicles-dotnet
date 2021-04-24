@@ -5,7 +5,7 @@ using System.Drawing;
 namespace View
 {
 
-    public class Menu : Form
+    public class VeiculoPesadoVisual : Form
     {
 
 
@@ -17,83 +17,50 @@ namespace View
 
         private Button btnRmvVeicPesado = new Button();
 
-        private Button btnCadastrarVeicLeve = new Button();
 
-        private Button btnListarVeicLeve = new Button();
-
-        private Button btnAtlzVeicLeve = new Button();
-
-        private Button btnRmvVeicLeve = new Button();
-
-        private Button  btnEncMenu = new Button();
+        private Button btnEncMenu = new Button();
 
 
-        public Menu()
+        public VeiculoPesadoVisual()
         {
 
-            this.Text = "Menu Principal";
+            this.Text = "Menu Veiculos Pesados";
             this.BackColor = Color.LightYellow;
 
-    
-  
+
+
             //Veiculo Pesado
 
 
             btnCadastroVeicPesado.Text = "Cadastrar Veiculo Pesado";
             btnCadastroVeicPesado.Size = new Size(200, 30);
-            btnCadastroVeicPesado.Location = new Point(200, 250);
+            btnCadastroVeicPesado.Location = new Point(200, 50);
             btnCadastroVeicPesado.Click += new EventHandler(this.btnCadastroVeicPesadoClick);
 
             btnListarVeicPesado.Text = "Lista De Veiculos Pesados Cadastrados";
             btnListarVeicPesado.Size = new Size(200, 40);
-            btnListarVeicPesado.Location = new Point(200, 300);
+            btnListarVeicPesado.Location = new Point(200, 100);
 
 
             btnAtlzVeicPesado.Text = "Atualizar Veiculos Pesados Cadastrados";
             btnAtlzVeicPesado.Size = new Size(200, 40);
-            btnAtlzVeicPesado.Location = new Point(200, 350);
+            btnAtlzVeicPesado.Location = new Point(200, 150);
 
             btnRmvVeicPesado.Text = "Remover Veiculos Pesados Cadastrados";
             btnRmvVeicPesado.Size = new Size(200, 40);
-            btnRmvVeicPesado.Location = new Point(200, 400);
-
-
-            //Veiculo Leve
-
-
-            btnCadastrarVeicLeve.Text = "Cadastrar Veiculo Leve";
-            btnCadastrarVeicLeve.Size = new Size(200, 30);
-            btnCadastrarVeicLeve.Location = new Point(200, 450);
-            btnCadastrarVeicLeve.Click += new EventHandler(this.btnCadastrarVeicLeveClick);
-
-            btnListarVeicLeve.Text = "Lista De Veiculos Leves Cadastrados";
-            btnListarVeicLeve.Size = new Size(200, 40);
-            btnListarVeicLeve.Location = new Point(200, 500);
-
-
-            btnAtlzVeicLeve.Text = "Atualizar Veiculos Leves Cadastrados";
-            btnAtlzVeicLeve.Size = new Size(200, 40);
-            btnAtlzVeicLeve.Location = new Point(200, 550);
-
-            btnRmvVeicLeve.Text = "Remover Veiculos Leves Cadastrados";
-            btnRmvVeicLeve.Size = new Size(200, 40);
-            btnRmvVeicLeve.Location = new Point(200, 600);
+            btnRmvVeicPesado.Location = new Point(200, 200);
 
 
             btnEncMenu.Text = "Encerrar Menu";
             btnEncMenu.Size = new Size(200, 30);
-            btnEncMenu.Location = new Point(200, 900);  
+            btnEncMenu.Location = new Point(200, 300);
             btnEncMenu.Click += new EventHandler(this.btnEncMenuClick);
             btnEncMenu.BackColor = Color.White;
-          
 
 
+            this.Size = new Size(600, 600);
 
 
-
-            this.Size = new Size(600, 900);
-
-        
 
             //Buttons Veiculos Pesados
 
@@ -102,12 +69,7 @@ namespace View
             this.Controls.Add(btnAtlzVeicPesado);
             this.Controls.Add(btnRmvVeicPesado);
 
-            //Buttons Veiculos Leves
 
-            this.Controls.Add(btnCadastrarVeicLeve);
-            this.Controls.Add(btnListarVeicLeve);
-            this.Controls.Add(btnAtlzVeicLeve);
-            this.Controls.Add(btnRmvVeicLeve);
 
 
             this.Controls.Add(btnEncMenu);
@@ -115,22 +77,16 @@ namespace View
 
         }
 
-       
+
         private void btnCadastroVeicPesadoClick(object sender, EventArgs e)
         {
             CadastroVeicPesaVisual cadastroVeicPesado = new CadastroVeicPesaVisual();
             cadastroVeicPesado.Show();
         }
 
-         private void btnCadastrarVeicLeveClick(object sender, EventArgs e)
-        {
-            CadastroVeicLeveVisual cadastroVeicLeve = new CadastroVeicLeveVisual();
-            cadastroVeicLeve.Show();
-        }
 
 
-
-         private void btnEncMenuClick(object sender, EventArgs e)
+        private void btnEncMenuClick(object sender, EventArgs e)
         {  //Cria o Evento do botão (Click)
             DialogResult resultado = MessageBox.Show("Deseja Sair do Menu?", "Menu Principal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
