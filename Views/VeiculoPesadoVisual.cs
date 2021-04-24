@@ -4,8 +4,8 @@ using System.Drawing;
 
 namespace View
 {
-//Estou desmanchando este menu
-    public class Menu : Form
+
+    public class VeiculoPesadoVisual : Form
     {
 
 
@@ -21,10 +21,10 @@ namespace View
         private Button btnEncMenu = new Button();
 
 
-        public Menu()
+        public VeiculoPesadoVisual()
         {
 
-            this.Text = "Menu Principal";
+            this.Text = "Menu Veiculos Pesados";
             this.BackColor = Color.LightYellow;
 
 
@@ -34,27 +34,31 @@ namespace View
 
             btnCadastroVeicPesado.Text = "Cadastrar Veiculo Pesado";
             btnCadastroVeicPesado.Size = new Size(200, 30);
-            btnCadastroVeicPesado.Location = new Point(200, 250);
+            btnCadastroVeicPesado.Location = new Point(200, 50);
             btnCadastroVeicPesado.Click += new EventHandler(this.btnCadastroVeicPesadoClick);
 
             btnListarVeicPesado.Text = "Lista De Veiculos Pesados Cadastrados";
             btnListarVeicPesado.Size = new Size(200, 40);
-            btnListarVeicPesado.Location = new Point(200, 300);
+            btnListarVeicPesado.Location = new Point(200, 100);
 
 
             btnAtlzVeicPesado.Text = "Atualizar Veiculos Pesados Cadastrados";
             btnAtlzVeicPesado.Size = new Size(200, 40);
-            btnAtlzVeicPesado.Location = new Point(200, 350);
+            btnAtlzVeicPesado.Location = new Point(200, 150);
 
             btnRmvVeicPesado.Text = "Remover Veiculos Pesados Cadastrados";
             btnRmvVeicPesado.Size = new Size(200, 40);
-            btnRmvVeicPesado.Location = new Point(200, 400);
+            btnRmvVeicPesado.Location = new Point(200, 200);
 
 
+            btnEncMenu.Text = "Encerrar Menu";
+            btnEncMenu.Size = new Size(200, 30);
+            btnEncMenu.Location = new Point(200, 300);
+            btnEncMenu.Click += new EventHandler(this.btnEncMenuClick);
+            btnEncMenu.BackColor = Color.White;
 
 
-
-            this.Size = new Size(600, 900);
+            this.Size = new Size(600, 600);
 
 
 

@@ -46,7 +46,7 @@ namespace View
             btnVeiculosPesados.Text = "Veiculos Pesados";
             btnVeiculosPesados.Size = new Size(200, 30);
             btnVeiculosPesados.Location = new Point(200, 200);
-            //  btnVeiculosPesados.Click += new EventHandler(this.btnVeiculosPesadosClick);
+            btnVeiculosPesados.Click += new EventHandler(this.btnVeiculosPesadosClick);
 
             btnEncMenu.Text = "Encerrar Menu";
             btnEncMenu.Size = new Size(200, 30);
@@ -78,11 +78,11 @@ namespace View
             locacaoVisual.Show();
         }
 
-        //  private void btnVeiculosPesados(object sender, EventArgs e)
-        //  {
-        ///       CadastroVeicPesaVisual cadastroVeicPesado = new CadastroVeicPesaVisual();
-        //      cadastroVeicPesado.Show();
-        //  }
+         private void btnVeiculosPesadosClick(object sender, EventArgs e)
+        {
+               VeiculoPesadoVisual veiculoPesadoVisual = new VeiculoPesadoVisual();
+             veiculoPesadoVisual.Show();
+         }
 
         private void btnVeiculosLevesClick(object sender, EventArgs e)
         {
