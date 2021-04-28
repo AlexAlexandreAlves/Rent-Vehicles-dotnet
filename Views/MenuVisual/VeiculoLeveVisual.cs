@@ -17,11 +17,13 @@ namespace View
 
         private Button btnEncMenu = new Button();
 
+        private PictureBox pictureBoxVeiculoLeve = new PictureBox();
+
         public VeiculoLeveVisual()
         {
             
             this.Text = "Menu Veiculos Leves";
-            this.BackColor = Color.LightYellow;
+            this.BackColor = Color.LightGray;
 
 
             btnCadastrarVeicLeve.Text = "Cadastrar Veiculo Leve";
@@ -43,11 +45,20 @@ namespace View
             btnRmvVeicLeve.Location = new Point(200, 200);
 
 
-            btnEncMenu.Text = "Encerrar Menu";
+            btnEncMenu.Text = "Voltar Menu Principal";
             btnEncMenu.Size = new Size(200, 30);
             btnEncMenu.Location = new Point(200, 300);
             btnEncMenu.Click += new EventHandler(this.btnEncMenuClick);
             btnEncMenu.BackColor = Color.White;
+
+            
+            pictureBoxVeiculoLeve = new PictureBox();
+            pictureBoxVeiculoLeve.Size = new Size(600,600);
+            pictureBoxVeiculoLeve.Location = new Point(0,0);
+            pictureBoxVeiculoLeve.Load("Images\\supercar-wallpapers-pagani-1.jpg");
+            pictureBoxVeiculoLeve.SizeMode = PictureBoxSizeMode.StretchImage;
+
+
 
 
 
@@ -57,9 +68,9 @@ namespace View
             this.Controls.Add(btnListarVeicLeve);
             this.Controls.Add(btnAtlzVeicLeve);
             this.Controls.Add(btnRmvVeicLeve);
-
-
             this.Controls.Add(btnEncMenu);
+
+             this.Controls.Add(pictureBoxVeiculoLeve);
 
         }
         private void btnCadastrarVeicLeveClick(object sender, EventArgs e)
@@ -75,7 +86,7 @@ namespace View
             DialogResult resultado = MessageBox.Show("Deseja Sair do Menu?", "Menu Principal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Até a próxima!");
+                MessageBox.Show("Retornando!");
             }
             else
             {

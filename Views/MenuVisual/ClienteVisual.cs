@@ -18,11 +18,16 @@ namespace View
 
         private Button btnEncMenu = new Button();
 
+        private PictureBox pictureBoxCliente = new PictureBox();
+
+
+
+
         public ClienteVisual()
         {
 
             this.Text = "Menu Cliente";
-            this.BackColor = Color.LightYellow;
+            this.BackColor = Color.LightGray;
 
             //Cliente
 
@@ -50,11 +55,18 @@ namespace View
             btnRemoverCliente.Size = new Size(200, 30);
             btnRemoverCliente.Location = new Point(200, 200);
 
-            btnEncMenu.Text = "Encerrar Menu";
+            btnEncMenu.Text = "Voltar Menu Principal";
             btnEncMenu.Size = new Size(200, 30);
             btnEncMenu.Location = new Point(200, 300);
             btnEncMenu.Click += new EventHandler(this.btnEncMenuClick);
             btnEncMenu.BackColor = Color.White;
+
+            pictureBoxCliente = new PictureBox();
+            pictureBoxCliente.Size = new Size(600,600);
+            pictureBoxCliente.Location = new Point(0,0);
+            pictureBoxCliente.Load("Images\\supercar-wallpapers-pagani-1.jpg");
+            pictureBoxCliente.SizeMode = PictureBoxSizeMode.StretchImage;
+
 
 
             this.Size = new Size(600, 600);
@@ -65,8 +77,9 @@ namespace View
             this.Controls.Add(btnListarCliente);
             this.Controls.Add(btnAtualizarCliente);
             this.Controls.Add(btnRemoverCliente);
-
             this.Controls.Add(btnEncMenu);
+
+             this.Controls.Add(pictureBoxCliente);
 
 
         }
@@ -84,7 +97,7 @@ namespace View
             DialogResult resultado = MessageBox.Show("Deseja Sair do Menu?", "Menu Principal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Até a próxima!");
+                MessageBox.Show("Retornando!");
             }
             else
             {

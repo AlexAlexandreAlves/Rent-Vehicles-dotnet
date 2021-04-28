@@ -20,7 +20,7 @@ namespace View
 
         private TextBox txtDataNascimento = new TextBox();
 
-        private TextBox txtCpf = new TextBox();
+        private MaskedTextBox txtCpf = new MaskedTextBox();
 
         private ComboBox cbDiasDevolucao = new ComboBox();
 
@@ -34,8 +34,8 @@ namespace View
 
         private GroupBox groupBox1 = new GroupBox();
 
-
-
+        private PictureBox pictureBoxCadastroCliente = new PictureBox();
+    
 
 
 
@@ -45,7 +45,7 @@ namespace View
             //Visual Cadastrar Nome do cliente
 
             this.Text = "Cadastro de Cliente";                      //Inserindo titulo da página
-            this.BackColor = Color.LightYellow;
+            this.BackColor = Color.LightGray;
 
             this.AutoScroll = false;
             this.HorizontalScroll.Enabled = false;
@@ -71,7 +71,7 @@ namespace View
 
             lblCpf = new LibsLabel("CPF do Cliente:", new Point(20, 200), new Size(300, 40));
 
-            txtCpf = new LibsTextBoX(new Point(20, 250), new Size(200, 80));
+            txtCpf = new LibsMaskedTextBox(new Point(20, 250), new Size(200, 80), "000,000,000-00");
 
 
             //Visual Cadastrar Dias para Devolução
@@ -104,12 +104,19 @@ namespace View
 
             btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18,550), new Size(200,30));
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
-            btnConfirmar.BackColor = Color.White;
+           
 
             //Criando botões
             btnCancelar = new LibsButtons("Cancelar", new Point(230,550), new Size(200,30));
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
-            btnCancelar.BackColor = Color.White;
+           
+
+            pictureBoxCadastroCliente = new PictureBox();
+            pictureBoxCadastroCliente.Size = new Size(600,600);
+            pictureBoxCadastroCliente.Location = new Point(0,0);
+            pictureBoxCadastroCliente.Load("Images\\supercar-wallpapers-pagani-1.jpg");
+            pictureBoxCadastroCliente.SizeMode = PictureBoxSizeMode.StretchImage;
+        
 
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
@@ -130,6 +137,7 @@ namespace View
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
 
+            this.Controls.Add(pictureBoxCadastroCliente);
 
         }
 

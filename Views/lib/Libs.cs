@@ -44,6 +44,35 @@ namespace Views
                 this.Size = Size;
             }
         }
+
+        public class LibsImage : PictureBox
+        {
+            public LibsImage(
+                Point Location,
+                Size Size)
+            {
+                this.Location = Location;
+                this.Size = Size;
+            }
+        }
+
+        
+        public class LibsMaskedTextBox : MaskedTextBox
+        {
+            public LibsMaskedTextBox(
+            Point Location,
+            Size Size,
+            string Mask)
+             
+            {
+                this.Location = Location;
+                this.Size = Size;
+                this.Mask = Mask;
+            
+            }
+
+        }
+
     }
 
 }

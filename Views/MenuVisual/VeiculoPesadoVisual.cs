@@ -16,16 +16,17 @@ namespace View
         private Button btnAtlzVeicPesado = new Button();
 
         private Button btnRmvVeicPesado = new Button();
-
-
+        
         private Button btnEncMenu = new Button();
+
+        private PictureBox pictureBoxVeiculoPesado = new PictureBox();
 
 
         public VeiculoPesadoVisual()
         {
 
             this.Text = "Menu Veiculos Pesados";
-            this.BackColor = Color.LightYellow;
+            this.BackColor = Color.LightGray;
 
 
 
@@ -51,11 +52,17 @@ namespace View
             btnRmvVeicPesado.Location = new Point(200, 200);
 
 
-            btnEncMenu.Text = "Encerrar Menu";
+            btnEncMenu.Text = "Voltar Menu Principal";
             btnEncMenu.Size = new Size(200, 30);
             btnEncMenu.Location = new Point(200, 300);
             btnEncMenu.Click += new EventHandler(this.btnEncMenuClick);
             btnEncMenu.BackColor = Color.White;
+
+            pictureBoxVeiculoPesado = new PictureBox();
+            pictureBoxVeiculoPesado.Size = new Size(600,600);
+            pictureBoxVeiculoPesado.Location = new Point(0,0);
+            pictureBoxVeiculoPesado.Load("Images\\supercar-wallpapers-pagani-1.jpg");
+            pictureBoxVeiculoPesado.SizeMode = PictureBoxSizeMode.StretchImage;
 
 
             this.Size = new Size(600, 600);
@@ -68,11 +75,10 @@ namespace View
             this.Controls.Add(btnListarVeicPesado);
             this.Controls.Add(btnAtlzVeicPesado);
             this.Controls.Add(btnRmvVeicPesado);
-
-
-
-
             this.Controls.Add(btnEncMenu);
+
+            this.Controls.Add(pictureBoxVeiculoPesado);
+
 
 
         }
@@ -91,7 +97,7 @@ namespace View
             DialogResult resultado = MessageBox.Show("Deseja Sair do Menu?", "Menu Principal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Até a próxima!");
+                MessageBox.Show("Retornando!");
             }
             else
             {

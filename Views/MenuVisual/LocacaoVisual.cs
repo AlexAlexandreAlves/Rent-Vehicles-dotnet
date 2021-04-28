@@ -19,11 +19,13 @@ namespace View
 
         private Button btnEncMenu = new Button();
 
+        private PictureBox pictureBoxLocacao = new PictureBox();
+
         public LocacaoVisual()
         {
 
             this.Text = "Menu Locação";
-            this.BackColor = Color.LightYellow;
+            this.BackColor = Color.LightGray;
 
 
 
@@ -45,11 +47,17 @@ namespace View
             btnRmvLoc.Size = new Size(200, 30);
             btnRmvLoc.Location = new Point(200, 200);
 
-            btnEncMenu.Text = "Encerrar Menu";
+            btnEncMenu.Text = "Voltar Menu Principal";
             btnEncMenu.Size = new Size(200, 30);
             btnEncMenu.Location = new Point(200, 300);
             btnEncMenu.Click += new EventHandler(this.btnEncMenuClick);
             btnEncMenu.BackColor = Color.White;
+
+            pictureBoxLocacao = new PictureBox();
+            pictureBoxLocacao.Size = new Size(600,600);
+            pictureBoxLocacao.Location = new Point(0,0);
+            pictureBoxLocacao.Load("Images\\supercar-wallpapers-pagani-1.jpg");
+            pictureBoxLocacao.SizeMode = PictureBoxSizeMode.StretchImage;
 
 
 
@@ -60,9 +68,9 @@ namespace View
             this.Controls.Add(btnListarLoc);
             this.Controls.Add(btnAtlzLoc);
             this.Controls.Add(btnRmvLoc);
-
             this.Controls.Add(btnEncMenu);
-
+            
+            this.Controls.Add(pictureBoxLocacao);
         }
 
        private void btnCadastrarLocClick(object sender, EventArgs e)
@@ -76,7 +84,7 @@ namespace View
             DialogResult resultado = MessageBox.Show("Deseja Sair do Menu?", "Menu Principal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Até a próxima!");
+                MessageBox.Show("Retornando!");
             }
             else
             {

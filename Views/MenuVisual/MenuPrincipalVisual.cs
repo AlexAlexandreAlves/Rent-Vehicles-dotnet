@@ -18,11 +18,14 @@ namespace View
 
         private Button btnEncMenu = new Button();
 
+        private PictureBox pictureBoxMenu = new PictureBox();
+
+
         public MenuPrincipalVisual()
         {
 
             this.Text = "Menu Principal";
-            this.BackColor = Color.LightYellow;
+            this.BackColor = Color.LightGray;
 
             btnCliente.Text = "Cliente";
             btnCliente.Size = new Size(200, 30);
@@ -54,6 +57,12 @@ namespace View
             btnEncMenu.Click += new EventHandler(this.btnEncMenuClick);
             btnEncMenu.BackColor = Color.White;
 
+            pictureBoxMenu = new PictureBox();
+            pictureBoxMenu.Size = new Size(600,380);
+            pictureBoxMenu.Location = new Point(0,0);
+            pictureBoxMenu.Load("Images\\supercar-wallpapers-pagani-1.jpg");
+            pictureBoxMenu.SizeMode = PictureBoxSizeMode.StretchImage;
+
 
 
             this.Size = new Size(600, 380);
@@ -62,8 +71,11 @@ namespace View
             this.Controls.Add(btnLocacoes);
             this.Controls.Add(btnVeiculosLeves);
             this.Controls.Add(btnVeiculosPesados);
-
             this.Controls.Add(btnEncMenu);
+            
+            this.Controls.Add(pictureBoxMenu);
+
+            
 
         }
 
