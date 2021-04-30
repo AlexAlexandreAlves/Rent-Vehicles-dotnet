@@ -26,7 +26,7 @@ namespace View
         {
 
             this.Text = "Menu Veiculos Pesados";
-            this.BackColor = Color.LightGray;
+            this.BackColor = Color.White;
 
 
 
@@ -61,8 +61,8 @@ namespace View
             pictureBoxVeiculoPesado = new PictureBox();
             pictureBoxVeiculoPesado.Size = new Size(600,600);
             pictureBoxVeiculoPesado.Location = new Point(0,0);
-            pictureBoxVeiculoPesado.Load("Images\\supercar-wallpapers-pagani-1.jpg");
-            pictureBoxVeiculoPesado.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxVeiculoPesado.Load("Images\\Logo_rent_vehicles.png");
+            pictureBoxVeiculoPesado.SizeMode = PictureBoxSizeMode.Normal;
 
 
             this.Size = new Size(600, 600);

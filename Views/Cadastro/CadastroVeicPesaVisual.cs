@@ -22,9 +22,9 @@ namespace View
 
         private TextBox txtModelo = new TextBox();
 
-        private TextBox txtAno = new TextBox();
+        private MaskedTextBox txtAno = new MaskedTextBox();
 
-        private TextBox txtPreco = new TextBox();
+        private MaskedTextBox txtPreco = new MaskedTextBox();
 
         private TextBox txtRestricoes = new TextBox();
 
@@ -38,6 +38,8 @@ namespace View
 
         private GroupBox groupBox1 = new GroupBox();
 
+         private PictureBox pictureBoxCadastroVeicPesa = new PictureBox();
+
 
 
 
@@ -47,7 +49,7 @@ namespace View
             //Visual Cadastrar Nome do Veiculo Pesado
 
             this.Text = "Cadastro de Veiculos Pesados";                      //Inserindo titulo da página
-            this.BackColor = Color.LightYellow;
+            this.BackColor = Color.White;
 
             this.AutoScroll = false;
             this.HorizontalScroll.Enabled = false;
@@ -55,7 +57,7 @@ namespace View
             this.HorizontalScroll.Maximum = 0;
             this.AutoScroll = true;
 
-            lblMarca = new LibsLabel("Marca do Veiculo:", new Point(20, 15), new Size(300, 40));
+            lblMarca = new LibsLabel("Marca do Veiculo:", new Point(20, 15), new Size(110, 40));
             //Inserindo nome do Veiculo
             
 
@@ -65,36 +67,37 @@ namespace View
 
             //Visual Cadastrar Modelo
 
-            lblModelo = new LibsLabel("Modelo do Veiculo:", new Point(20, 100), new Size(500, 40));
+            lblModelo = new LibsLabel("Modelo do Veiculo:", new Point(20, 100), new Size(110, 40));
             txtModelo = new LibsTextBoX(new Point(20, 150), new Size(200, 80));
 
 
 
             //Visual Cadastrar Ano 
 
-            lblAno = new LibsLabel("Ano do Veiculo:", new Point(20, 200), new Size(300, 40));
+            lblAno = new LibsLabel("Ano do Veiculo:", new Point(20, 200), new Size(110, 40));
 
-            txtAno = new LibsTextBoX(new Point(20, 250), new Size(200, 80));
+            txtAno = new LibsMaskedTextBox(new Point(20, 250), new Size(100, 80), "00/00/0000");
 
-
+        
 
             //Visual Cadastrar Valor de locação
 
-            lblPreco = new LibsLabel("Valor para locação:", new Point(20, 300), new Size(300, 40));
+            lblPreco = new LibsLabel("Valor para locação:", new Point(20, 300), new Size(110, 40));
 
-            txtPreco = new LibsTextBoX(new Point(20, 350), new Size(200, 80));
+            txtPreco = new LibsMaskedTextBox(new Point(20, 350), new Size(80, 80), "$9.999,00");
+
 
 
             //Visual Cadastrar Restrições se obter alguma 
 
-            lblRestricoes = new LibsLabel("Se o veiculo possuir restrições, insira aqui:", new Point(20, 400), new Size(500, 40));
+            lblRestricoes = new LibsLabel("Se o veiculo possuir restrições, insira aqui:", new Point(20, 400), new Size(200, 40));
 
-            txtRestricoes = new LibsTextBoX(new Point(20, 450), new Size(200, 80));
-
-
+            txtRestricoes = new LibsTextBoX(new Point(20, 450), new Size(400, 80));
 
 
-            groupBox1.Location = new Point(20, 550);
+
+
+            groupBox1.Location = new Point(20, 500);
             groupBox1.Size = new Size(350, 100);
             groupBox1.Text = "Selecione se o veiculo ja foi locado ou não locado";
 
@@ -110,14 +113,21 @@ namespace View
 
             //Visual Botão de confirmação
             //Criando botões
-            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18,700), new Size(200,30));
+            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18,630), new Size(200,30));
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
             btnConfirmar.BackColor = Color.White;
 
             //Criando botões
-            btnCancelar = new LibsButtons("Cancelar", new Point(230,700), new Size(200,30));
+            btnCancelar = new LibsButtons("Cancelar", new Point(230,630), new Size(200,30));
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
+
+            pictureBoxCadastroVeicPesa = new PictureBox();
+            pictureBoxCadastroVeicPesa.Size = new Size(700,700);
+            pictureBoxCadastroVeicPesa.Location = new Point(0,0);
+            pictureBoxCadastroVeicPesa.Load("Images\\Logo_rent_vehicles.png");
+            pictureBoxCadastroVeicPesa.SizeMode = PictureBoxSizeMode.Normal;
+
 
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
@@ -139,6 +149,8 @@ namespace View
 
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
+
+            this.Controls.Add(pictureBoxCadastroVeicPesa);
 
         }
 

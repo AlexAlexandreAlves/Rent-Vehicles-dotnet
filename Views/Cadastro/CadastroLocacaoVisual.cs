@@ -13,11 +13,13 @@ namespace View
 
         private TextBox txtNome = new TextBox();   //TextBox cria caixas para inserção de texto
 
-        private TextBox txtDataLocacao = new TextBox();
+        private MaskedTextBox txtDataLocacao = new MaskedTextBox();
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
         private Button btnCancelar = new Button();
+
+         private PictureBox pictureBoxCadastroLocacao = new PictureBox();
 
 
 
@@ -27,19 +29,18 @@ namespace View
             //Visual Cadastrar Nome de Locações
 
             this.Text = "Cadastro de Locações";                      //Inserindo titulo da página
-            this.BackColor = Color.LightYellow;
+            this.BackColor = Color.White;
 
            
-            lblNome = new LibsLabel("Nome do cliente:", new Point(20, 15), new Size(300, 40));
+            lblNome = new LibsLabel("Nome do cliente:", new Point(20, 15), new Size(110, 40));
             txtNome = new LibsTextBoX(new Point(20, 60), new Size(200, 80));
 
 
             //Visual Cadastrar data de locação 
 
-            lblDataLocacao = new LibsLabel("Data de Locação:", new Point(20, 100), new Size(500, 40));
-            txtDataLocacao = new LibsTextBoX(new Point(20, 150), new Size(200, 80));
-
-
+            lblDataLocacao = new LibsLabel("Data de Locação:", new Point(20, 100), new Size(110, 40));
+            txtDataLocacao = new LibsMaskedTextBox(new Point(20, 150), new Size(110, 80), "00/00/0000");
+           
 
             //Visual Botão de confirmação
 
@@ -54,6 +55,12 @@ namespace View
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
 
+            pictureBoxCadastroLocacao = new PictureBox();
+            pictureBoxCadastroLocacao.Size = new Size(600,600);
+            pictureBoxCadastroLocacao.Location = new Point(0,0);
+            pictureBoxCadastroLocacao.Load("Images\\Logo_rent_vehicles.png");
+            pictureBoxCadastroLocacao.SizeMode = PictureBoxSizeMode.Normal;
+
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
@@ -61,11 +68,10 @@ namespace View
             this.Controls.Add(txtNome);
             this.Controls.Add(lblDataLocacao);
             this.Controls.Add(txtDataLocacao);
-
-
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
 
+            this.Controls.Add(pictureBoxCadastroLocacao);
         }
 
         private void btnConfirmarClick(object sender, EventArgs e)

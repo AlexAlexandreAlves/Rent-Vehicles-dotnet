@@ -18,11 +18,11 @@ namespace View
 
         private TextBox txtNome = new TextBox();   //TextBox cria caixas para inserção de texto
 
-        private TextBox txtDataNascimento = new TextBox();
+        private MaskedTextBox txtDataNascimento = new MaskedTextBox();
 
         private MaskedTextBox txtCpf = new MaskedTextBox();
 
-        private ComboBox cbDiasDevolucao = new ComboBox();
+        private NumericUpDown nmDiasDevolucao = new NumericUpDown();
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
@@ -45,7 +45,7 @@ namespace View
             //Visual Cadastrar Nome do cliente
 
             this.Text = "Cadastro de Cliente";                      //Inserindo titulo da página
-            this.BackColor = Color.LightGray;
+            this.BackColor = Color.White;
 
             this.AutoScroll = false;
             this.HorizontalScroll.Enabled = false;
@@ -53,7 +53,7 @@ namespace View
             this.HorizontalScroll.Maximum = 0;
             this.AutoScroll = true;
 
-            lblNome = new LibsLabel("Nome do cliente:", new Point(20, 15), new Size(300, 40));
+            lblNome = new LibsLabel("Nome do cliente:", new Point(20, 15), new Size(110, 40));
             //Inserindo nome do cliente string, tabalhando com as posições e tamanho
 
             txtNome = new LibsTextBoX(new Point(20, 60), new Size(200, 80));
@@ -63,25 +63,31 @@ namespace View
 
             //Visual Cadastrar data de nascimento 
 
-            lblDtNascimento = new LibsLabel("Data de Nascimento:", new Point(20, 100), new Size(500, 40));
+            lblDtNascimento = new LibsLabel("Data de Nascimento:", new Point(20, 100), new Size(150, 40));
 
-            txtDataNascimento = new LibsTextBoX(new Point(20, 150), new Size(200, 80));
+            txtDataNascimento = new LibsMaskedTextBox(new Point(20, 150), new Size(100, 80), "00/00/0000");
 
             //Visual Cadastrar CPF 
 
-            lblCpf = new LibsLabel("CPF do Cliente:", new Point(20, 200), new Size(300, 40));
+            lblCpf = new LibsLabel("CPF do Cliente:", new Point(20, 200), new Size(110, 40));
 
-            txtCpf = new LibsMaskedTextBox(new Point(20, 250), new Size(200, 80), "000,000,000-00");
+            txtCpf = new LibsMaskedTextBox(new Point(20, 250), new Size(100, 80), "000,000,000-00");
 
 
             //Visual Cadastrar Dias para Devolução
 
-            lblDiasDevolucao = new LibsLabel("Dias para Devolução:", new Point(20, 300), new Size(300, 40));
+            lblDiasDevolucao = new LibsLabel("Dias para Devolução:", new Point(20, 300), new Size(150, 40));
 
 
-            cbDiasDevolucao.Location = new Point(20, 360);
-            cbDiasDevolucao.Size = new Size(200, 80);
-            cbDiasDevolucao.Items.AddRange(new object[] { "2", "4", "6", "8" });
+
+            nmDiasDevolucao.Location = new Point(20, 360);
+            nmDiasDevolucao.Size = new Size(50, 80);
+            nmDiasDevolucao.Value = 0;
+            nmDiasDevolucao.Maximum  = 20;
+            nmDiasDevolucao.Minimum  = 1;
+          
+
+            //cbDiasDevolucao.Items.AddRange(new object[] { "2", "4", "6", "8" });
 
 
             groupBox1.Location = new Point(20, 400);
@@ -114,8 +120,8 @@ namespace View
             pictureBoxCadastroCliente = new PictureBox();
             pictureBoxCadastroCliente.Size = new Size(600,600);
             pictureBoxCadastroCliente.Location = new Point(0,0);
-            pictureBoxCadastroCliente.Load("Images\\supercar-wallpapers-pagani-1.jpg");
-            pictureBoxCadastroCliente.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxCadastroCliente.Load("Images\\Logo_rent_vehicles.png");
+            pictureBoxCadastroCliente.SizeMode = PictureBoxSizeMode.Normal;
         
 
 
@@ -128,7 +134,7 @@ namespace View
             this.Controls.Add(lblCpf);
             this.Controls.Add(txtCpf);
             this.Controls.Add(lblDiasDevolucao);
-            this.Controls.Add(cbDiasDevolucao);
+            this.Controls.Add(nmDiasDevolucao);
             this.Controls.Add(groupBox1);
             groupBox1.Controls.Add(radioButton2);
             groupBox1.Controls.Add(radioButton1);

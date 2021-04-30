@@ -25,7 +25,7 @@ namespace View
         {
 
             this.Text = "Menu Locação";
-            this.BackColor = Color.LightGray;
+            this.BackColor = Color.White;
 
 
 
@@ -56,8 +56,8 @@ namespace View
             pictureBoxLocacao = new PictureBox();
             pictureBoxLocacao.Size = new Size(600,600);
             pictureBoxLocacao.Location = new Point(0,0);
-            pictureBoxLocacao.Load("Images\\supercar-wallpapers-pagani-1.jpg");
-            pictureBoxLocacao.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxLocacao.Load("Images\\Logo_rent_vehicles.png");
+            pictureBoxLocacao.SizeMode = PictureBoxSizeMode.Normal;
 
 
 

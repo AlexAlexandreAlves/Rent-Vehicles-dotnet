@@ -25,7 +25,7 @@ namespace View
         {
 
             this.Text = "Menu Principal";
-            this.BackColor = Color.LightGray;
+            this.BackColor = Color.White;
 
             btnCliente.Text = "Cliente";
             btnCliente.Size = new Size(200, 30);
@@ -58,9 +58,9 @@ namespace View
             btnEncMenu.BackColor = Color.White;
 
             pictureBoxMenu = new PictureBox();
-            pictureBoxMenu.Size = new Size(600,380);
+            pictureBoxMenu.Size = new Size(600,370);
             pictureBoxMenu.Location = new Point(0,0);
-            pictureBoxMenu.Load("Images\\supercar-wallpapers-pagani-1.jpg");
+            pictureBoxMenu.Load("Images\\Logo_rent_vehicles.png");
             pictureBoxMenu.SizeMode = PictureBoxSizeMode.StretchImage;
 
 

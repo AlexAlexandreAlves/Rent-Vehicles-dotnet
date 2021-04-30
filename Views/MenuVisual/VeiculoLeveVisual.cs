@@ -23,7 +23,7 @@ namespace View
         {
             
             this.Text = "Menu Veiculos Leves";
-            this.BackColor = Color.LightGray;
+            this.BackColor = Color.White;
 
 
             btnCadastrarVeicLeve.Text = "Cadastrar Veiculo Leve";
@@ -55,8 +55,8 @@ namespace View
             pictureBoxVeiculoLeve = new PictureBox();
             pictureBoxVeiculoLeve.Size = new Size(600,600);
             pictureBoxVeiculoLeve.Location = new Point(0,0);
-            pictureBoxVeiculoLeve.Load("Images\\supercar-wallpapers-pagani-1.jpg");
-            pictureBoxVeiculoLeve.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxVeiculoLeve.Load("Images\\Logo_rent_vehicles.png");
+            pictureBoxVeiculoLeve.SizeMode = PictureBoxSizeMode.Normal;
 
 
 
