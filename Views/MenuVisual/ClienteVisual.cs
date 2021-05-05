@@ -42,6 +42,7 @@ namespace View
             btnListarCliente.Text = "Lista de Clientes Cadastrados";
             btnListarCliente.Size = new Size(200, 30);
             btnListarCliente.Location = new Point(200, 100);
+            btnListarCliente.Click += new EventHandler(this.btnListarClienteClick);
 
 
 
@@ -89,6 +90,12 @@ namespace View
         {
             CadastroClienteVisual cadastroCliente = new CadastroClienteVisual();
             cadastroCliente.Show();
+        }
+
+         private void btnListarClienteClick(object sender, EventArgs e)
+        {
+            ListarClienteVisual listarCliente = new ListarClienteVisual();
+            listarCliente.Show();
         }
 
 

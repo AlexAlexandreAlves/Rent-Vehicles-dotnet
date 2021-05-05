@@ -56,21 +56,33 @@ namespace Views
             }
         }
 
-        
+
         public class LibsMaskedTextBox : MaskedTextBox
         {
             public LibsMaskedTextBox(
             Point Location,
             Size Size,
             string Mask)
-             
+
             {
                 this.Location = Location;
                 this.Size = Size;
                 this.Mask = Mask;
-            
+
             }
 
+        }
+
+        public class LibsListView : ListView
+        {
+            public LibsListView(
+                Point Location,
+                Size size)
+            {
+                this.Location = Location;
+                this.Size = Size;
+                this.View = View.Details;
+            }
         }
 
     }
