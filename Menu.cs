@@ -8,7 +8,7 @@ namespace Programa
     {
         public static void Main(){
             Application.EnableVisualStyles();
-            Application.Run(new View.MenuPrincipalVisual());
+            Application.Run(new Views.MenuPrincipalVisual());
 
         }
         public static void Terminal()
@@ -47,52 +47,52 @@ namespace Programa
 
                         break;
                     case 1:
-                        View.Cliente.CriarCliente();
+                        Views.Cliente.CriarCliente();
                         break;
                     case 2:
-                        View.Cliente.ListarClientes();
+                        Views.Cliente.ListarClientes();
                         break;
                     case 3:
-                        View.Cliente.AtualizarClientes();
+                        Views.Cliente.AtualizarClientes();
                         break;
                     case 4:
-                        View.Cliente.RemoverClientes();
+                        Views.Cliente.RemoverClientes();
                         break;
                     case 5:
-                        View.VeiculoPesado.CriarVeiculoPesado();
+                        Views.VeiculoPesado.CriarVeiculoPesado();
                         break;
                     case 6:
-                        View.VeiculoPesado.ListarVeiculosPesados();
+                        Views.VeiculoPesado.ListarVeiculosPesados();
                         break;
                     case 7:
-                        View.VeiculoPesado.AtualizarVeiculoPesado();
+                        Views.VeiculoPesado.AtualizarVeiculoPesado();
                         break;
                     case 8:
-                        View.VeiculoPesado.RemoverVeiculosPesados();
+                        Views.VeiculoPesado.RemoverVeiculosPesados();
                         break;
                     case 9:
-                        View.VeiculoLeve.CriarVeiculoLeve();
+                        Views.VeiculoLeve.CriarVeiculoLeve();
                         break;
                     case 10:
-                        View.VeiculoLeve.ListarVeiculosLeves();
+                        Views.VeiculoLeve.ListarVeiculosLeves();
                         break;
                     case 11:
-                        View.VeiculoLeve.AtualizarVeiculoLeve();
+                        Views.VeiculoLeve.AtualizarVeiculoLeve();
                         break;
                     case 12:
-                       View.VeiculoLeve.RemoverVeiculosLeves();
+                       Views.VeiculoLeve.RemoverVeiculosLeves();
                        break;
                     case 13:
-                        View.Locacao.CriarLocacao();
+                        Views.Locacao.CriarLocacao();
                         break;
                     case 14:
-                        View.Locacao.ListarLocacao();
+                        Views.Locacao.ListarLocacao();
                         break;
                     case 15:
-                        View.Locacao.AtualizarLocacao();
+                        Views.Locacao.AtualizarLocacao();
                         break;
                     case 16:
-                        View.Locacao.RemoverLocacao();
+                        Views.Locacao.RemoverLocacao();
                         break;
                     default:
                         Console.WriteLine("Operação Inválida.");

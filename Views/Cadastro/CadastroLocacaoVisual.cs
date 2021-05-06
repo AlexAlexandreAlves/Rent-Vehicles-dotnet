@@ -2,7 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
-namespace View
+namespace Views
 {
     public class CadastroLocacaoVisual : Form
     {

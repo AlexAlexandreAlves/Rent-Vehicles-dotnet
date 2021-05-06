@@ -4,7 +4,7 @@ using System.Drawing;
 using Views.lib;
 
 
-namespace View
+namespace Views
 {
     public class ListarClienteVisual : Form
     {

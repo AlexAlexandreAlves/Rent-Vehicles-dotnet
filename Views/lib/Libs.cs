@@ -82,6 +82,8 @@ namespace Views
                 this.Location = Location;
                 this.Size = Size;
                 this.View = View.Details;
+
+                
             }
         }
 

@@ -1,6 +1,6 @@
 using System;
 
-namespace View
+namespace Views
 {
     /// <summary>
     /// Represents the Customer View
