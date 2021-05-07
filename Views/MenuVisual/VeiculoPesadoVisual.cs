@@ -41,6 +41,7 @@ namespace Views
             btnListarVeicPesado.Text = "Lista De Veiculos Pesados Cadastrados";
             btnListarVeicPesado.Size = new Size(200, 40);
             btnListarVeicPesado.Location = new Point(200, 100);
+            btnListarVeicPesado.Click += new EventHandler(this.btnListagemVeicPesadoClick);
 
 
             btnAtlzVeicPesado.Text = "Atualizar Veiculos Pesados Cadastrados";
@@ -88,6 +89,11 @@ namespace Views
         {
             CadastroVeicPesaVisual cadastroVeicPesado = new CadastroVeicPesaVisual();
             cadastroVeicPesado.Show();
+        }
+          private void btnListagemVeicPesadoClick(object sender, EventArgs e)
+        {
+            ListarVeicPesadoVisual listarVeicPesado = new ListarVeicPesadoVisual();
+            listarVeicPesado.Show();
         }
 
 

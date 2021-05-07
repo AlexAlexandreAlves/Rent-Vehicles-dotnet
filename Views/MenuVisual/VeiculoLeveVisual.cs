@@ -34,6 +34,7 @@ namespace Views
             btnListarVeicLeve.Text = "Lista De Veiculos Leves Cadastrados";
             btnListarVeicLeve.Size = new Size(200, 40);
             btnListarVeicLeve.Location = new Point(200, 100);
+            btnListarVeicLeve.Click += new EventHandler(this.btnListarVeicLeveClick);
 
 
             btnAtlzVeicLeve.Text = "Atualizar Veiculos Leves Cadastrados";
@@ -77,6 +78,12 @@ namespace Views
         {
             CadastroVeicLeveVisual cadastroVeicLeve = new CadastroVeicLeveVisual();
             cadastroVeicLeve.Show();
+        }
+
+        private void btnListarVeicLeveClick(object sender, EventArgs e)
+        {
+            ListarVeicLeveVisual listarVeicLeve = new ListarVeicLeveVisual();
+            listarVeicLeve.Show();
         }
 
 

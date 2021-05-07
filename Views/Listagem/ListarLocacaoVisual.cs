@@ -6,22 +6,22 @@ using Views.lib;
 
 namespace Views
 {
-    public class ListarClienteVisual : Form
+    public class ListarLocacaoVisual : Form
     {
 
-        private ListView listagemClientes = new ListView();
+        private ListView listagemLocacoes = new ListView();
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
         private Button btnCancelar = new Button();
 
-        private PictureBox pictureBoxCadastroCliente = new PictureBox();
+        private PictureBox pictureListarLocacoes = new PictureBox();
 
-        public ListarClienteVisual()
+        public ListarLocacaoVisual()
         {
-            //Visual Listagem do cliente
+            //Visual Listagem das locaçoes
 
-            this.Text = "Listagem de Cliente";                      //Inserindo titulo da página
+            this.Text = "Listagem de Locacoes";                      //Inserindo titulo da página
             this.BackColor = Color.White;
 
             this.AutoScroll = false;
@@ -31,18 +31,16 @@ namespace Views
             this.AutoScroll = true;
 
 
-            listagemClientes = new LibsListView(new Point(20, 15), new Size(500, 350));
+            listagemLocacoes = new LibsListView(new Point(20, 15), new Size(500, 350));
 
 
-            listagemClientes.Columns.Add("ID", -2, HorizontalAlignment.Left);
-            listagemClientes.Columns.Add("Nome", -2, HorizontalAlignment.Left);
-            listagemClientes.Columns.Add("Data de Nascimento", -2, HorizontalAlignment.Left);
-            listagemClientes.Columns.Add("Cpf", -2, HorizontalAlignment.Left);
-            listagemClientes.Columns.Add("Dias para Devolução", -2, HorizontalAlignment.Left);
-            listagemClientes.FullRowSelect = true;
-            listagemClientes.GridLines = true;
-            listagemClientes.AllowColumnReorder = true;
-            listagemClientes.Sorting = SortOrder.Ascending;
+            listagemLocacoes.Columns.Add("ID", -2, HorizontalAlignment.Left);
+            listagemLocacoes.Columns.Add("Nome", -2, HorizontalAlignment.Left);
+            listagemLocacoes.Columns.Add("Data da locação", -2, HorizontalAlignment.Left);
+            listagemLocacoes.FullRowSelect = true;
+            listagemLocacoes.GridLines = true;
+            listagemLocacoes.AllowColumnReorder = true;
+            listagemLocacoes.Sorting = SortOrder.Ascending;
 
             ListViewItem item = new ListViewItem("1");
 
@@ -50,7 +48,7 @@ namespace Views
             item.SubItems.Add("");
             item.SubItems.Add("");
             item.SubItems.Add("");
-            listagemClientes.Items.Add(item);
+            listagemLocacoes.Items.Add(item);
 
 
 
@@ -65,11 +63,11 @@ namespace Views
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
 
 
-            pictureBoxCadastroCliente = new PictureBox();
-            pictureBoxCadastroCliente.Size = new Size(600, 600);
-            pictureBoxCadastroCliente.Location = new Point(0, 0);
-            pictureBoxCadastroCliente.Load("Images\\Logo_rent_vehicles.png");
-            pictureBoxCadastroCliente.SizeMode = PictureBoxSizeMode.Normal;
+            pictureListarLocacoes = new PictureBox();
+            pictureListarLocacoes.Size = new Size(600, 600);
+            pictureListarLocacoes.Location = new Point(0, 0);
+            pictureListarLocacoes.Load("Images\\Logo_rent_vehicles.png");
+            pictureListarLocacoes.SizeMode = PictureBoxSizeMode.Normal;
 
 
 
@@ -77,24 +75,24 @@ namespace Views
 
 
 
-            this.Controls.Add(listagemClientes);
+            this.Controls.Add(listagemLocacoes);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
 
-            this.Controls.Add(pictureBoxCadastroCliente);
+            this.Controls.Add(pictureListarLocacoes);
 
         }
 
         private void btnConfirmarClick(object sender, EventArgs e)
         {  //Cria o Evento do botão (Click)
-            DialogResult resultado = MessageBox.Show("Listagens Executadas?", "Listagem de Clientes", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Listagens Executadas?", "Listagem de Locações", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Listagem de cliente executada com sucesso!");
+                MessageBox.Show("Locações Exibidas");
             }
             else if (resultado == DialogResult.No)
             {
-                MessageBox.Show("Listagem de clientes não concluída!");
+                MessageBox.Show("Listagem de Locações não exibidas!");
             }
             else
             {
@@ -106,7 +104,7 @@ namespace Views
 
         private void btnCancelarClick(object sender, EventArgs e)
         {  //Cria o Evento do botão (Click)
-            DialogResult resultado = MessageBox.Show("Deseja realmente cancelar a listagem?", "Listagem de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Deseja realmente cancelar a listagem?", "Listagem de Locações", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
                 MessageBox.Show("Listagem Cancelada!");

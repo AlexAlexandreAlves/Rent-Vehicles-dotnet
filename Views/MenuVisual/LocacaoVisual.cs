@@ -37,6 +37,7 @@ namespace Views
             btnListarLoc.Text = "Lista de Locações Cadastradas";
             btnListarLoc.Size = new Size(200, 30);
             btnListarLoc.Location = new Point(200, 100);
+            btnListarLoc.Click += new EventHandler(this.btnListarLocClick);
 
 
             btnAtlzLoc.Text = "Atualizar Locações Cadastradas";
@@ -77,6 +78,12 @@ namespace Views
        {
             CadastroLocacaoVisual cadastroLocacao = new CadastroLocacaoVisual();
             cadastroLocacao.Show();
+        }
+
+           private void btnListarLocClick(object sender, EventArgs e)
+       {
+            ListarLocacaoVisual listarLocacao = new ListarLocacaoVisual();
+            listarLocacao.Show();
         }
 
         private void btnEncMenuClick(object sender, EventArgs e)
