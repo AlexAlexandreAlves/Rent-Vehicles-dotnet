@@ -33,6 +33,8 @@ namespace Views
 
             listagemLocacoes = new LibsListView(new Point(20, 15), new Size(500, 350));
 
+            listagemLocacoes.Size = new Size(250,380);
+
 
             listagemLocacoes.Columns.Add("ID", -2, HorizontalAlignment.Left);
             listagemLocacoes.Columns.Add("Nome", -2, HorizontalAlignment.Left);

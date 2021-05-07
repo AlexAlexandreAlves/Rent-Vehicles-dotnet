@@ -32,6 +32,9 @@ namespace Views
 
 
             listagemClientes = new LibsListView(new Point(20, 15), new Size(500, 350));
+           
+            listagemClientes.Size = new Size(450,350);
+
 
 
             listagemClientes.Columns.Add("ID", -2, HorizontalAlignment.Left);

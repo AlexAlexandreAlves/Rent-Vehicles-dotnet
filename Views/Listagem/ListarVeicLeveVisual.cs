@@ -33,6 +33,10 @@ namespace Views
 
             listagemVeicLeve = new LibsListView(new Point(20, 15), new Size(500, 350));
 
+            listagemVeicLeve.Size = new Size(545,300);
+
+            
+
 
             listagemVeicLeve.Columns.Add("ID", -2, HorizontalAlignment.Left);
             listagemVeicLeve.Columns.Add("Marca do Veiculo", -2, HorizontalAlignment.Left);
