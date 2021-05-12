@@ -52,6 +52,7 @@ namespace Views
             btnRmvVeicPesado.Text = "Remover Veiculos Pesados Cadastrados";
             btnRmvVeicPesado.Size = new Size(200, 40);
             btnRmvVeicPesado.Location = new Point(200, 200);
+            btnRmvVeicPesado.Click += new EventHandler(this.btnRmvVeicPesadoClick);
 
 
             btnEncMenu.Text = "Voltar Menu Principal";
@@ -101,6 +102,11 @@ namespace Views
         {
             AtlzVeiculoPesadoVisual atlzVeiculoPesado = new AtlzVeiculoPesadoVisual();
             atlzVeiculoPesado.Show();
+        }
+          private void btnRmvVeicPesadoClick(object sender, EventArgs e)
+        {
+            DltVeicPesVisual deletarVeicPesado = new DltVeicPesVisual();
+            deletarVeicPesado.Show();
         }
 
 

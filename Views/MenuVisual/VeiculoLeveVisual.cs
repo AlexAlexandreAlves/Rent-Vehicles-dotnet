@@ -45,6 +45,7 @@ namespace Views
             btnRmvVeicLeve.Text = "Remover Veiculos Leves Cadastrados";
             btnRmvVeicLeve.Size = new Size(200, 40);
             btnRmvVeicLeve.Location = new Point(200, 200);
+            btnRmvVeicLeve.Click += new EventHandler(this.btnRmvVeicLeveClick);
 
 
             btnEncMenu.Text = "Voltar Menu Principal";
@@ -92,6 +93,12 @@ namespace Views
             AtlzVeicLeveVisual atualizarVeicLeve = new AtlzVeicLeveVisual();
             atualizarVeicLeve.Show();
         }
+          private void btnRmvVeicLeveClick(object sender, EventArgs e)
+        {
+            DltVeicLeveVisual deletarVeicLeve = new DltVeicLeveVisual();
+            deletarVeicLeve.Show();
+        }
+
 
 
 

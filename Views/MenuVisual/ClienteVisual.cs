@@ -52,10 +52,11 @@ namespace Views
             btnAtualizarCliente.Click += new EventHandler(this.btnAtualizarClienteClick);
 
 
-
             btnRemoverCliente.Text = "Remover Clientes";
             btnRemoverCliente.Size = new Size(200, 30);
             btnRemoverCliente.Location = new Point(200, 200);
+            btnRemoverCliente.Click += new EventHandler(this.btnRemoverClienteClick);
+
 
             btnEncMenu.Text = "Voltar Menu Principal";
             btnEncMenu.Size = new Size(200, 30);
@@ -103,6 +104,12 @@ namespace Views
             AtlzClienteVisual atualizarCliente = new AtlzClienteVisual();
             atualizarCliente.Show();
         }
+         private void btnRemoverClienteClick(object sender, EventArgs e)
+        {
+            DltClienteVisual deletarCliente = new DltClienteVisual();
+            deletarCliente.Show();
+        }
+
 
 
 

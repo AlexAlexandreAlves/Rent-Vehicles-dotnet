@@ -48,6 +48,7 @@ namespace Views
             btnRmvLoc.Text = "Remover Locação Cadastrada";
             btnRmvLoc.Size = new Size(200, 30);
             btnRmvLoc.Location = new Point(200, 200);
+            btnRmvLoc.Click += new EventHandler(this.btnRmvLocClick);
 
             btnEncMenu.Text = "Voltar Menu Principal";
             btnEncMenu.Size = new Size(200, 30);
@@ -91,6 +92,12 @@ namespace Views
             AtlzLocacaoVisual atualizarLocacao = new AtlzLocacaoVisual();
             atualizarLocacao.Show();
         }
+           private void btnRmvLocClick(object sender, EventArgs e)
+       {
+            DltLocacaoVisual deletarLocacao = new DltLocacaoVisual();
+            deletarLocacao.Show();
+        }
+
 
 
         private void btnEncMenuClick(object sender, EventArgs e)
