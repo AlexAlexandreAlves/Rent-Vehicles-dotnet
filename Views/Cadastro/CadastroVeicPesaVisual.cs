@@ -26,6 +26,8 @@ namespace Views
 
         private MaskedTextBox txtPreco = new MaskedTextBox();
 
+         private DateTimePicker anoVeiculoPesado = new DateTimePicker();
+
         private TextBox txtRestricoes = new TextBox();
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
@@ -74,17 +76,24 @@ namespace Views
 
             //Visual Cadastrar Ano 
 
-            lblAno = new LibsLabel("Ano do Veiculo:", new Point(20, 200), new Size(110, 40));
+            lblAno = new LibsLabel("Ano do Veiculo:", new Point(20, 200), new Size(90, 40));
 
-            txtAno = new LibsMaskedTextBox(new Point(20, 250), new Size(100, 80), "00/00/0000");
+            txtAno = new LibsMaskedTextBox(new Point(20, 250), new Size(70, 80), "00/00/0000");
+
+            anoVeiculoPesado = new LibsTimePickerView(new Point(20, 285), new Size(120, 120));
+           // anoVeiculoLeve.Format = DateTimePickerFormat.Time;
+            anoVeiculoPesado.Format = DateTimePickerFormat.Custom;
+            anoVeiculoPesado.CustomFormat = "dd/mm/yyyy";
+            anoVeiculoPesado.ShowCheckBox = true;
+           // anoVeiculoLeve.ShowUpDown = true;
 
         
 
             //Visual Cadastrar Valor de locação
 
-            lblPreco = new LibsLabel("Valor para locação:", new Point(20, 300), new Size(110, 40));
+            lblPreco = new LibsLabel("Valor para locação:", new Point(20, 320), new Size(110, 40));
 
-            txtPreco = new LibsMaskedTextBox(new Point(20, 350), new Size(80, 80), "$9.999,00");
+            txtPreco = new LibsMaskedTextBox(new Point(20, 368), new Size(70, 80), "$9.999,00");
 
 
 
@@ -138,6 +147,7 @@ namespace Views
             this.Controls.Add(txtModelo);
             this.Controls.Add(lblAno);
             this.Controls.Add(txtAno);
+            this.Controls.Add(anoVeiculoPesado);
             this.Controls.Add(lblPreco);
             this.Controls.Add(txtPreco);
             this.Controls.Add(lblRestricoes);

@@ -56,7 +56,7 @@ namespace Views
 
 
 
-            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18, 550), new Size(200, 30));
+            btnConfirmar = new LibsButtons("Confirmar", new Point(18, 550), new Size(200, 30));
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
 
 

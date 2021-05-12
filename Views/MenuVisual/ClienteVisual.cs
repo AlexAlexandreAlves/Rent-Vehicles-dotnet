@@ -2,7 +2,8 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace Views{
+namespace Views
+{
 
     public class ClienteVisual : Form
     {
@@ -48,6 +49,7 @@ namespace Views{
             btnAtualizarCliente.Text = "Atualizar Clientes";
             btnAtualizarCliente.Size = new Size(200, 30);
             btnAtualizarCliente.Location = new Point(200, 150);
+            btnAtualizarCliente.Click += new EventHandler(this.btnAtualizarClienteClick);
 
 
 
@@ -62,8 +64,8 @@ namespace Views{
             btnEncMenu.BackColor = Color.White;
 
             pictureBoxCliente = new PictureBox();
-            pictureBoxCliente.Size = new Size(600,600);
-            pictureBoxCliente.Location = new Point(0,0);
+            pictureBoxCliente.Size = new Size(600, 600);
+            pictureBoxCliente.Location = new Point(0, 0);
             pictureBoxCliente.Load("Images\\Logo_rent_vehicles.png");
             pictureBoxCliente.SizeMode = PictureBoxSizeMode.Normal;
 
@@ -79,23 +81,29 @@ namespace Views{
             this.Controls.Add(btnRemoverCliente);
             this.Controls.Add(btnEncMenu);
 
-             this.Controls.Add(pictureBoxCliente);
+            this.Controls.Add(pictureBoxCliente);
 
 
         }
 
-        
-         private void btnCadastrarClienteClick(object sender, EventArgs e)
+
+        private void btnCadastrarClienteClick(object sender, EventArgs e)
         {
             CadastroClienteVisual cadastroCliente = new CadastroClienteVisual();
             cadastroCliente.Show();
         }
 
-         private void btnListarClienteClick(object sender, EventArgs e)
+        private void btnListarClienteClick(object sender, EventArgs e)
         {
             ListarClienteVisual listarCliente = new ListarClienteVisual();
             listarCliente.Show();
         }
+        private void btnAtualizarClienteClick(object sender, EventArgs e)
+        {
+            AtualizarClienteVisual atualizarCliente = new AtualizarClienteVisual();
+            atualizarCliente.Show();
+        }
+
 
 
         private void btnEncMenuClick(object sender, EventArgs e)

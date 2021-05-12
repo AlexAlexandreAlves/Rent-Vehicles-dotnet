@@ -84,12 +84,12 @@ namespace Views
 
             txtAno = new LibsMaskedTextBox(new Point(20, 230), new Size(80, 80), "00/00/0000");
 
-            anoVeiculoLeve = new LibsTimePickerView(new Point(20, 270), new Size(130, 120));
-            anoVeiculoLeve.Format = DateTimePickerFormat.Time;
+            anoVeiculoLeve = new LibsTimePickerView(new Point(20, 270), new Size(120, 120));
+           // anoVeiculoLeve.Format = DateTimePickerFormat.Time;
             anoVeiculoLeve.Format = DateTimePickerFormat.Custom;
-            anoVeiculoLeve.CustomFormat = "dd/mm/yyyy HH:mm";
+            anoVeiculoLeve.CustomFormat = "dd/mm/yyyy";
             anoVeiculoLeve.ShowCheckBox = true;
-            anoVeiculoLeve.ShowUpDown = true;
+           // anoVeiculoLeve.ShowUpDown = true;
      
         
             //Visual Cadastrar Valor de locação
