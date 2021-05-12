@@ -83,9 +83,45 @@ namespace Views
                 this.Size = Size;
                 this.View = View.Details;
 
-                
+
             }
         }
+
+        public class LibsCalendarView : MonthCalendar
+        {
+            public LibsCalendarView(
+            Point Location)
+            {
+                this.Location = Location;
+            }
+
+        }
+
+        public class LibsProgressBarView : ProgressBar
+        {
+            public LibsProgressBarView(
+            Point Location,
+            Size Size)
+            {
+                this.Location = Location;
+                this.Size = Size;
+            }
+
+        }
+
+          public class LibsTimePickerView : DateTimePicker
+        {
+            public LibsTimePickerView(
+            Point Location,
+            Size Size)
+            {
+                this.Location = Location;
+                this.Size = Size;
+            }
+
+        }
+
+
 
     }
 

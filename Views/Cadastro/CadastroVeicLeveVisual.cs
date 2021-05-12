@@ -25,6 +25,8 @@ namespace Views
 
         private MaskedTextBox txtAno = new MaskedTextBox();
 
+        private DateTimePicker anoVeiculoLeve = new DateTimePicker();
+
         private MaskedTextBox txtPreco = new MaskedTextBox();
 
         private TextBox txtCor = new TextBox();
@@ -78,23 +80,30 @@ namespace Views
 
             //Visual Cadastrar Ano 
 
-            lblAno = new LibsLabel("Ano do Veiculo:", new Point(20, 200), new Size(110, 40));
+            lblAno = new LibsLabel("Ano do Veiculo:", new Point(20, 180), new Size(110, 40));
 
-            txtAno = new LibsMaskedTextBox(new Point(20, 250), new Size(80, 80), "00/00/0000");
+            txtAno = new LibsMaskedTextBox(new Point(20, 230), new Size(80, 80), "00/00/0000");
+
+            anoVeiculoLeve = new LibsTimePickerView(new Point(20, 270), new Size(130, 120));
+            anoVeiculoLeve.Format = DateTimePickerFormat.Time;
+            anoVeiculoLeve.Format = DateTimePickerFormat.Custom;
+            anoVeiculoLeve.CustomFormat = "dd/mm/yyyy HH:mm";
+            anoVeiculoLeve.ShowCheckBox = true;
+            anoVeiculoLeve.ShowUpDown = true;
      
         
             //Visual Cadastrar Valor de locação
 
-            lblPreco = new LibsLabel("Valor para locação:", new Point(20, 300), new Size(110, 40));
+            lblPreco = new LibsLabel("Valor para locação:", new Point(20, 310), new Size(110, 40));
 
-            txtPreco = new LibsMaskedTextBox(new Point(20, 350), new Size(80, 80), "$9.999,00");
+            txtPreco = new LibsMaskedTextBox(new Point(20, 365), new Size(80, 80), "$9.999,00");
 
 
             //Visual Cadastrar Restrições se obter alguma 
 
-            LblCor = new LibsLabel("Cor do veiculo:", new Point(20, 400), new Size(100, 40));
+            LblCor = new LibsLabel("Cor do veiculo:", new Point(20, 405), new Size(100, 40));
 
-            txtCor = new LibsTextBoX(new Point(20, 450), new Size(200, 80));
+            txtCor = new LibsTextBoX(new Point(20, 460), new Size(200, 80));
 
 
          
@@ -141,6 +150,7 @@ namespace Views
             this.Controls.Add(txtModelo);
             this.Controls.Add(lblAno);
             this.Controls.Add(txtAno);
+            this.Controls.Add(anoVeiculoLeve);
             this.Controls.Add(lblPreco);
             this.Controls.Add(txtPreco);
             this.Controls.Add(LblCor);
