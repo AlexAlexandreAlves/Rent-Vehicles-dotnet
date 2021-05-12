@@ -17,7 +17,7 @@ namespace Views
 
         private Button btnEncMenu = new Button();
 
-        private PictureBox pictureBoxVeiculoLeve = new PictureBox();
+        private PictureBox pictureBox = new PictureBox();
 
         public VeiculoLeveVisual()
         {
@@ -40,6 +40,7 @@ namespace Views
             btnAtlzVeicLeve.Text = "Atualizar Veiculos Leves Cadastrados";
             btnAtlzVeicLeve.Size = new Size(200, 40);
             btnAtlzVeicLeve.Location = new Point(200, 150);
+            btnAtlzVeicLeve.Click += new EventHandler(this.btnAtlzVeicLeveClick);
 
             btnRmvVeicLeve.Text = "Remover Veiculos Leves Cadastrados";
             btnRmvVeicLeve.Size = new Size(200, 40);
@@ -53,11 +54,11 @@ namespace Views
             btnEncMenu.BackColor = Color.White;
 
             
-            pictureBoxVeiculoLeve = new PictureBox();
-            pictureBoxVeiculoLeve.Size = new Size(600,600);
-            pictureBoxVeiculoLeve.Location = new Point(0,0);
-            pictureBoxVeiculoLeve.Load("Images\\Logo_rent_vehicles.png");
-            pictureBoxVeiculoLeve.SizeMode = PictureBoxSizeMode.Normal;
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(600,600);
+            pictureBox.Location = new Point(0,0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
 
 
@@ -71,12 +72,12 @@ namespace Views
             this.Controls.Add(btnRmvVeicLeve);
             this.Controls.Add(btnEncMenu);
 
-             this.Controls.Add(pictureBoxVeiculoLeve);
+             this.Controls.Add(pictureBox);
 
         }
         private void btnCadastrarVeicLeveClick(object sender, EventArgs e)
         {
-            CadastroVeicLeveVisual cadastroVeicLeve = new CadastroVeicLeveVisual();
+            CadVeicLeveVisual cadastroVeicLeve = new CadVeicLeveVisual();
             cadastroVeicLeve.Show();
         }
 
@@ -85,6 +86,13 @@ namespace Views
             ListarVeicLeveVisual listarVeicLeve = new ListarVeicLeveVisual();
             listarVeicLeve.Show();
         }
+
+         private void btnAtlzVeicLeveClick(object sender, EventArgs e)
+        {
+            AtlzVeicLeveVisual atualizarVeicLeve = new AtlzVeicLeveVisual();
+            atualizarVeicLeve.Show();
+        }
+
 
 
 

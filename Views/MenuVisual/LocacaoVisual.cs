@@ -19,7 +19,7 @@ namespace Views
 
         private Button btnEncMenu = new Button();
 
-        private PictureBox pictureBoxLocacao = new PictureBox();
+        private PictureBox pictureBox = new PictureBox();
 
         public LocacaoVisual()
         {
@@ -43,6 +43,7 @@ namespace Views
             btnAtlzLoc.Text = "Atualizar Locações Cadastradas";
             btnAtlzLoc.Size = new Size(200, 30);
             btnAtlzLoc.Location = new Point(200, 150);
+            btnAtlzLoc.Click += new EventHandler(this.btnAtualizarLocClick);
 
             btnRmvLoc.Text = "Remover Locação Cadastrada";
             btnRmvLoc.Size = new Size(200, 30);
@@ -54,11 +55,11 @@ namespace Views
             btnEncMenu.Click += new EventHandler(this.btnEncMenuClick);
             btnEncMenu.BackColor = Color.White;
 
-            pictureBoxLocacao = new PictureBox();
-            pictureBoxLocacao.Size = new Size(600,600);
-            pictureBoxLocacao.Location = new Point(0,0);
-            pictureBoxLocacao.Load("Images\\Logo_rent_vehicles.png");
-            pictureBoxLocacao.SizeMode = PictureBoxSizeMode.Normal;
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(600,600);
+            pictureBox.Location = new Point(0,0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
 
 
@@ -71,12 +72,12 @@ namespace Views
             this.Controls.Add(btnRmvLoc);
             this.Controls.Add(btnEncMenu);
             
-            this.Controls.Add(pictureBoxLocacao);
+            this.Controls.Add(pictureBox);
         }
 
        private void btnCadastrarLocClick(object sender, EventArgs e)
        {
-            CadastroLocacaoVisual cadastroLocacao = new CadastroLocacaoVisual();
+            CadLocacaoVisual cadastroLocacao = new CadLocacaoVisual();
             cadastroLocacao.Show();
         }
 
@@ -85,6 +86,12 @@ namespace Views
             ListarLocacaoVisual listarLocacao = new ListarLocacaoVisual();
             listarLocacao.Show();
         }
+          private void btnAtualizarLocClick(object sender, EventArgs e)
+       {
+            AtlzLocacaoVisual atualizarLocacao = new AtlzLocacaoVisual();
+            atualizarLocacao.Show();
+        }
+
 
         private void btnEncMenuClick(object sender, EventArgs e)
         {  //Cria o Evento do botão (Click)

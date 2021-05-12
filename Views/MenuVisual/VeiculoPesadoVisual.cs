@@ -19,7 +19,7 @@ namespace Views
         
         private Button btnEncMenu = new Button();
 
-        private PictureBox pictureBoxVeiculoPesado = new PictureBox();
+        private PictureBox pictureBox = new PictureBox();
 
 
         public VeiculoPesadoVisual()
@@ -47,6 +47,7 @@ namespace Views
             btnAtlzVeicPesado.Text = "Atualizar Veiculos Pesados Cadastrados";
             btnAtlzVeicPesado.Size = new Size(200, 40);
             btnAtlzVeicPesado.Location = new Point(200, 150);
+            btnAtlzVeicPesado.Click += new EventHandler(this.btnAtlzVeicPesadoClick);
 
             btnRmvVeicPesado.Text = "Remover Veiculos Pesados Cadastrados";
             btnRmvVeicPesado.Size = new Size(200, 40);
@@ -59,11 +60,11 @@ namespace Views
             btnEncMenu.Click += new EventHandler(this.btnEncMenuClick);
             btnEncMenu.BackColor = Color.White;
 
-            pictureBoxVeiculoPesado = new PictureBox();
-            pictureBoxVeiculoPesado.Size = new Size(600,600);
-            pictureBoxVeiculoPesado.Location = new Point(0,0);
-            pictureBoxVeiculoPesado.Load("Images\\Logo_rent_vehicles.png");
-            pictureBoxVeiculoPesado.SizeMode = PictureBoxSizeMode.Normal;
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(600,600);
+            pictureBox.Location = new Point(0,0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
 
             this.Size = new Size(600, 600);
@@ -78,7 +79,7 @@ namespace Views
             this.Controls.Add(btnRmvVeicPesado);
             this.Controls.Add(btnEncMenu);
 
-            this.Controls.Add(pictureBoxVeiculoPesado);
+            this.Controls.Add(pictureBox);
 
 
 
@@ -87,7 +88,7 @@ namespace Views
 
         private void btnCadastroVeicPesadoClick(object sender, EventArgs e)
         {
-            CadastroVeicPesaVisual cadastroVeicPesado = new CadastroVeicPesaVisual();
+            CadVeicPesaVisual cadastroVeicPesado = new CadVeicPesaVisual();
             cadastroVeicPesado.Show();
         }
           private void btnListagemVeicPesadoClick(object sender, EventArgs e)
@@ -96,6 +97,11 @@ namespace Views
             listarVeicPesado.Show();
         }
 
+         private void btnAtlzVeicPesadoClick(object sender, EventArgs e)
+        {
+            AtlzVeiculoPesadoVisual atlzVeiculoPesado = new AtlzVeiculoPesadoVisual();
+            atlzVeiculoPesado.Show();
+        }
 
 
         private void btnEncMenuClick(object sender, EventArgs e)

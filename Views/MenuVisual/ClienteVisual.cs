@@ -18,7 +18,7 @@ namespace Views
 
         private Button btnEncMenu = new Button();
 
-        private PictureBox pictureBoxCliente = new PictureBox();
+        private PictureBox pictureBox = new PictureBox();
 
 
 
@@ -63,11 +63,11 @@ namespace Views
             btnEncMenu.Click += new EventHandler(this.btnEncMenuClick);
             btnEncMenu.BackColor = Color.White;
 
-            pictureBoxCliente = new PictureBox();
-            pictureBoxCliente.Size = new Size(600, 600);
-            pictureBoxCliente.Location = new Point(0, 0);
-            pictureBoxCliente.Load("Images\\Logo_rent_vehicles.png");
-            pictureBoxCliente.SizeMode = PictureBoxSizeMode.Normal;
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(600, 600);
+            pictureBox.Location = new Point(0, 0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
 
 
@@ -81,7 +81,7 @@ namespace Views
             this.Controls.Add(btnRemoverCliente);
             this.Controls.Add(btnEncMenu);
 
-            this.Controls.Add(pictureBoxCliente);
+            this.Controls.Add(pictureBox);
 
 
         }
@@ -89,7 +89,7 @@ namespace Views
 
         private void btnCadastrarClienteClick(object sender, EventArgs e)
         {
-            CadastroClienteVisual cadastroCliente = new CadastroClienteVisual();
+            CadClienteVisual cadastroCliente = new CadClienteVisual();
             cadastroCliente.Show();
         }
 
@@ -100,7 +100,7 @@ namespace Views
         }
         private void btnAtualizarClienteClick(object sender, EventArgs e)
         {
-            AtualizarClienteVisual atualizarCliente = new AtualizarClienteVisual();
+            AtlzClienteVisual atualizarCliente = new AtlzClienteVisual();
             atualizarCliente.Show();
         }
 

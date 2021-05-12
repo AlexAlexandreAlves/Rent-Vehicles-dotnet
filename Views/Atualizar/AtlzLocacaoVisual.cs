@@ -4,40 +4,34 @@ using System.Drawing;
 using Views.lib;
 namespace Views
 {
-    public class AtualizarClienteVisual : Form
+    public class AtlzLocacaoVisual : Form
     {
 
-        private Label lblNome = new Label();       //Label cria o "nome" para as caixas de texto
+        private Label lblId = new Label();       //Label cria o "nome" para as caixas de texto
 
-        private Label lblDataLocacao = new Label();
-
-        private TextBox txtNome = new TextBox();   //TextBox cria caixas para inserção de texto
-
-        private MaskedTextBox txtDataLocacao = new MaskedTextBox();
-
-        private MonthCalendar calendarioLocacao = new MonthCalendar();
+        private TextBox txtId = new TextBox();   //TextBox cria caixas para inserção de texto
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
         private Button btnCancelar = new Button();
 
-        private PictureBox pictureBoxCadastroLocacao = new PictureBox();
-
-        private ProgressBar barraprogress = new ProgressBar();
+        private PictureBox pictureBox = new PictureBox();
 
 
 
 
-        public AtualizarClienteVisual()
+
+
+        public AtlzLocacaoVisual()
         {
             //Visual Cadastrar Nome de Locações
 
-            this.Text = "Atualizar Cliente";                      //Inserindo titulo da página
+            this.Text = "Atualizar Locaação";                      //Inserindo titulo da página
             this.BackColor = Color.White;
 
 
-            lblNome = new LibsLabel("Informe o Id do cliente que deseja atualizar:", new Point(20, 30), new Size(250, 30));
-            txtNome = new LibsTextBoX(new Point(20, 80), new Size(100, 80));
+            lblId = new LibsLabel("Informe o Id da locação que deseja atualizar:", new Point(20, 30), new Size(250, 30));
+            txtId = new LibsTextBoX(new Point(20, 80), new Size(100, 80));
 
 
             //Criando botões
@@ -51,28 +45,28 @@ namespace Views
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
 
-            pictureBoxCadastroLocacao = new PictureBox();
-            pictureBoxCadastroLocacao.Size = new Size(600, 600);
-            pictureBoxCadastroLocacao.Location = new Point(0, 0);
-            pictureBoxCadastroLocacao.Load("Images\\Logo_rent_vehicles.png");
-            pictureBoxCadastroLocacao.SizeMode = PictureBoxSizeMode.Normal;
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(600, 600);
+            pictureBox.Location = new Point(0, 0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
     
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
-            this.Controls.Add(lblNome);         //Chamando e adicionando os métodos acima 
-            this.Controls.Add(txtNome);
+            this.Controls.Add(lblId);         //Chamando e adicionando os métodos acima 
+            this.Controls.Add(txtId);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
         
-            this.Controls.Add(pictureBoxCadastroLocacao);
+            this.Controls.Add(pictureBox);
 
         }
 
         private void btnConfirmarClick(object sender, EventArgs e)
         {  //Cria o Evento do botão (Click)
-            DialogResult resultado = MessageBox.Show("Confirmar atualização?", "Atualização de cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Confirmar atualização?", "Atualização de Locação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
                 MessageBox.Show("Atualização salva com sucesso!");
@@ -91,7 +85,7 @@ namespace Views
 
         private void btnCancelarClick(object sender, EventArgs e)
         {  //Cria o Evento do botão (Click)
-            DialogResult resultado = MessageBox.Show("Deseja realmente cancelar a atualização?", "Atualização de cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Deseja realmente cancelar a atualização?", "Atualização de Locação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
                 MessageBox.Show("Cadastro Cancelado!");

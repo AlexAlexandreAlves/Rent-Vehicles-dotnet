@@ -15,7 +15,7 @@ namespace Views
 
         private Button btnCancelar = new Button();
 
-        private PictureBox pictureListarVeicLeve = new PictureBox();
+        private PictureBox pictureBox = new PictureBox();
 
         public ListarVeicLeveVisual()
         {
@@ -70,11 +70,11 @@ namespace Views
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
 
 
-            pictureListarVeicLeve = new PictureBox();
-            pictureListarVeicLeve.Size = new Size(600, 600);
-            pictureListarVeicLeve.Location = new Point(0, 0);
-            pictureListarVeicLeve.Load("Images\\Logo_rent_vehicles.png");
-            pictureListarVeicLeve.SizeMode = PictureBoxSizeMode.Normal;
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(600, 600);
+            pictureBox.Location = new Point(0, 0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
 
 
@@ -86,7 +86,7 @@ namespace Views
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
 
-            this.Controls.Add(pictureListarVeicLeve);
+            this.Controls.Add(pictureBox);
 
         }
 

@@ -15,7 +15,7 @@ namespace Views
 
         private Button btnCancelar = new Button();
 
-        private PictureBox pictureBoxCadastroCliente = new PictureBox();
+        private PictureBox pictureBox = new PictureBox();
 
         public ListarClienteVisual()
         {
@@ -68,11 +68,11 @@ namespace Views
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
 
 
-            pictureBoxCadastroCliente = new PictureBox();
-            pictureBoxCadastroCliente.Size = new Size(600, 600);
-            pictureBoxCadastroCliente.Location = new Point(0, 0);
-            pictureBoxCadastroCliente.Load("Images\\Logo_rent_vehicles.png");
-            pictureBoxCadastroCliente.SizeMode = PictureBoxSizeMode.Normal;
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(600, 600);
+            pictureBox.Location = new Point(0, 0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
 
 
@@ -84,7 +84,7 @@ namespace Views
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
 
-            this.Controls.Add(pictureBoxCadastroCliente);
+            this.Controls.Add(pictureBox);
 
         }
 

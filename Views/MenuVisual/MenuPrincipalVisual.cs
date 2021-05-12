@@ -18,7 +18,7 @@ namespace Views
 
         private Button btnEncMenu = new Button();
 
-        private PictureBox pictureBoxMenu = new PictureBox();
+        private PictureBox pictureBox = new PictureBox();
 
 
         public MenuPrincipalVisual()
@@ -57,11 +57,11 @@ namespace Views
             btnEncMenu.Click += new EventHandler(this.btnEncMenuClick);
             btnEncMenu.BackColor = Color.White;
 
-            pictureBoxMenu = new PictureBox();
-            pictureBoxMenu.Size = new Size(600,370);
-            pictureBoxMenu.Location = new Point(0,0);
-            pictureBoxMenu.Load("Images\\Logo_rent_vehicles.png");
-            pictureBoxMenu.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(600,370);
+            pictureBox.Location = new Point(0,0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
 
 
 
@@ -73,7 +73,7 @@ namespace Views
             this.Controls.Add(btnVeiculosPesados);
             this.Controls.Add(btnEncMenu);
             
-            this.Controls.Add(pictureBoxMenu);
+            this.Controls.Add(pictureBox);
 
             
 

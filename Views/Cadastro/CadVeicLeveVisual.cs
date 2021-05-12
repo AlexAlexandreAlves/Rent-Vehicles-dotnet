@@ -6,7 +6,7 @@ using Views.lib;
 
 namespace Views
 {
-    public class CadastroVeicLeveVisual : Form
+    public class CadVeicLeveVisual : Form
     {
 
         private Label lblMarca = new Label();       //Label cria o "nome" para as caixas de texto
@@ -41,14 +41,14 @@ namespace Views
 
         private GroupBox groupBox1 = new GroupBox();
 
-        private PictureBox pictureBoxCadastroVeicLeve = new PictureBox();
+        private PictureBox pictureBox = new PictureBox();
 
 
 
 
 
 
-        public CadastroVeicLeveVisual()
+        public CadVeicLeveVisual()
         {
             //Visual Cadastrar Nome do Veiculo Leve
 
@@ -134,11 +134,11 @@ namespace Views
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
 
-            pictureBoxCadastroVeicLeve = new PictureBox();
-            pictureBoxCadastroVeicLeve.Size = new Size(700,700);
-            pictureBoxCadastroVeicLeve.Location = new Point(0,0);
-            pictureBoxCadastroVeicLeve.Load("Images\\Logo_rent_vehicles.png");
-            pictureBoxCadastroVeicLeve.SizeMode = PictureBoxSizeMode.Normal;
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(700,700);
+            pictureBox.Location = new Point(0,0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
 
 
@@ -163,7 +163,7 @@ namespace Views
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
 
-            this.Controls.Add(pictureBoxCadastroVeicLeve);
+            this.Controls.Add(pictureBox);
 
         }
 

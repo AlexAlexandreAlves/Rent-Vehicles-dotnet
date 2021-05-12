@@ -5,7 +5,7 @@ using Views.lib;
 
 namespace Views
 {
-    public class CadastroClienteVisual : Form
+    public class CadClienteVisual : Form
     {
 
         private Label lblNome = new Label();       //Label cria o "nome" para as caixas de texto
@@ -34,13 +34,13 @@ namespace Views
 
         private GroupBox groupBox1 = new GroupBox();
 
-        private PictureBox pictureBoxCadastroCliente = new PictureBox();
+        private PictureBox pictureBox = new PictureBox();
     
 
 
 
 
-        public CadastroClienteVisual()
+        public CadClienteVisual()
         {
             //Visual Cadastrar Nome do cliente
 
@@ -117,11 +117,11 @@ namespace Views
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
            
 
-            pictureBoxCadastroCliente = new PictureBox();
-            pictureBoxCadastroCliente.Size = new Size(600,600);
-            pictureBoxCadastroCliente.Location = new Point(0,0);
-            pictureBoxCadastroCliente.Load("Images\\Logo_rent_vehicles.png");
-            pictureBoxCadastroCliente.SizeMode = PictureBoxSizeMode.Normal;
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(600,600);
+            pictureBox.Location = new Point(0,0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.Normal;
         
 
 
@@ -143,7 +143,7 @@ namespace Views
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
 
-            this.Controls.Add(pictureBoxCadastroCliente);
+            this.Controls.Add(pictureBox);
 
         }
 

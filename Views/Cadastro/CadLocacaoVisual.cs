@@ -4,7 +4,7 @@ using System.Drawing;
 using Views.lib;
 namespace Views
 {
-    public class CadastroLocacaoVisual : Form
+    public class CadLocacaoVisual : Form
     {
 
         private Label lblNome = new Label();       //Label cria o "nome" para as caixas de texto
@@ -21,14 +21,14 @@ namespace Views
 
         private Button btnCancelar = new Button();
 
-        private PictureBox pictureBoxCadastroLocacao = new PictureBox();
+        private PictureBox pictureBox = new PictureBox();
 
         private ProgressBar barraprogress = new ProgressBar();
 
 
 
 
-        public CadastroLocacaoVisual()
+        public CadLocacaoVisual()
         {
             //Visual Cadastrar Nome de Locações
 
@@ -66,11 +66,11 @@ namespace Views
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
 
-            pictureBoxCadastroLocacao = new PictureBox();
-            pictureBoxCadastroLocacao.Size = new Size(600, 600);
-            pictureBoxCadastroLocacao.Location = new Point(0, 0);
-            pictureBoxCadastroLocacao.Load("Images\\Logo_rent_vehicles.png");
-            pictureBoxCadastroLocacao.SizeMode = PictureBoxSizeMode.Normal;
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(600, 600);
+            pictureBox.Location = new Point(0, 0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
           /*/  barraprogress = new ProgressBar();
             barraprogress = new LibsProgressBarView(new Point(20, 335), new Size(350, 20));
@@ -91,7 +91,7 @@ namespace Views
             this.Controls.Add(calendarioLocacao);
 
             //this.Controls.Add(barraprogress);
-            this.Controls.Add(pictureBoxCadastroLocacao);
+            this.Controls.Add(pictureBox);
 
         }
 

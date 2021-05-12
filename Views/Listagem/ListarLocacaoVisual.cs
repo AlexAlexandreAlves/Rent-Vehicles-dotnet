@@ -15,7 +15,7 @@ namespace Views
 
         private Button btnCancelar = new Button();
 
-        private PictureBox pictureListarLocacoes = new PictureBox();
+        private PictureBox pictureBox = new PictureBox();
 
         public ListarLocacaoVisual()
         {
@@ -65,11 +65,11 @@ namespace Views
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
 
 
-            pictureListarLocacoes = new PictureBox();
-            pictureListarLocacoes.Size = new Size(600, 600);
-            pictureListarLocacoes.Location = new Point(0, 0);
-            pictureListarLocacoes.Load("Images\\Logo_rent_vehicles.png");
-            pictureListarLocacoes.SizeMode = PictureBoxSizeMode.Normal;
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(600, 600);
+            pictureBox.Location = new Point(0, 0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
 
 
@@ -81,7 +81,7 @@ namespace Views
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
 
-            this.Controls.Add(pictureListarLocacoes);
+            this.Controls.Add(pictureBox);
 
         }
 
