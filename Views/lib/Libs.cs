@@ -120,6 +120,17 @@ namespace Views
             }
 
         }
+         public class LibsComboBox : ComboBox
+        {
+            public LibsComboBox(
+            Point Location,
+            Size Size)
+            {
+                this.Location = Location;
+                this.Size = Size;
+            }
+
+        }
 
 
 

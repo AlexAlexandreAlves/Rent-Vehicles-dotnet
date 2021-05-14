@@ -11,6 +11,8 @@ namespace Views
 
         private TextBox txtId = new TextBox();   //TextBox cria caixas para inserção de texto
 
+        private ComboBox cbBox = new ComboBox();
+
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
         private Button btnCancelar = new Button();
@@ -31,7 +33,10 @@ namespace Views
 
 
             lblId = new LibsLabel("Informe o Id do cliente que deseja atualizar:", new Point(20, 30), new Size(250, 30));
-            txtId = new LibsTextBoX(new Point(20, 80), new Size(100, 80));
+            cbBox = new LibsComboBox(new Point(20,70), new Size(250,100));
+           
+
+
 
 
             //Criando botões
@@ -51,15 +56,15 @@ namespace Views
             pictureBox.Load("Images\\Logo_rent_vehicles.png");
             pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
-    
+
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
             this.Controls.Add(lblId);         //Chamando e adicionando os métodos acima 
-            this.Controls.Add(txtId);
+            this.Controls.Add(cbBox);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
-        
+
             this.Controls.Add(pictureBox);
 
         }
