@@ -23,7 +23,7 @@ namespace Views
 
         private TextBox txtModelo = new TextBox();
 
-        private MaskedTextBox txtAno = new MaskedTextBox();
+        // private MaskedTextBox txtAno = new MaskedTextBox();
 
         private DateTimePicker anoVeiculoLeve = new DateTimePicker();
 
@@ -45,9 +45,6 @@ namespace Views
 
 
 
-
-
-
         public CadVeicLeveVisual()
         {
             //Visual Cadastrar Nome do Veiculo Leve
@@ -64,7 +61,7 @@ namespace Views
             lblMarca = new LibsLabel("Marca do Veiculo:", new Point(20, 15), new Size(110, 40));
 
             //Inserindo nome do Veiculo
-            
+
 
             txtMarca = new LibsTextBoX(new Point(20, 60), new Size(200, 80));
             //Trabalhando com a localização da caixa de texto
@@ -80,33 +77,33 @@ namespace Views
 
             //Visual Cadastrar Ano 
 
-            lblAno = new LibsLabel("Ano do Veiculo:", new Point(20, 180), new Size(110, 40));
+            lblAno = new LibsLabel("Ano do Veiculo:", new Point(20, 190), new Size(110, 40));
 
-            txtAno = new LibsMaskedTextBox(new Point(20, 230), new Size(80, 80), "00/00/0000");
+            //txtAno = new LibsMaskedTextBox(new Point(20, 230), new Size(80, 80), "00/00/0000");
 
-            anoVeiculoLeve = new LibsTimePickerView(new Point(20, 270), new Size(120, 120));
-           // anoVeiculoLeve.Format = DateTimePickerFormat.Time;
+            anoVeiculoLeve = new LibsTimePickerView(new Point(20, 250), new Size(120, 120));
+            // anoVeiculoLeve.Format = DateTimePickerFormat.Time;
             anoVeiculoLeve.Format = DateTimePickerFormat.Custom;
-            anoVeiculoLeve.CustomFormat = "dd/mm/yyyy";
+            anoVeiculoLeve.CustomFormat = "dd/MM/yyyy";
             anoVeiculoLeve.ShowCheckBox = true;
-           // anoVeiculoLeve.ShowUpDown = true;
-     
-        
+
+
+            // anoVeiculoLeve.ShowUpDown = true;
+
+
             //Visual Cadastrar Valor de locação
 
-            lblPreco = new LibsLabel("Valor para locação:", new Point(20, 310), new Size(110, 40));
+            lblPreco = new LibsLabel("Valor para locação:", new Point(20, 290), new Size(110, 40));
 
-            txtPreco = new LibsMaskedTextBox(new Point(20, 365), new Size(80, 80), "$9.999,00");
+            txtPreco = new LibsMaskedTextBox(new Point(20, 350), new Size(80, 80), "$9.999,00");
 
 
             //Visual Cadastrar Restrições se obter alguma 
 
-            LblCor = new LibsLabel("Cor do veiculo:", new Point(20, 405), new Size(100, 40));
+            LblCor = new LibsLabel("Cor do veiculo:", new Point(20, 400), new Size(100, 40));
 
             txtCor = new LibsTextBoX(new Point(20, 460), new Size(200, 80));
 
-
-         
 
             groupBox1.Location = new Point(20, 500);
             groupBox1.Size = new Size(350, 100);
@@ -125,18 +122,18 @@ namespace Views
             //Visual Botão de confirmação
             //Criando botões
 
-            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18,630), new Size(200,30));
+            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18, 630), new Size(200, 30));
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
             btnConfirmar.BackColor = Color.White;
 
             //Criando botões
-            btnCancelar = new LibsButtons("Cancelar", new Point(230,630), new Size(200,30));
+            btnCancelar = new LibsButtons("Cancelar", new Point(230, 630), new Size(200, 30));
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
 
             pictureBox = new PictureBox();
-            pictureBox.Size = new Size(700,700);
-            pictureBox.Location = new Point(0,0);
+            pictureBox.Size = new Size(700, 700);
+            pictureBox.Location = new Point(0, 0);
             pictureBox.Load("Images\\Logo_rent_vehicles.png");
             pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
@@ -149,7 +146,7 @@ namespace Views
             this.Controls.Add(lblModelo);
             this.Controls.Add(txtModelo);
             this.Controls.Add(lblAno);
-            this.Controls.Add(txtAno);
+            // this.Controls.Add(txtAno);
             this.Controls.Add(anoVeiculoLeve);
             this.Controls.Add(lblPreco);
             this.Controls.Add(txtPreco);

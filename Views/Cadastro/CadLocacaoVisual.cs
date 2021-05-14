@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using Controller;
 namespace Views
 {
     public class CadLocacaoVisual : Form
@@ -100,6 +101,10 @@ namespace Views
             DialogResult resultado = MessageBox.Show("Confirmar cadastro?", "Cadastro de Locação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
+                Controller.Locacao.CriarLocacao(
+                    this.ClienteId,
+                    this.StringDataLocacao.Text
+                );
                 MessageBox.Show("Locação cadastrado com sucesso!");
             }
             else if (resultado == DialogResult.No)

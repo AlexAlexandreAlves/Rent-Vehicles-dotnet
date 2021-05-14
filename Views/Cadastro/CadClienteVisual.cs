@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using Controller;
 
 namespace Views
 {
@@ -38,8 +39,6 @@ namespace Views
     
 
 
-
-
         public CadClienteVisual()
         {
             //Visual Cadastrar Nome do cliente
@@ -58,7 +57,6 @@ namespace Views
 
             txtNome = new LibsTextBoX(new Point(20, 60), new Size(200, 80));
             //Trabalhando com a localização da caixa de texto e o tamanho
-
 
 
             //Visual Cadastrar data de nascimento 
@@ -151,7 +149,14 @@ namespace Views
         {  //Cria o Evento do botão (Click)
             DialogResult resultado = MessageBox.Show("Confirmar cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
-            {
+            {   
+                Controller.Cliente.CriarCliente(
+                    this.txtNome.Text,
+                    this.txtDataNascimento.Text,
+                    this.txtCpf.Text,
+                    this.nmDiasDevolucao.Value
+
+                );
                 MessageBox.Show("Cliente cadastrado com sucesso!");
             }
             else if (resultado == DialogResult.No)

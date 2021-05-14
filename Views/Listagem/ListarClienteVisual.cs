@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using System.Collections.Generic;
 
 
 namespace Views
@@ -32,8 +33,8 @@ namespace Views
 
 
             listagemClientes = new LibsListView(new Point(20, 15), new Size(500, 350));
-           
-            listagemClientes.Size = new Size(450,350);
+
+            listagemClientes.Size = new Size(450, 350);
 
 
 
@@ -47,13 +48,19 @@ namespace Views
             listagemClientes.AllowColumnReorder = true;
             listagemClientes.Sorting = SortOrder.Ascending;
 
-            ListViewItem item = new ListViewItem("1");
+            IEnumerable<Model.Cliente> Clientes = Controller.Cliente.ListarClientes();
+            foreach (Model.Cliente cliente in Clientes)
+            {
+                ListViewItem item = new ListViewItem(Convert.ToString(cliente.Id));
+                item.SubItems.Add(cliente.Nome);
+                item.SubItems.Add(String.Format("{0:d}",cliente.DtNascimento));
+                item.SubItems.Add(cliente.Cpf);
+                item.SubItems.Add(Convert.ToString(cliente.DiasParaRetorno));
+                listagemClientes.Items.Add(item);
 
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            listagemClientes.Items.Add(item);
+            }
+
+
 
 
 
