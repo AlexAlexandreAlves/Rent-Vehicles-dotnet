@@ -20,6 +20,10 @@ namespace Views
 
         private MonthCalendar calendarioLocacao = new MonthCalendar();
 
+       // private LibsComboBox veicLeveCbBox = new LibsComboBox();
+
+       // private LibsComboBox veicPesaCbBox = new LibsComboBox();
+
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
         private Button btnCancelar = new Button();
@@ -70,6 +74,8 @@ namespace Views
             calendarioLocacao.SelectionRange = new SelectionRange(dtInicio, new DateTime(2021, 01, 01));
 
 
+
+
             //Visual Botão de confirmação
 
             //Criando botões
@@ -89,25 +95,17 @@ namespace Views
             pictureBox.Load("Images\\Logo_rent_vehicles.png");
             pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
-          /*/  barraprogress = new ProgressBar();
-            barraprogress = new LibsProgressBarView(new Point(20, 335), new Size(350, 20));
-            barraprogress.Value = 0;
-            barraprogress.Maximum = 50;
-            barraprogress.Step = 5;
-            barraprogress.Style = ProgressBarStyle.Continuous;/*/
-
+    
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
             this.Controls.Add(lblCliente);         //Chamando e adicionando os métodos acima 
             this.Controls.Add(cbCliente);
             this.Controls.Add(lblDataLocacao);
-            //this.Controls.Add(txtDataLocacao);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
             this.Controls.Add(calendarioLocacao);
 
-            //this.Controls.Add(barraprogress);
             this.Controls.Add(pictureBox);
 
         }

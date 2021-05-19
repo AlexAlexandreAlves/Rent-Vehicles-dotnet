@@ -32,6 +32,8 @@ namespace Controller
         }
 
         ///Passando a listagem de locações através do List
+        /// 
+        /// 
         public static IEnumerable<Model.Locacao> GetLocacoes()
         {
             return Model.Locacao.GetLocacoes();

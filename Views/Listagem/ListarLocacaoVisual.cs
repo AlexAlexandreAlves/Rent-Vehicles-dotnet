@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using System.Collections.Generic;
 
 
 namespace Views
@@ -33,26 +34,30 @@ namespace Views
 
             listagemLocacoes = new LibsListView(new Point(20, 15), new Size(500, 350));
 
-            listagemLocacoes.Size = new Size(250,380);
+            listagemLocacoes.Size = new Size(250, 380);
+
+            //IEnumerable<Model.Locacao> Locacoes = Controller.Locacao.ListarLocacao();
+            //foreach (Model.Locacao locacao in Locacoes)
+            //{
 
 
-            listagemLocacoes.Columns.Add("ID", -2, HorizontalAlignment.Left);
-            listagemLocacoes.Columns.Add("Nome", -2, HorizontalAlignment.Left);
-            listagemLocacoes.Columns.Add("Data da locação", -2, HorizontalAlignment.Left);
-            listagemLocacoes.FullRowSelect = true;
-            listagemLocacoes.GridLines = true;
-            listagemLocacoes.AllowColumnReorder = true;
-            listagemLocacoes.Sorting = SortOrder.Ascending;
+                listagemLocacoes.Columns.Add("ID", -2, HorizontalAlignment.Left);
+                listagemLocacoes.Columns.Add("Nome", -2, HorizontalAlignment.Left);
+                listagemLocacoes.Columns.Add("Data da locação", -2, HorizontalAlignment.Left);
+                listagemLocacoes.FullRowSelect = true;
+                listagemLocacoes.GridLines = true;
+                listagemLocacoes.AllowColumnReorder = true;
+                listagemLocacoes.Sorting = SortOrder.Ascending;
 
-            ListViewItem item = new ListViewItem("1");
+                ListViewItem item = new ListViewItem("1");
 
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            listagemLocacoes.Items.Add(item);
+                item.SubItems.Add("");
+                item.SubItems.Add("");
+                item.SubItems.Add("");
+                item.SubItems.Add("");
+                listagemLocacoes.Items.Add(item);
 
-
+           // }
 
 
 
