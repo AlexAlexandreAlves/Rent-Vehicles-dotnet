@@ -2,7 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace View
+namespace Views
 {
 
     public class LocacaoVisual : Form
@@ -19,11 +19,13 @@ namespace View
 
         private Button btnEncMenu = new Button();
 
+        private PictureBox pictureBox = new PictureBox();
+
         public LocacaoVisual()
         {
 
             this.Text = "Menu Locação";
-            this.BackColor = Color.LightYellow;
+            this.BackColor = Color.White;
 
 
 
@@ -35,21 +37,30 @@ namespace View
             btnListarLoc.Text = "Lista de Locações Cadastradas";
             btnListarLoc.Size = new Size(200, 30);
             btnListarLoc.Location = new Point(200, 100);
+            btnListarLoc.Click += new EventHandler(this.btnListarLocClick);
 
 
             btnAtlzLoc.Text = "Atualizar Locações Cadastradas";
             btnAtlzLoc.Size = new Size(200, 30);
             btnAtlzLoc.Location = new Point(200, 150);
+            btnAtlzLoc.Click += new EventHandler(this.btnAtualizarLocClick);
 
             btnRmvLoc.Text = "Remover Locação Cadastrada";
             btnRmvLoc.Size = new Size(200, 30);
             btnRmvLoc.Location = new Point(200, 200);
+            btnRmvLoc.Click += new EventHandler(this.btnRmvLocClick);
 
-            btnEncMenu.Text = "Encerrar Menu";
+            btnEncMenu.Text = "Voltar Menu Principal";
             btnEncMenu.Size = new Size(200, 30);
             btnEncMenu.Location = new Point(200, 300);
             btnEncMenu.Click += new EventHandler(this.btnEncMenuClick);
             btnEncMenu.BackColor = Color.White;
+
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(600,600);
+            pictureBox.Location = new Point(0,0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
 
 
@@ -60,23 +71,46 @@ namespace View
             this.Controls.Add(btnListarLoc);
             this.Controls.Add(btnAtlzLoc);
             this.Controls.Add(btnRmvLoc);
-
             this.Controls.Add(btnEncMenu);
-
+            
+            this.Controls.Add(pictureBox);
         }
 
        private void btnCadastrarLocClick(object sender, EventArgs e)
        {
-            CadastroLocacaoVisual cadastroLocacao = new CadastroLocacaoVisual();
-            cadastroLocacao.Show();
+           try{
+               CadLocacaoVisual cadastroLocacao = new CadLocacaoVisual();
+               cadastroLocacao.Show();
+           } catch (Exception error) {
+               MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           }
+            
         }
+
+           private void btnListarLocClick(object sender, EventArgs e)
+       {
+            ListarLocacaoVisual listarLocacao = new ListarLocacaoVisual();
+            listarLocacao.Show();
+        }
+          private void btnAtualizarLocClick(object sender, EventArgs e)
+       {
+            AtlzLocacaoVisual atualizarLocacao = new AtlzLocacaoVisual();
+            atualizarLocacao.Show();
+        }
+           private void btnRmvLocClick(object sender, EventArgs e)
+       {
+            DltLocacaoVisual deletarLocacao = new DltLocacaoVisual();
+            deletarLocacao.Show();
+        }
+
+
 
         private void btnEncMenuClick(object sender, EventArgs e)
         {  //Cria o Evento do botão (Click)
             DialogResult resultado = MessageBox.Show("Deseja Sair do Menu?", "Menu Principal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Até a próxima!");
+                MessageBox.Show("Retornando!");
             }
             else
             {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace View
+namespace Views
 {
     public class Locacao
     {
@@ -15,7 +15,7 @@ namespace View
             Console.WriteLine("Informe o Id do Cliente: ");
             string ClienteId = Console.ReadLine();
             Console.WriteLine("Informe a Data da Locação: ");
-            string DataLocacao = Console.ReadLine();
+            DateTime DataLocacao = Convert.ToDateTime(Console.ReadLine());
 
             Console.WriteLine("Foram locados veículos leves? [1] Sim");
             opt = Convert.ToInt32(Console.ReadLine());
@@ -23,6 +23,7 @@ namespace View
             {
                 do
                 {
+                    
                     Console.WriteLine("Informe o Id do Veículo Leve: ");
                     try
                     {

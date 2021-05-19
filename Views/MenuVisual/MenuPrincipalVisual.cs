@@ -2,7 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace View
+namespace Views
 {
 
     public class MenuPrincipalVisual : Form
@@ -18,11 +18,14 @@ namespace View
 
         private Button btnEncMenu = new Button();
 
+        private PictureBox pictureBox = new PictureBox();
+
+
         public MenuPrincipalVisual()
         {
 
             this.Text = "Menu Principal";
-            this.BackColor = Color.LightYellow;
+            this.BackColor = Color.White;
 
             btnCliente.Text = "Cliente";
             btnCliente.Size = new Size(200, 30);
@@ -54,6 +57,12 @@ namespace View
             btnEncMenu.Click += new EventHandler(this.btnEncMenuClick);
             btnEncMenu.BackColor = Color.White;
 
+            pictureBox = new PictureBox();
+            pictureBox.Size = new Size(600,370);
+            pictureBox.Location = new Point(0,0);
+            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
 
 
             this.Size = new Size(600, 380);
@@ -62,8 +71,11 @@ namespace View
             this.Controls.Add(btnLocacoes);
             this.Controls.Add(btnVeiculosLeves);
             this.Controls.Add(btnVeiculosPesados);
-
             this.Controls.Add(btnEncMenu);
+            
+            this.Controls.Add(pictureBox);
+
+            
 
         }
 

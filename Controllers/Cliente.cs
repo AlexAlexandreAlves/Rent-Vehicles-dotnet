@@ -10,7 +10,7 @@ namespace Controller
             string Nome,
             string DtNascimento,
             string Cpf,
-            string DiasParaRetorno)
+            decimal DiasParaRetorno)
         {
 
 

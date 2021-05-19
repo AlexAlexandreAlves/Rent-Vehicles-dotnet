@@ -1,6 +1,6 @@
 using System;
 
-namespace View
+namespace Views
 {
     /// <summary>
     /// Represents the Customer View
@@ -22,7 +22,7 @@ namespace View
             string DiasParaRetorno = Console.ReadLine();
             try
             {
-                Controller.Cliente.CriarCliente(Nome, DtNascimento, Cpf, DiasParaRetorno);
+                Controller.Cliente.CriarCliente(Nome, DtNascimento, Cpf, Convert.ToDecimal(DiasParaRetorno));
             }
             catch (Exception e)
             {
