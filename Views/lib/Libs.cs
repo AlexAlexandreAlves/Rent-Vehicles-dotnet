@@ -123,11 +123,17 @@ namespace Views
          public class LibsComboBox : ComboBox
         {
             public LibsComboBox(
-            Point Location,
-            Size Size)
+                Point Location,
+                Size Size,
+                string[] options
+            )
             {
                 this.Location = Location;
                 this.Size = Size;
+                foreach (string item in options)
+                {
+                    this.Items.Add(item);
+                }
             }
 
         }

@@ -3,16 +3,18 @@ using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
 using Controller;
+using System.Collections.Generic;
+
 namespace Views
 {
     public class CadLocacaoVisual : Form
     {
 
-        private Label lblNome = new Label();       //Label cria o "nome" para as caixas de texto
+        private Label lblCliente = new Label();       //Label cria o "nome" para as caixas de texto
 
         private Label lblDataLocacao = new Label();
 
-        private TextBox txtNome = new TextBox();   //TextBox cria caixas para inserção de texto
+        private LibsComboBox cbCliente;   //TextBox cria caixas para inserção de texto
 
         private MaskedTextBox txtDataLocacao = new MaskedTextBox();
 
@@ -37,8 +39,22 @@ namespace Views
             this.BackColor = Color.White;
 
 
-            lblNome = new LibsLabel("Nome do cliente:", new Point(20, 15), new Size(110, 40));
-            txtNome = new LibsTextBoX(new Point(20, 60), new Size(200, 80));
+            lblCliente = new LibsLabel("Cliente:", new Point(20, 15), new Size(110, 40));
+
+            IEnumerable<Model.Cliente> clientes;
+            try {
+                clientes = Controller.Cliente.ListarClientes();
+            } catch (Exception error) {
+                throw error;
+            }
+            
+            List<string> comboClientes = new List<string>();
+            foreach (Model.Cliente item in clientes)
+            {
+                comboClientes.Add($"{item.Id} - {item.Nome}");
+            }
+            string[] options = comboClientes.ToArray();
+            cbCliente = new LibsComboBox(new Point(20, 60), new Size(200, 80), options);
 
 
             //Visual Cadastrar data de locação 
@@ -48,7 +64,7 @@ namespace Views
 
             DateTime dtInicio = new DateTime(2021, 05, 11);
             calendarioLocacao = new LibsCalendarView(new Point(20, 150));
-            calendarioLocacao.MaxSelectionCount = 10;
+            calendarioLocacao.MaxSelectionCount = 1;
             calendarioLocacao.MinDate = new DateTime(2021, 01, 01);
             calendarioLocacao.MaxDate = new DateTime(2025, 01, 01);
             calendarioLocacao.SelectionRange = new SelectionRange(dtInicio, new DateTime(2021, 01, 01));
@@ -83,8 +99,8 @@ namespace Views
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
-            this.Controls.Add(lblNome);         //Chamando e adicionando os métodos acima 
-            this.Controls.Add(txtNome);
+            this.Controls.Add(lblCliente);         //Chamando e adicionando os métodos acima 
+            this.Controls.Add(cbCliente);
             this.Controls.Add(lblDataLocacao);
             //this.Controls.Add(txtDataLocacao);
             this.Controls.Add(btnConfirmar);
@@ -101,11 +117,20 @@ namespace Views
             DialogResult resultado = MessageBox.Show("Confirmar cadastro?", "Cadastro de Locação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
+                string comboValue = cbCliente.Text; // "1 - João"
+                int pos = comboValue.IndexOf("-"); // 2
+                //  01234567
+                // "1 - João"
+                string clienteId = comboValue.Substring(0, pos - 1); // "1 ".Trim() === "1"
+                List<Model.VeiculoLeve> veiculoLeves = new List<Model.VeiculoLeve>();
+                List<Model.VeiculoPesado> veiculoPesados = new List<Model.VeiculoPesado>();
                 Controller.Locacao.CriarLocacao(
-                    this.ClienteId,
-                    this.StringDataLocacao.Text
+                   clienteId,
+                   this.calendarioLocacao.SelectionRange.Start,
+                   veiculoLeves,
+                   veiculoPesados
                 );
-                MessageBox.Show("Locação cadastrado com sucesso!");
+                MessageBox.Show($"Locação cadastrado com sucesso para o Cliente: {clienteId}!");
             }
             else if (resultado == DialogResult.No)
             {

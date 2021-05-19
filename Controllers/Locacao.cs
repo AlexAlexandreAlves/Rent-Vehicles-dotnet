@@ -12,7 +12,7 @@ namespace Controller
     {
         public static Model.Locacao CriarLocacao(
             string ClienteId,
-            string StringDataLocacao,
+            DateTime DataLocacao,
             List<Model.VeiculoLeve> VeiculosLeves,
             List<Model.VeiculoPesado> VeiculosPesados
         )
@@ -22,17 +22,6 @@ namespace Controller
 
             ///No RentDate estamos trabalhando com a converção da entrada da data de locação para calcular os dias
             ///a partir da data de entrada que for inserida no terminal, utilizando o método DateTime.Now
-
-            DateTime DataLocacao;
-
-            try
-            {
-                DataLocacao = Convert.ToDateTime(StringDataLocacao);
-            }
-            catch
-            {
-                DataLocacao = DateTime.Now;
-            }
 
             if (DataLocacao > DateTime.Now)
             {

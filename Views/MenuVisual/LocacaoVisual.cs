@@ -78,8 +78,13 @@ namespace Views
 
        private void btnCadastrarLocClick(object sender, EventArgs e)
        {
-            CadLocacaoVisual cadastroLocacao = new CadLocacaoVisual();
-            cadastroLocacao.Show();
+           try{
+               CadLocacaoVisual cadastroLocacao = new CadLocacaoVisual();
+               cadastroLocacao.Show();
+           } catch (Exception error) {
+               MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           }
+            
         }
 
            private void btnListarLocClick(object sender, EventArgs e)

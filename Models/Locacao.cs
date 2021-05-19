@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Repository;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
@@ -9,7 +10,8 @@ namespace Model
     {
         public int Id { set; get; } // Identificador Único (ID)
         public int ClienteId { set; get; } // Identificador Único do Cliente
-        public Cliente Cliente { set; get; } // Cliente
+        [NotMapped]
+        public virtual Cliente Cliente { set; get; } // Cliente
         public DateTime DataLocacao { set; get; }
 
         public Locacao(){
