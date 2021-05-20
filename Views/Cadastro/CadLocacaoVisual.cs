@@ -20,9 +20,9 @@ namespace Views
 
         private MonthCalendar calendarioLocacao = new MonthCalendar();
 
-       // private LibsComboBox veicLeveCbBox = new LibsComboBox();
+        private LibsComboBox veiculoLeves;
 
-       // private LibsComboBox veicPesaCbBox = new LibsComboBox();
+        private LibsComboBox veiculoPesados;
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
@@ -46,12 +46,15 @@ namespace Views
             lblCliente = new LibsLabel("Cliente:", new Point(20, 15), new Size(110, 40));
 
             IEnumerable<Model.Cliente> clientes;
-            try {
+            try
+            {
                 clientes = Controller.Cliente.ListarClientes();
-            } catch (Exception error) {
+            }
+            catch (Exception error)
+            {
                 throw error;
             }
-            
+
             List<string> comboClientes = new List<string>();
             foreach (Model.Cliente item in clientes)
             {
@@ -72,6 +75,11 @@ namespace Views
             calendarioLocacao.MinDate = new DateTime(2021, 01, 01);
             calendarioLocacao.MaxDate = new DateTime(2025, 01, 01);
             calendarioLocacao.SelectionRange = new SelectionRange(dtInicio, new DateTime(2021, 01, 01));
+
+
+            veiculoLeves = new LibsComboBox(new Point(20, 180), new Size(200, 80), options);
+
+            veiculoPesados = new LibsComboBox(new Point(20, 200), new Size(200, 80), options);
 
 
 
@@ -95,7 +103,7 @@ namespace Views
             pictureBox.Load("Images\\Logo_rent_vehicles.png");
             pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
-    
+
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
@@ -105,6 +113,8 @@ namespace Views
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
             this.Controls.Add(calendarioLocacao);
+            this.Controls.Add(veiculoLeves);
+            this.Controls.Add(veiculoPesados);
 
             this.Controls.Add(pictureBox);
 
