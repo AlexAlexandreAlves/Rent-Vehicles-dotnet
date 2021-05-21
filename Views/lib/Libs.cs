@@ -109,7 +109,7 @@ namespace Views
 
         }
 
-          public class LibsTimePickerView : DateTimePicker
+        public class LibsTimePickerView : DateTimePicker
         {
             public LibsTimePickerView(
             Point Location,
@@ -120,7 +120,7 @@ namespace Views
             }
 
         }
-         public class LibsComboBox : ComboBox
+        public class LibsComboBox : ComboBox
         {
             public LibsComboBox(
                 Point Location,
@@ -136,6 +136,17 @@ namespace Views
                 }
             }
 
+        }
+        public class LibsCBBox : ComboBox
+        {
+            public LibsCBBox(
+                Point Location,
+                Size Size
+            )
+            {
+                this.Location = Location;
+                this.Size = Size;
+            }
         }
 
 

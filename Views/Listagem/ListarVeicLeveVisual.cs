@@ -2,7 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
-
+using System.Collections.Generic;
 
 namespace Views
 {
@@ -37,6 +37,8 @@ namespace Views
 
             
 
+             IEnumerable<Model.VeiculoLeve> veiculoLeves = Controller.VeiculoLeve.ListarVeicLeve();
+            foreach (Model.VeiculoLeve veiculoLeve in veiculoLeves){
 
             listagemVeicLeve.Columns.Add("ID", -2, HorizontalAlignment.Left);
             listagemVeicLeve.Columns.Add("Marca do Veiculo", -2, HorizontalAlignment.Left);
@@ -48,6 +50,8 @@ namespace Views
             listagemVeicLeve.GridLines = true;
             listagemVeicLeve.AllowColumnReorder = true;
             listagemVeicLeve.Sorting = SortOrder.Ascending;
+
+            }
 
             ListViewItem item = new ListViewItem("1");
 

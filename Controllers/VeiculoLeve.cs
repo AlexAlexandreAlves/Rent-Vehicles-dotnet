@@ -91,6 +91,12 @@ namespace Controller
             }
         }
 
+             public static IEnumerable<Model.VeiculoLeve> ListarVeicLeve()
+        {
+            return Model.VeiculoLeve.GetVeiculosLeves();
+        }
+
+
                //Remoção de clientes no banco de dados
 
             public static void RemoverVeiculosLeves(string StringId)

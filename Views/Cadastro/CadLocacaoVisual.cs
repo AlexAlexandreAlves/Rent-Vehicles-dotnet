@@ -22,11 +22,11 @@ namespace Views
 
         private Label lblveiculoLeves;
 
-        private LibsComboBox veiculoLeves;
+        private LibsCBBox veiculoLeves;
 
         private LibsLabel lblveiculoPesados;
 
-        private LibsComboBox veiculoPesados;
+        private LibsCBBox veiculoPesados;
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
@@ -90,10 +90,10 @@ namespace Views
 
             
             lblveiculoLeves = new LibsLabel("Veiculo Leve:", new Point(20, 340), new Size(110, 40));
-            veiculoLeves = new LibsComboBox(new Point(20, 400), new Size(200, 80), options);
+            veiculoLeves = new LibsCBBox(new Point(20, 400), new Size(200, 80));
 
             lblveiculoPesados = new LibsLabel("Veiculo Pesado:", new Point(20, 470), new Size(110, 40));
-            veiculoPesados = new LibsComboBox(new Point(20, 520), new Size(200, 80), options);
+            veiculoPesados = new LibsCBBox(new Point(20, 520), new Size(200, 80));
 
 
 
