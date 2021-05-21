@@ -36,15 +36,25 @@ namespace Views
         private GroupBox groupBox1 = new GroupBox();
 
         private PictureBox pictureBox = new PictureBox();
-    
 
 
-        public CadClienteVisual()
+
+
+        public CadClienteVisual(string id = "")
         {
-            //Visual Cadastrar Nome do cliente
 
-            this.Text = "Cadastro de Cliente";                      //Inserindo titulo da página
+            this.Text = "Cadastro de Cliente";
             this.BackColor = Color.White;
+
+           //if (!id.Trim ().Equals ("")) {
+              //  try {
+                  //  this.cliente = Controller.Cliente.GetCliente (id);
+               // } catch (Exception error) {
+                   // throw error;
+              //  }
+               
+           /* */
+
 
             this.AutoScroll = false;
             this.HorizontalScroll.Enabled = false;
@@ -81,9 +91,9 @@ namespace Views
             nmDiasDevolucao.Location = new Point(20, 360);
             nmDiasDevolucao.Size = new Size(50, 80);
             nmDiasDevolucao.Value = 0;
-            nmDiasDevolucao.Maximum  = 20;
-            nmDiasDevolucao.Minimum  = 1;
-          
+            nmDiasDevolucao.Maximum = 20;
+            nmDiasDevolucao.Minimum = 1;
+
 
             //cbDiasDevolucao.Items.AddRange(new object[] { "2", "4", "6", "8" });
 
@@ -106,21 +116,21 @@ namespace Views
             //Visual Botão de confirmação
             //Criando botões
 
-            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18,550), new Size(200,30));
+            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18, 550), new Size(200, 30));
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
-           
+
 
             //Criando botões
-            btnCancelar = new LibsButtons("Cancelar", new Point(230,550), new Size(200,30));
+            btnCancelar = new LibsButtons("Cancelar", new Point(230, 550), new Size(200, 30));
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
-           
+
 
             pictureBox = new PictureBox();
-            pictureBox.Size = new Size(600,600);
-            pictureBox.Location = new Point(0,0);
+            pictureBox.Size = new Size(600, 600);
+            pictureBox.Location = new Point(0, 0);
             pictureBox.Load("Images\\Logo_rent_vehicles.png");
             pictureBox.SizeMode = PictureBoxSizeMode.Normal;
-        
+
 
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
@@ -145,11 +155,11 @@ namespace Views
 
         }
 
-        private void btnConfirmarClick(object sender, EventArgs e)
+                private void btnConfirmarClick(object sender, EventArgs e)
         {  //Cria o Evento do botão (Click)
             DialogResult resultado = MessageBox.Show("Confirmar cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
-            {   
+            {
                 Controller.Cliente.CriarCliente(
                     this.txtNome.Text,
                     this.txtDataNascimento.Text,
@@ -171,7 +181,7 @@ namespace Views
 
         }
 
-        private void btnCancelarClick(object sender, EventArgs e)
+             private void btnCancelarClick(object sender, EventArgs e)
         {  //Cria o Evento do botão (Click)
             DialogResult resultado = MessageBox.Show("Deseja realmente cancelar o cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
@@ -187,3 +197,4 @@ namespace Views
         }
     }
 }
+

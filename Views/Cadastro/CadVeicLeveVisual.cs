@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using Controller;
 
 
 namespace Views
@@ -84,7 +85,7 @@ namespace Views
             anoVeiculoLeve = new LibsTimePickerView(new Point(20, 250), new Size(120, 120));
             // anoVeiculoLeve.Format = DateTimePickerFormat.Time;
             anoVeiculoLeve.Format = DateTimePickerFormat.Custom;
-            anoVeiculoLeve.CustomFormat = "dd/MM/yyyy";
+            anoVeiculoLeve.CustomFormat = "yyyy";
             anoVeiculoLeve.ShowCheckBox = true;
 
 
@@ -95,7 +96,7 @@ namespace Views
 
             lblPreco = new LibsLabel("Valor para locação:", new Point(20, 290), new Size(110, 40));
 
-            txtPreco = new LibsMaskedTextBox(new Point(20, 350), new Size(80, 80), "$9.999,00");
+            txtPreco = new LibsMaskedTextBox(new Point(20, 350), new Size(80, 80), "$9999.00");
 
 
             //Visual Cadastrar Restrições se obter alguma 
@@ -169,6 +170,15 @@ namespace Views
             DialogResult resultado = MessageBox.Show("Confirmar cadastro?", "Cadastro de Veiculos Leves", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
+
+                Controller.VeiculoLeve.CriarVeiculoLeve(
+                   this.txtMarca.Text,
+                   this.txtModelo.Text,
+                   this.anoVeiculoLeve.Value.Year.ToString(),
+                   this.txtPreco.Text.Substring(2),
+                   this.txtCor.Text
+                );
+               
                 MessageBox.Show("Veiculo cadastrado com sucesso!");
             }
             else if (resultado == DialogResult.No)

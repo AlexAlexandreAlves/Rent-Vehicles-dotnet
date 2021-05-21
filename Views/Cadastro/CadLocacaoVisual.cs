@@ -20,7 +20,11 @@ namespace Views
 
         private MonthCalendar calendarioLocacao = new MonthCalendar();
 
+        private Label lblveiculoLeves;
+
         private LibsComboBox veiculoLeves;
+
+        private LibsLabel lblveiculoPesados;
 
         private LibsComboBox veiculoPesados;
 
@@ -36,7 +40,15 @@ namespace Views
 
 
         public CadLocacaoVisual()
+
         {
+
+            this.AutoScroll = false;
+            this.HorizontalScroll.Enabled = false;
+            this.HorizontalScroll.Visible = false;
+            this.HorizontalScroll.Maximum = 0;
+            this.AutoScroll = true;
+
             //Visual Cadastrar Nome de Locações
 
             this.Text = "Cadastro de Locações";                      //Inserindo titulo da página
@@ -76,10 +88,12 @@ namespace Views
             calendarioLocacao.MaxDate = new DateTime(2025, 01, 01);
             calendarioLocacao.SelectionRange = new SelectionRange(dtInicio, new DateTime(2021, 01, 01));
 
+            
+            lblveiculoLeves = new LibsLabel("Veiculo Leve:", new Point(20, 340), new Size(110, 40));
+            veiculoLeves = new LibsComboBox(new Point(20, 400), new Size(200, 80), options);
 
-            veiculoLeves = new LibsComboBox(new Point(20, 180), new Size(200, 80), options);
-
-            veiculoPesados = new LibsComboBox(new Point(20, 200), new Size(200, 80), options);
+            lblveiculoPesados = new LibsLabel("Veiculo Pesado:", new Point(20, 470), new Size(110, 40));
+            veiculoPesados = new LibsComboBox(new Point(20, 520), new Size(200, 80), options);
 
 
 
@@ -88,12 +102,12 @@ namespace Views
 
             //Criando botões
 
-            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18, 350), new Size(200, 30));
+            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18, 570), new Size(200, 30));
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
             btnConfirmar.BackColor = Color.White;
 
             //Criando botões
-            btnCancelar = new LibsButtons("Cancelar", new Point(230, 350), new Size(200, 30));
+            btnCancelar = new LibsButtons("Cancelar", new Point(230, 570), new Size(200, 30));
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
 
@@ -110,11 +124,13 @@ namespace Views
             this.Controls.Add(lblCliente);         //Chamando e adicionando os métodos acima 
             this.Controls.Add(cbCliente);
             this.Controls.Add(lblDataLocacao);
+            this.Controls.Add(calendarioLocacao);
+            this.Controls.Add(lblveiculoLeves);
+            this.Controls.Add(veiculoLeves);
+            this.Controls.Add(lblveiculoPesados);
+            this.Controls.Add(veiculoPesados);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
-            this.Controls.Add(calendarioLocacao);
-            this.Controls.Add(veiculoLeves);
-            this.Controls.Add(veiculoPesados);
 
             this.Controls.Add(pictureBox);
 
