@@ -90,22 +90,22 @@ namespace Views
             
            lblveiculoLeves = new LibsLabel("Veiculo Leve:", new Point(20, 340), new Size(110, 40));
            
-            IEnumerable<Model.VeiculoLeve> veiculoLeves;
+            IEnumerable<Model.VeiculoLeve> veiculosLeves;
             try
             {
-                veiculoLeves = Controller.VeiculoLeve.ListarVeicLeve();
+                veiculosLeves = Controller.VeiculoLeve.ListarVeicLeve();
             }
             catch (Exception error)
             {
                 throw error;
             }
 
-            List<string> cbVeicLeve = new List<string>();
-            foreach (Model.VeiculoLeve item in veiculoLeves)
+            List<string> comboVeicLeve = new List<string>();
+            foreach (Model.VeiculoLeve item in veiculosLeves)
             {
-                cbVeicLeve.Add($"{item.Id} - {item.Modelo}");
+                comboVeicLeve.Add($"{item.Id} - {item.Modelo}");
             }
-            string[] opt = cbVeicLeve.ToArray();
+                string[] opt = comboVeicLeve.ToArray();
             
             cbVeiculoLeves = new LibsCBBox(new Point(20, 400), new Size(200, 80),opt);
 
@@ -116,7 +116,7 @@ namespace Views
 
             lblveiculoPesados = new LibsLabel("Veiculo Pesado:", new Point(20, 470), new Size(110, 40));
             
-            IEnumerable<Model.VeiculoPesado> veiculoPesados;
+           IEnumerable<Model.VeiculoPesado> veiculoPesados;
             try
             {
                 veiculoPesados = Controller.VeiculoPesado.ListarVeicPesado();
@@ -126,15 +126,14 @@ namespace Views
                 throw error;
             }
 
-            List<string> cbVeiculosPesados = new List<string>();
+            List<string> comboVeicPesado = new List<string>();
             foreach (Model.VeiculoPesado item in veiculoPesados)
             {
-                cbVeiculosPesados.Add($"{item.Id} - {item.Modelo}");
+                comboVeicPesado.Add($"{item.Id} - {item.Modelo}");
             }
-           string[] opt1 = cbVeiculosPesados.ToArray();
+            string[] opt1 = comboVeicPesado.ToArray();
             
-            
-            cbVeiculoPesados = new LibsCBBox(new Point(20, 520), new Size(200, 80), opt);
+            cbVeiculoPesados = new LibsCBBox(new Point(20, 520), new Size(200, 80), opt1);
 
 
 

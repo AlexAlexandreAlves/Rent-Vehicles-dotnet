@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
 using System.Collections.Generic;
-
 namespace Views
 {
     public class DltVeicPesVisual : Form
@@ -32,7 +31,7 @@ namespace Views
             this.BackColor = Color.White;
 
 
-            lblId = new LibsLabel("Informe o Id do veiculo pesado que deseja deletar:", new Point(20, 30), new Size(250, 30));
+            lblId = new LibsLabel("Informe o Id e o Modelo do veiculo que deseja deletar:", new Point(20, 30), new Size(250, 30));
             
             IEnumerable<Model.VeiculoPesado> veiculosPesados;
             try

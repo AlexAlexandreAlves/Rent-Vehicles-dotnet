@@ -32,7 +32,7 @@ namespace Views
             this.BackColor = Color.White;
 
 
-            lblId = new LibsLabel("Informe o Id do veiculo Pesado que deseja atualizar:", new Point(20, 30), new Size(250, 30));
+            lblId = new LibsLabel("Informe o Id e o Modelo do veiculo que deseja deletar:", new Point(20, 30), new Size(250, 30));
             string[] options = { };
             
             IEnumerable<Model.VeiculoPesado> veiculoPesados;
