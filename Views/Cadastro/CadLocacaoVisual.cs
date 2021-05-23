@@ -22,11 +22,11 @@ namespace Views
 
         private Label lblveiculoLeves;
 
-        private LibsCBBox veiculoLeves;
+        private LibsCBBox cbVeiculoLeves;
 
         private LibsLabel lblveiculoPesados;
 
-        private LibsCBBox veiculoPesados;
+        private LibsCBBox cbVeiculoPesados;
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
@@ -89,11 +89,52 @@ namespace Views
             calendarioLocacao.SelectionRange = new SelectionRange(dtInicio, new DateTime(2021, 01, 01));
 
             
-            lblveiculoLeves = new LibsLabel("Veiculo Leve:", new Point(20, 340), new Size(110, 40));
-            veiculoLeves = new LibsCBBox(new Point(20, 400), new Size(200, 80));
+           lblveiculoLeves = new LibsLabel("Veiculo Leve:", new Point(20, 340), new Size(110, 40));
+           
+            IEnumerable<Model.VeiculoLeve> veiculoLeves;
+            try
+            {
+                veiculoLeves = Controller.VeiculoLeve.ListarVeicLeve();
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+            List<string> cbVeicLeve = new List<string>();
+            foreach (Model.VeiculoLeve item in veiculoLeves)
+            {
+                cbVeicLeve.Add($"{item.Id} - {item.Modelo}");
+            }
+            string[] opt1 = cbVeicLeve.ToArray();
+            cbVeiculoLeves = new LibsCBBox(new Point(20, 400), new Size(200, 80));
+
+            
+        
+            
+
 
             lblveiculoPesados = new LibsLabel("Veiculo Pesado:", new Point(20, 470), new Size(110, 40));
-            veiculoPesados = new LibsCBBox(new Point(20, 520), new Size(200, 80));
+            
+            IEnumerable<Model.VeiculoPesado> veiculoPesados;
+            try
+            {
+                veiculoPesados = Controller.VeiculoPesado.ListarVeicPesado();
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+            List<string> cbVeiculosPesados = new List<string>();
+            foreach (Model.VeiculoPesado item in veiculoPesados)
+            {
+                cbVeiculosPesados.Add($"{item.Id} - {item.Modelo}");
+            }
+           string[] opt2 = cbVeiculosPesados.ToArray();
+            
+            
+            cbVeiculoPesados = new LibsCBBox(new Point(20, 520), new Size(200, 80));
 
 
 
@@ -126,9 +167,9 @@ namespace Views
             this.Controls.Add(lblDataLocacao);
             this.Controls.Add(calendarioLocacao);
             this.Controls.Add(lblveiculoLeves);
-            this.Controls.Add(veiculoLeves);
+            this.Controls.Add(cbVeiculoLeves);
             this.Controls.Add(lblveiculoPesados);
-            this.Controls.Add(veiculoPesados);
+            this.Controls.Add(cbVeiculoPesados);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
 

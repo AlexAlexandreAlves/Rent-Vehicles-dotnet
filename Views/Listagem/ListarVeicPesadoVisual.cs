@@ -53,13 +53,21 @@ namespace Views
 
             }
 
-            ListViewItem item = new ListViewItem("1");
+            
+            IEnumerable<Model.VeiculoPesado> veiculoPesados1 = Controller.VeiculoPesado.ListarVeicPesado();
+            foreach (Model.VeiculoPesado veiculoPesado in veiculoPesados1){
+           
+            ListViewItem item = new ListViewItem(Convert.ToString(veiculoPesado.Id));
+               
+                item.SubItems.Add(veiculoPesado.Marca);
+                item.SubItems.Add(veiculoPesado.Modelo);
+                item.SubItems.Add(String.Format("{0:d}",veiculoPesado.Ano));
+                item.SubItems.Add(Convert.ToString(veiculoPesado.Preco));
+                item.SubItems.Add(veiculoPesado.Restricoes);
+                
+                listagemVeicPesado.Items.Add(item);
 
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            listagemVeicPesado.Items.Add(item);
+            }
 
 
 

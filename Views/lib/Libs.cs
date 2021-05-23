@@ -142,10 +142,12 @@ namespace Views
             public LibsCBBox(
                 Point Location,
                 Size Size
+
             )
             {
                 this.Location = Location;
                 this.Size = Size;
+
             }
         }
 

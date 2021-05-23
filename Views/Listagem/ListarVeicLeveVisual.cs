@@ -37,8 +37,7 @@ namespace Views
 
             
 
-             IEnumerable<Model.VeiculoLeve> veiculoLeves = Controller.VeiculoLeve.ListarVeicLeve();
-            foreach (Model.VeiculoLeve veiculoLeve in veiculoLeves){
+           
 
             listagemVeicLeve.Columns.Add("ID", -2, HorizontalAlignment.Left);
             listagemVeicLeve.Columns.Add("Marca do Veiculo", -2, HorizontalAlignment.Left);
@@ -51,16 +50,21 @@ namespace Views
             listagemVeicLeve.AllowColumnReorder = true;
             listagemVeicLeve.Sorting = SortOrder.Ascending;
 
+            
+
+            IEnumerable<Model.VeiculoLeve> veiculoLeves1 = Controller.VeiculoLeve.ListarVeicLeve();
+            foreach (Model.VeiculoLeve veiculoLeve in veiculoLeves1){
+           
+            ListViewItem item = new ListViewItem(Convert.ToString(veiculoLeve.Id));
+
+                item.SubItems.Add(veiculoLeve.Marca);
+                item.SubItems.Add(veiculoLeve.Modelo);
+                item.SubItems.Add(String.Format("{0:d}",veiculoLeve.Ano));
+                item.SubItems.Add(Convert.ToString(veiculoLeve.Preco));
+                item.SubItems.Add(veiculoLeve.Cor);
+                
+                listagemVeicLeve.Items.Add(item);
             }
-
-            ListViewItem item = new ListViewItem("1");
-
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            listagemVeicLeve.Items.Add(item);
-
 
 
 
