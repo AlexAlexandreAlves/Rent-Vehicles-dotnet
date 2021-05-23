@@ -2,6 +2,8 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using System.Collections.Generic;
+
 namespace Views
 {
     public class DltLocacaoVisual : Form
@@ -9,7 +11,7 @@ namespace Views
 
         private Label lblId = new Label();       //Label cria o "nome" para as caixas de texto
 
-        private TextBox txtId = new TextBox();   //TextBox cria caixas para inserção de texto
+        private LibsCBBox cbBox ;   //TextBox cria caixas para inserção de texto
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
@@ -31,8 +33,26 @@ namespace Views
 
 
             lblId = new LibsLabel("Informe o Id da Locação que deseja deletar:", new Point(20, 30), new Size(250, 30));
-            txtId = new LibsTextBoX(new Point(20, 80), new Size(100, 80));
+            
+            IEnumerable<Model.Locacao> locacoes;
+            try
+            {
+                locacoes = Controller.Locacao.ListarLocacoes();
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
 
+            List<string> comboLocaoces = new List<string>();
+            foreach (Model.Locacao item in locacoes)
+            {
+                comboLocaoces.Add($"{item.Id} - {item.Cliente}");
+            }
+                string[] opt = comboLocaoces.ToArray();
+            
+            
+            cbBox = new LibsCBBox(new Point(20,70), new Size(100,80), opt);
 
             //Criando botões
 
@@ -56,7 +76,7 @@ namespace Views
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
             this.Controls.Add(lblId);         //Chamando e adicionando os métodos acima 
-            this.Controls.Add(txtId);
+            this.Controls.Add(cbBox);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
         

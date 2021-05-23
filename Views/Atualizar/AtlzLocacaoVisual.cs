@@ -2,6 +2,8 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using System.Collections.Generic;
+
 namespace Views
 {
     public class AtlzLocacaoVisual : Form
@@ -32,7 +34,27 @@ namespace Views
 
             lblId = new LibsLabel("Informe o Id da locação que deseja atualizar:", new Point(20, 30), new Size(250, 30));
             string[] options = { };
-            cbBox = new LibsComboBox(new Point(20,70), new Size(250,100), options);
+
+            IEnumerable<Model.Locacao> locacoes;
+            try
+            {
+                locacoes = Controller.Locacao.ListarLocacoes();
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+            List<string> comboLocacao = new List<string>();
+            foreach (Model.Locacao item in locacoes)
+            {
+                comboLocacao.Add($"{item.Id} - {item.Cliente}");
+            }
+            string[] opt = comboLocacao.ToArray();
+
+
+
+            cbBox = new LibsComboBox(new Point(20, 70), new Size(100, 80), options);
 
 
             //Criando botões
@@ -52,7 +74,7 @@ namespace Views
             pictureBox.Load("Images\\Logo_rent_vehicles.png");
             pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
-    
+
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
@@ -60,7 +82,7 @@ namespace Views
             this.Controls.Add(cbBox);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
-        
+
             this.Controls.Add(pictureBox);
 
         }

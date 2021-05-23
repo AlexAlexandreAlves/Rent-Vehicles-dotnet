@@ -2,6 +2,8 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using System.Collections.Generic;
+
 namespace Views
 {
     public class AtlzVeiculoPesadoVisual : Form
@@ -9,7 +11,7 @@ namespace Views
 
         private Label lblId = new Label();       //Label cria o "nome" para as caixas de texto
 
-        private ComboBox cbBox = new ComboBox();  //TextBox cria caixas para inserção de texto
+        private LibsCBBox cbBox;  //TextBox cria caixas para inserção de texto
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
@@ -30,9 +32,27 @@ namespace Views
             this.BackColor = Color.White;
 
 
-            lblId = new LibsLabel("Informe o Id do veiculo Pesado que deseja atualizar:", new Point(20, 30), new Size(250, 30));
+            lblId = new LibsLabel("Informe o Id e o Modelo do veiculo que deseja deletar:", new Point(20, 30), new Size(250, 30));
             string[] options = { };
-            cbBox = new LibsComboBox(new Point(20,70), new Size(250,100), options);
+            
+            IEnumerable<Model.VeiculoPesado> veiculoPesados;
+            try
+            {
+                veiculoPesados = Controller.VeiculoPesado.ListarVeicPesado();
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+            List<string> comboVeicPesado = new List<string>();
+            foreach (Model.VeiculoPesado item in veiculoPesados)
+            {
+                comboVeicPesado.Add($"{item.Id} - {item.Modelo}");
+            }
+            string[] opt = comboVeicPesado.ToArray();
+           
+            cbBox = new LibsCBBox(new Point(20,70), new Size(100,80),opt);
 
             //Criando botões
 

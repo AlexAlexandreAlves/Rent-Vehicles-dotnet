@@ -2,6 +2,8 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using System.Collections.Generic;
+
 namespace Views
 {
     public class AtlzClienteVisual : Form
@@ -32,9 +34,26 @@ namespace Views
             this.BackColor = Color.White;
 
 
-            lblId = new LibsLabel("Informe o Id do cliente que deseja atualizar:", new Point(20, 30), new Size(250, 30));
-            string[] options = { };
-            cbBox = new LibsComboBox(new Point(20,70), new Size(250,100), options);
+            lblId = new LibsLabel("Informe o Id do cliente que deseja atualizar:", new Point(20, 30), new Size(150, 30));
+
+            IEnumerable<Model.Cliente> clientes;
+            try
+            {
+                clientes = Controller.Cliente.ListarClientes();
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+            List<string> comboClientes = new List<string>();
+            foreach (Model.Cliente item in clientes)
+            {
+                comboClientes.Add($"{item.Id} - {item.Nome}");
+            }
+            string[] options = comboClientes.ToArray();
+
+            cbBox = new LibsComboBox(new Point(20, 70), new Size(150, 80), options);
 
 
 

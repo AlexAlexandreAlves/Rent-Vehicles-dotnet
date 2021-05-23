@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using System.Collections.Generic;
 namespace Views
 {
     public class DltVeicPesVisual : Form
@@ -9,7 +10,7 @@ namespace Views
 
         private Label lblId = new Label();       //Label cria o "nome" para as caixas de texto
 
-        private TextBox txtId = new TextBox();   //TextBox cria caixas para inserção de texto
+        private LibsCBBox cbId;
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
@@ -30,8 +31,29 @@ namespace Views
             this.BackColor = Color.White;
 
 
-            lblId = new LibsLabel("Informe o Id do veiculo pesado que deseja deletar:", new Point(20, 30), new Size(250, 30));
-            txtId = new LibsTextBoX(new Point(20, 80), new Size(100, 80));
+            lblId = new LibsLabel("Informe o Id e o Modelo do veiculo que deseja deletar:", new Point(20, 30), new Size(250, 30));
+            
+            IEnumerable<Model.VeiculoPesado> veiculosPesados;
+            try
+            {
+                veiculosPesados = Controller.VeiculoPesado.ListarVeicPesado();
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+            List<string> comboVeicPesad = new List<string>();
+            foreach (Model.VeiculoPesado item in veiculosPesados)
+            {
+                comboVeicPesad.Add($"{item.Id} - {item.Modelo}");
+            }
+                string[] opt = comboVeicPesad.ToArray();
+            
+            
+            
+            
+            cbId = new LibsCBBox(new Point(20, 80), new Size(100, 80), opt);
 
 
             //Criando botões
@@ -56,7 +78,7 @@ namespace Views
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
             this.Controls.Add(lblId);         //Chamando e adicionando os métodos acima 
-            this.Controls.Add(txtId);
+            this.Controls.Add(cbId);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
         

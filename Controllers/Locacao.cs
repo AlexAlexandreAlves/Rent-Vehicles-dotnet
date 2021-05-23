@@ -74,6 +74,12 @@ namespace Controller
             }
         }
 
+             public static IEnumerable<Model.Locacao> ListarLocacoes()
+        {
+            return Model.Locacao.GetLocacoes();
+        }
+
+
          public static Model.Locacao GetLocacao(string Id)
         {
 

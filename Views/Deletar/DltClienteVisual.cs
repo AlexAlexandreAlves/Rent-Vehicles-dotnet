@@ -2,6 +2,8 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using System.Collections.Generic;
+
 namespace Views
 {
     public class DltClienteVisual : Form
@@ -9,7 +11,7 @@ namespace Views
 
         private Label lblId = new Label();       //Label cria o "nome" para as caixas de texto
 
-        private TextBox txtId = new TextBox();   //TextBox cria caixas para inserção de texto
+        private LibsComboBox cbId;   //TextBox cria caixas para inserção de texto
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
@@ -31,7 +33,25 @@ namespace Views
 
 
             lblId = new LibsLabel("Informe o Id do cliente que deseja deletar:", new Point(20, 30), new Size(250, 30));
-            txtId = new LibsTextBoX(new Point(20, 80), new Size(100, 80));
+
+            IEnumerable<Model.Cliente> clientes;
+            try
+            {
+                clientes = Controller.Cliente.ListarClientes();
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+            List<string> comboClientes = new List<string>();
+            foreach (Model.Cliente item in clientes)
+            {
+                comboClientes.Add($"{item.Id} - {item.Nome}");
+            }
+                string[] options = comboClientes.ToArray();
+
+            cbId = new LibsComboBox(new Point(20, 80), new Size(150,80), options);
 
 
             //Criando botões
@@ -56,7 +76,7 @@ namespace Views
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
             this.Controls.Add(lblId);         //Chamando e adicionando os métodos acima 
-            this.Controls.Add(txtId);
+            this.Controls.Add(cbId);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
 
@@ -82,6 +102,7 @@ namespace Views
 
                 MessageBox.Show("Remoção salva com sucesso!");
             }*/
+            
             } else if (resultado == DialogResult.No)
             {
                 MessageBox.Show("Remoção não concluído!");
