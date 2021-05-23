@@ -141,12 +141,17 @@ namespace Views
         {
             public LibsCBBox(
                 Point Location,
-                Size Size
+                Size Size,
+                string[] opt
 
             )
             {
                 this.Location = Location;
                 this.Size = Size;
+                foreach (string item in opt)
+                {
+                    this.Items.Add(item);
+                }
 
             }
         }

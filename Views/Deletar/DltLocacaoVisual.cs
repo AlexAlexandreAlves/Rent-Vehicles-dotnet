@@ -2,6 +2,8 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using System.Collections.Generic;
+
 namespace Views
 {
     public class DltLocacaoVisual : Form
@@ -31,7 +33,26 @@ namespace Views
 
 
             lblId = new LibsLabel("Informe o Id da Locação que deseja deletar:", new Point(20, 30), new Size(250, 30));
-            cbBox = new LibsCBBox(new Point(20,70), new Size(100,80));
+            
+            IEnumerable<Model.Locacao> locacoes;
+            try
+            {
+                locacoes = Controller.Locacao.ListarLocacoes();
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+            List<string> comboLocaoces = new List<string>();
+            foreach (Model.Locacao item in locacoes)
+            {
+                comboLocaoces.Add($"{item.Id} - {item.Cliente}");
+            }
+                string[] opt = comboLocaoces.ToArray();
+            
+            
+            cbBox = new LibsCBBox(new Point(20,70), new Size(100,80), opt);
 
             //Criando botões
 

@@ -2,7 +2,6 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
-using Controller;
 using System.Collections.Generic;
 
 namespace Views
@@ -106,8 +105,9 @@ namespace Views
             {
                 cbVeicLeve.Add($"{item.Id} - {item.Modelo}");
             }
-            string[] opt1 = cbVeicLeve.ToArray();
-            cbVeiculoLeves = new LibsCBBox(new Point(20, 400), new Size(200, 80));
+            string[] opt = cbVeicLeve.ToArray();
+            
+            cbVeiculoLeves = new LibsCBBox(new Point(20, 400), new Size(200, 80),opt);
 
             
         
@@ -131,11 +131,10 @@ namespace Views
             {
                 cbVeiculosPesados.Add($"{item.Id} - {item.Modelo}");
             }
-           string[] opt2 = cbVeiculosPesados.ToArray();
+           string[] opt1 = cbVeiculosPesados.ToArray();
             
             
-            cbVeiculoPesados = new LibsCBBox(new Point(20, 520), new Size(200, 80));
-
+            cbVeiculoPesados = new LibsCBBox(new Point(20, 520), new Size(200, 80), opt);
 
 
 

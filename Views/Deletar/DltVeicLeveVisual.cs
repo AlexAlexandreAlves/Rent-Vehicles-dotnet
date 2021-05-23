@@ -2,6 +2,8 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using System.Collections.Generic;
+
 namespace Views
 {
     public class DltVeicLeveVisual : Form
@@ -31,7 +33,27 @@ namespace Views
 
 
             lblId = new LibsLabel("Informe o Id do veiculo leve que deseja deletar:", new Point(20, 30), new Size(250, 30));
-            cbBox = new LibsCBBox(new Point(20,70), new Size(100,80));
+            
+            IEnumerable<Model.VeiculoLeve> veiculosLeves;
+            try
+            {
+                veiculosLeves = Controller.VeiculoLeve.ListarVeicLeve();
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+            List<string> comboVeicLeve = new List<string>();
+            foreach (Model.VeiculoLeve item in veiculosLeves)
+            {
+                comboVeicLeve.Add($"{item.Id} - {item.Modelo}");
+            }
+                string[] opt = comboVeicLeve.ToArray();
+            
+            
+            
+            cbBox = new LibsCBBox(new Point(20,70), new Size(100,80), opt);
 
 
             //Criando botões

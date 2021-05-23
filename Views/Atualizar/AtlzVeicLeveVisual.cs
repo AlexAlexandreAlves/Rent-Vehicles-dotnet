@@ -2,6 +2,8 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using System.Collections.Generic;
+           
 namespace Views
 {
     public class AtlzVeicLeveVisual : Form
@@ -32,7 +34,25 @@ namespace Views
 
             lblId = new LibsLabel("Informe o Id do veiculo Leve que deseja atualizar:", new Point(20, 30), new Size(250, 30));
             string[] options = { };
-            cbBox = new LibsCBBox(new Point(20,70), new Size(100,80));
+            
+            IEnumerable<Model.VeiculoLeve> veiculoLeves;
+            try
+            {
+                veiculoLeves = Controller.VeiculoLeve.ListarVeicLeve();
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+            List<string> comboVeicLeve = new List<string>();
+            foreach (Model.VeiculoLeve item in veiculoLeves)
+            {
+                comboVeicLeve.Add($"{item.Id} - {item.Modelo}");
+            }
+            string[] opt = comboVeicLeve.ToArray();
+
+            cbBox = new LibsCBBox(new Point(20,70), new Size(100,80), opt);
 
 
             //Criando botões
