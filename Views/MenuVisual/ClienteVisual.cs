@@ -104,6 +104,7 @@ namespace Views
             AtlzClienteVisual atualizarCliente = new AtlzClienteVisual();
             atualizarCliente.Show();
         }
+        
          private void btnRemoverClienteClick(object sender, EventArgs e)
         {
             DltClienteVisual deletarCliente = new DltClienteVisual();

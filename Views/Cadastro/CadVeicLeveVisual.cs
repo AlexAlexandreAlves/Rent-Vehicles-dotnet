@@ -65,10 +65,7 @@ namespace Views
 
 
             txtMarca = new LibsTextBoX(new Point(20, 60), new Size(200, 80));
-            //Trabalhando com a localização da caixa de texto
-            //Trabalhando com o tamanho da caixa de texto
-
-
+           
             //Visual Cadastrar Modelo
 
             lblModelo = new LibsLabel("Modelo do Veiculo:", new Point(20, 100), new Size(110, 40));
@@ -83,7 +80,6 @@ namespace Views
             //txtAno = new LibsMaskedTextBox(new Point(20, 230), new Size(80, 80), "00/00/0000");
 
             anoVeiculoLeve = new LibsTimePickerView(new Point(20, 250), new Size(120, 120));
-            // anoVeiculoLeve.Format = DateTimePickerFormat.Time;
             anoVeiculoLeve.Format = DateTimePickerFormat.Custom;
             anoVeiculoLeve.CustomFormat = "yyyy";
             anoVeiculoLeve.ShowCheckBox = true;

@@ -32,7 +32,7 @@ namespace Views
 
             lblId = new LibsLabel("Informe o Id da locação que deseja atualizar:", new Point(20, 30), new Size(250, 30));
             string[] options = { };
-            cbBox = new LibsComboBox(new Point(20,70), new Size(250,100), options);
+            cbBox = new LibsComboBox(new Point(20,70), new Size(100,80), options);
 
 
             //Criando botões
