@@ -20,9 +20,13 @@ namespace Views
 
         private MonthCalendar calendarioLocacao = new MonthCalendar();
 
-       // private LibsComboBox veicLeveCbBox = new LibsComboBox();
+        private Label lblveiculoLeves;
 
-       // private LibsComboBox veicPesaCbBox = new LibsComboBox();
+        private LibsCBBox cbVeiculoLeves;
+
+        private LibsLabel lblveiculoPesados;
+
+        private LibsCBBox cbVeiculoPesados;
 
         private Button btnConfirmar = new Button();  //Button cria os botões para ações de Click
 
@@ -36,7 +40,15 @@ namespace Views
 
 
         public CadLocacaoVisual()
+
         {
+
+            this.AutoScroll = false;
+            this.HorizontalScroll.Enabled = false;
+            this.HorizontalScroll.Visible = false;
+            this.HorizontalScroll.Maximum = 0;
+            this.AutoScroll = true;
+
             //Visual Cadastrar Nome de Locações
 
             this.Text = "Cadastro de Locações";                      //Inserindo titulo da página
@@ -46,12 +58,15 @@ namespace Views
             lblCliente = new LibsLabel("Cliente:", new Point(20, 15), new Size(110, 40));
 
             IEnumerable<Model.Cliente> clientes;
-            try {
+            try
+            {
                 clientes = Controller.Cliente.ListarClientes();
-            } catch (Exception error) {
+            }
+            catch (Exception error)
+            {
                 throw error;
             }
-            
+
             List<string> comboClientes = new List<string>();
             foreach (Model.Cliente item in clientes)
             {
@@ -73,6 +88,54 @@ namespace Views
             calendarioLocacao.MaxDate = new DateTime(2025, 01, 01);
             calendarioLocacao.SelectionRange = new SelectionRange(dtInicio, new DateTime(2021, 01, 01));
 
+            
+           lblveiculoLeves = new LibsLabel("Veiculo Leve:", new Point(20, 340), new Size(110, 40));
+           
+            IEnumerable<Model.VeiculoLeve> veiculoLeves;
+            try
+            {
+                veiculoLeves = Controller.VeiculoLeve.ListarVeicLeve();
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+            List<string> cbVeicLeve = new List<string>();
+            foreach (Model.VeiculoLeve item in veiculoLeves)
+            {
+                cbVeicLeve.Add($"{item.Id} - {item.Modelo}");
+            }
+            string[] opt1 = cbVeicLeve.ToArray();
+            cbVeiculoLeves = new LibsCBBox(new Point(20, 400), new Size(200, 80));
+
+            
+        
+            
+
+
+            lblveiculoPesados = new LibsLabel("Veiculo Pesado:", new Point(20, 470), new Size(110, 40));
+            
+            IEnumerable<Model.VeiculoPesado> veiculoPesados;
+            try
+            {
+                veiculoPesados = Controller.VeiculoPesado.ListarVeicPesado();
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+
+            List<string> cbVeiculosPesados = new List<string>();
+            foreach (Model.VeiculoPesado item in veiculoPesados)
+            {
+                cbVeiculosPesados.Add($"{item.Id} - {item.Modelo}");
+            }
+           string[] opt2 = cbVeiculosPesados.ToArray();
+            
+            
+            cbVeiculoPesados = new LibsCBBox(new Point(20, 520), new Size(200, 80));
+
 
 
 
@@ -80,12 +143,12 @@ namespace Views
 
             //Criando botões
 
-            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18, 350), new Size(200, 30));
+            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18, 570), new Size(200, 30));
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
             btnConfirmar.BackColor = Color.White;
 
             //Criando botões
-            btnCancelar = new LibsButtons("Cancelar", new Point(230, 350), new Size(200, 30));
+            btnCancelar = new LibsButtons("Cancelar", new Point(230, 570), new Size(200, 30));
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
 
@@ -95,16 +158,20 @@ namespace Views
             pictureBox.Load("Images\\Logo_rent_vehicles.png");
             pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
-    
+
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
             this.Controls.Add(lblCliente);         //Chamando e adicionando os métodos acima 
             this.Controls.Add(cbCliente);
             this.Controls.Add(lblDataLocacao);
+            this.Controls.Add(calendarioLocacao);
+            this.Controls.Add(lblveiculoLeves);
+            this.Controls.Add(cbVeiculoLeves);
+            this.Controls.Add(lblveiculoPesados);
+            this.Controls.Add(cbVeiculoPesados);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
-            this.Controls.Add(calendarioLocacao);
 
             this.Controls.Add(pictureBox);
 

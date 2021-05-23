@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
+using System.Collections.Generic;
 
 
 namespace Views
@@ -35,6 +36,10 @@ namespace Views
 
             listagemVeicPesado.Size = new Size(535,300);
 
+
+             IEnumerable<Model.VeiculoPesado> veiculoPesados = Controller.VeiculoPesado.ListarVeicPesado();
+            foreach (Model.VeiculoPesado veiculoPesado in veiculoPesados){
+
             listagemVeicPesado.Columns.Add("ID", -2, HorizontalAlignment.Left);
             listagemVeicPesado.Columns.Add("Marca do Veiculo", -2, HorizontalAlignment.Left);
             listagemVeicPesado.Columns.Add("Modelo do Veiculo", -2, HorizontalAlignment.Left);
@@ -46,13 +51,23 @@ namespace Views
             listagemVeicPesado.AllowColumnReorder = true;
             listagemVeicPesado.Sorting = SortOrder.Ascending;
 
-            ListViewItem item = new ListViewItem("1");
+            }
 
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            listagemVeicPesado.Items.Add(item);
+            
+            IEnumerable<Model.VeiculoPesado> veiculoPesados1 = Controller.VeiculoPesado.ListarVeicPesado();
+            foreach (Model.VeiculoPesado veiculoPesado in veiculoPesados1){
+           
+            ListViewItem item = new ListViewItem(Convert.ToString(veiculoPesado.Id));
+               
+                item.SubItems.Add(veiculoPesado.Marca);
+                item.SubItems.Add(veiculoPesado.Modelo);
+                item.SubItems.Add(String.Format("{0:d}",veiculoPesado.Ano));
+                item.SubItems.Add(Convert.ToString(veiculoPesado.Preco));
+                item.SubItems.Add(veiculoPesado.Restricoes);
+                
+                listagemVeicPesado.Items.Add(item);
+
+            }
 
 
 

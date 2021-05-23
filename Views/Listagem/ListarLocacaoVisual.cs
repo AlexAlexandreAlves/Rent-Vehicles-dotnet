@@ -39,7 +39,7 @@ namespace Views
             //IEnumerable<Model.Locacao> Locacoes = Controller.Locacao.ListarLocacao();
             //foreach (Model.Locacao locacao in Locacoes)
             //{
-
+                
 
                 listagemLocacoes.Columns.Add("ID", -2, HorizontalAlignment.Left);
                 listagemLocacoes.Columns.Add("Nome", -2, HorizontalAlignment.Left);
@@ -57,7 +57,7 @@ namespace Views
                 item.SubItems.Add("");
                 listagemLocacoes.Items.Add(item);
 
-           // }
+          //  }
 
 
 

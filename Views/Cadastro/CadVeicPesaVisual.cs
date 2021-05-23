@@ -78,12 +78,12 @@ namespace Views
 
             lblAno = new LibsLabel("Ano do Veiculo:", new Point(20, 200), new Size(90, 40));
 
-            txtAno = new LibsMaskedTextBox(new Point(20, 250), new Size(70, 80), "00/00/0000");
+            //txtAno = new LibsMaskedTextBox(new Point(20, 250), new Size(70, 80), "00/00/0000");
 
-            anoVeiculoPesado = new LibsTimePickerView(new Point(20, 285), new Size(120, 120));
+            anoVeiculoPesado = new LibsTimePickerView(new Point(20, 250), new Size(120, 120));
            // anoVeiculoLeve.Format = DateTimePickerFormat.Time;
             anoVeiculoPesado.Format = DateTimePickerFormat.Custom;
-            anoVeiculoPesado.CustomFormat = "dd/mm/yyyy";
+            anoVeiculoPesado.CustomFormat = "yyyy";
             anoVeiculoPesado.ShowCheckBox = true;
            // anoVeiculoLeve.ShowUpDown = true;
 
@@ -93,7 +93,7 @@ namespace Views
 
             lblPreco = new LibsLabel("Valor para locação:", new Point(20, 320), new Size(110, 40));
 
-            txtPreco = new LibsMaskedTextBox(new Point(20, 368), new Size(70, 80), "$9.999,00");
+            txtPreco = new LibsMaskedTextBox(new Point(20, 368), new Size(70, 80), "$9999.00");
 
 
 
@@ -146,7 +146,7 @@ namespace Views
             this.Controls.Add(lblModelo);
             this.Controls.Add(txtModelo);
             this.Controls.Add(lblAno);
-            this.Controls.Add(txtAno);
+           // this.Controls.Add(txtAno);
             this.Controls.Add(anoVeiculoPesado);
             this.Controls.Add(lblPreco);
             this.Controls.Add(txtPreco);
@@ -169,6 +169,15 @@ namespace Views
             DialogResult resultado = MessageBox.Show("Confirmar cadastro?", "Cadastro de Veiculos Pesados", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
+
+                Controller.VeiculoPesado.CriarVeiculoPesado(
+                   this.txtMarca.Text,
+                   this.txtModelo.Text,
+                   this.anoVeiculoPesado.Value.Year.ToString(),
+                   this.txtPreco.Text.Substring(2),
+                   this.txtRestricoes.Text
+                );
+               
                 MessageBox.Show("Veiculo cadastrado com sucesso!");
             }
             else if (resultado == DialogResult.No)

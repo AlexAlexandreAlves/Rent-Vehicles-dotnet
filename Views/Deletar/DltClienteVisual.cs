@@ -51,7 +51,7 @@ namespace Views
             pictureBox.Load("Images\\Logo_rent_vehicles.png");
             pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
-    
+
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
@@ -59,7 +59,7 @@ namespace Views
             this.Controls.Add(txtId);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
-        
+
             this.Controls.Add(pictureBox);
 
         }
@@ -69,9 +69,20 @@ namespace Views
             DialogResult resultado = MessageBox.Show("Deletar Cliente?", "Remover cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
+               /* *try
+                {
+                    Controller.Cliente.RemoverClientes(
+                    this.txtId.Text);
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
                 MessageBox.Show("Remoção salva com sucesso!");
-            }
-            else if (resultado == DialogResult.No)
+            }*/
+            } else if (resultado == DialogResult.No)
             {
                 MessageBox.Show("Remoção não concluído!");
             }
