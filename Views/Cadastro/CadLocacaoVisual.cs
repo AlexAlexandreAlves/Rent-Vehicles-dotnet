@@ -103,7 +103,7 @@ namespace Views
             List<string> comboVeicLeve = new List<string>();
             foreach (Model.VeiculoLeve item in veiculosLeves)
             {
-                comboVeicLeve.Add($"{item.Id} - {item.Modelo}");
+                comboVeicLeve.Add($"{item.Id} - {item.Marca} - {item.Modelo} - {item.Ano} - {item.Cor}");
             }
                 string[] opt = comboVeicLeve.ToArray();
             
@@ -111,9 +111,6 @@ namespace Views
 
             
         
-            
-
-
             lblveiculoPesados = new LibsLabel("Veiculo Pesado:", new Point(20, 470), new Size(110, 40));
             
            IEnumerable<Model.VeiculoPesado> veiculoPesados;
@@ -129,7 +126,7 @@ namespace Views
             List<string> comboVeicPesado = new List<string>();
             foreach (Model.VeiculoPesado item in veiculoPesados)
             {
-                comboVeicPesado.Add($"{item.Id} - {item.Modelo}");
+                comboVeicPesado.Add($"{item.Id} - {item.Marca} - {item.Modelo} - {item.Ano} - {item.Restricoes}");
             }
             string[] opt1 = comboVeicPesado.ToArray();
             
@@ -170,10 +167,11 @@ namespace Views
             this.Controls.Add(cbVeiculoPesados);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
-
+            
             this.Controls.Add(pictureBox);
 
         }
+
 
         private void btnConfirmarClick(object sender, EventArgs e)
         {  //Cria o Evento do botão (Click)
@@ -195,6 +193,31 @@ namespace Views
                    veiculoLeves,
                    veiculoPesados
                 );
+
+                /*if(this.veiculoLeves){
+                     
+                    string combo = this.cbVeiculoLeves.Text;
+                    int posi = comboValue.IndexOf("-");
+                    string strId = combo.Substring(0, posi - 1);
+                    int id = Convert.ToInt32(strId);
+                    Model.VeiculoLeve veiculo = Controller.VeiculoLeve.GetVeiculosLeves(strId);
+                    veiculoLeves.Add(veiculo);
+
+                }*/
+
+                
+               /* if(this.veiculoPesados){
+                     
+                    string combo = this.cbVeiculoPesados.Text;
+                    int posi = comboValue.IndexOf("-");
+                    string strId = combo.Substring(0, posi - 1);
+                    int id = Convert.ToInt32(strId);
+                    Model.VeiculoPesado veiculo = Controller.VeiculoPesado.GetVeiculoPesado(strId);
+                    veiculoPesados.Add(veiculo);
+
+                }*/
+
+
                 MessageBox.Show($"Locação cadastrado com sucesso para o Cliente: {clienteId}!");
             }
             else if (resultado == DialogResult.No)
