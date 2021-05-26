@@ -182,7 +182,7 @@ namespace Views
                     this.veiculoLeve.Marca  = this.txtMarca.Text;
                     this.veiculoLeve.Modelo = this.txtModelo.Text;
                     this.veiculoLeve.Ano    = this.anoVeiculoLeve.Value.Year;
-                    this.veiculoLeve.Preco  = Convert.ToDouble(this.txtPreco.Text);
+                   // this.veiculoLeve.Preco  = Convert.ToDouble(this.txtPreco.Text);
                     this.veiculoLeve.Cor    = this.txtCor.Text;
                     Controller.VeiculoLeve.AtualizarVeiculoLeve(this.veiculoLeve);
       
