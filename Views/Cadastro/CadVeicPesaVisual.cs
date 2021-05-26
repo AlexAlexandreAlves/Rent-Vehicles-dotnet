@@ -8,7 +8,7 @@ namespace Views
     public class CadVeicPesaVisual : Form
     {
 
-        private Model.VeiculoLeve veiculoLeve = new Model.VeiculoLeve();
+        private Model.VeiculoPesado veiculoPesado = new Model.VeiculoPesado();
         private Label lblMarca = new Label();       //Label cria o "nome" para as caixas de texto
 
         private Label lblModelo = new Label();
@@ -27,7 +27,7 @@ namespace Views
 
         private MaskedTextBox txtPreco = new MaskedTextBox();
 
-         private DateTimePicker anoVeiculoPesado = new DateTimePicker();
+        private DateTimePicker anoVeiculoPesado = new DateTimePicker();
 
         private TextBox txtRestricoes = new TextBox();
 
@@ -41,13 +41,13 @@ namespace Views
 
         private GroupBox groupBox1 = new GroupBox();
 
-         private PictureBox pictureBox = new PictureBox();
+        private PictureBox pictureBox = new PictureBox();
 
 
 
 
 
-        public CadVeicPesaVisual()
+        public CadVeicPesaVisual(string id = "")
         {
             //Visual Cadastrar Nome do Veiculo Pesado
 
@@ -62,7 +62,7 @@ namespace Views
 
             lblMarca = new LibsLabel("Marca do Veiculo:", new Point(20, 15), new Size(110, 40));
             //Inserindo nome do Veiculo
-            
+
 
             txtMarca.Location = new Point(20, 60);                       //Trabalhando com a localização da caixa de texto
             txtMarca.Size = new Size(200, 80);                               //Trabalhando com o tamanho da caixa de texto
@@ -82,13 +82,13 @@ namespace Views
             //txtAno = new LibsMaskedTextBox(new Point(20, 250), new Size(70, 80), "00/00/0000");
 
             anoVeiculoPesado = new LibsTimePickerView(new Point(20, 250), new Size(120, 120));
-           // anoVeiculoLeve.Format = DateTimePickerFormat.Time;
+            // anoVeiculoLeve.Format = DateTimePickerFormat.Time;
             anoVeiculoPesado.Format = DateTimePickerFormat.Custom;
             anoVeiculoPesado.CustomFormat = "yyyy";
             anoVeiculoPesado.ShowCheckBox = true;
-           // anoVeiculoLeve.ShowUpDown = true;
+            // anoVeiculoLeve.ShowUpDown = true;
 
-        
+
 
             //Visual Cadastrar Valor de locação
 
@@ -123,20 +123,33 @@ namespace Views
 
             //Visual Botão de confirmação
             //Criando botões
-            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18,630), new Size(200,30));
+            btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18, 630), new Size(200, 30));
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
             btnConfirmar.BackColor = Color.White;
 
             //Criando botões
-            btnCancelar = new LibsButtons("Cancelar", new Point(230,630), new Size(200,30));
+            btnCancelar = new LibsButtons("Cancelar", new Point(230, 630), new Size(200, 30));
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
             btnCancelar.BackColor = Color.White;
 
             pictureBox = new PictureBox();
-            pictureBox.Size = new Size(700,700);
-            pictureBox.Location = new Point(0,0);
+            pictureBox.Size = new Size(700, 700);
+            pictureBox.Location = new Point(0, 0);
             pictureBox.Load("Images\\Logo_rent_vehicles.png");
             pictureBox.SizeMode = PictureBoxSizeMode.Normal;
+
+            if (!id.Trim().Equals(""))
+            {
+                try
+                {
+                    this.veiculoPesado = Controller.VeiculoPesado.GetVeiculoPesado(id);
+                    this.txtMarca.Text = this.veiculoPesado.Marca;
+                }
+                catch (Exception error)
+                {
+                    throw error;
+                }
+            }
 
 
 
@@ -147,7 +160,7 @@ namespace Views
             this.Controls.Add(lblModelo);
             this.Controls.Add(txtModelo);
             this.Controls.Add(lblAno);
-           // this.Controls.Add(txtAno);
+            // this.Controls.Add(txtAno);
             this.Controls.Add(anoVeiculoPesado);
             this.Controls.Add(lblPreco);
             this.Controls.Add(txtPreco);
@@ -171,14 +184,28 @@ namespace Views
             if (resultado == DialogResult.Yes)
             {
 
-                Controller.VeiculoPesado.CriarVeiculoPesado(
-                   this.txtMarca.Text,
-                   this.txtModelo.Text,
-                   this.anoVeiculoPesado.Value.Year.ToString(),
-                   this.txtPreco.Text.Substring(2),
-                   this.txtRestricoes.Text
-                );
-               
+                if (veiculoPesado.Id > 0)
+                {
+
+                    this.veiculoPesado.Marca = this.txtMarca.Text;
+                    this.veiculoPesado.Modelo = this.txtModelo.Text;
+                    this.veiculoPesado.Ano = this.anoVeiculoPesado.Value.Year;
+                    // this.veiculoLeve.Preco  = Convert.ToDouble(this.txtPreco.Text);
+                    this.veiculoPesado.Restricoes = this.txtRestricoes.Text;
+                    Controller.VeiculoPesado.AtualizarVeiculoPesado(this.veiculoPesado);
+
+                }
+                else
+                {
+                    Controller.VeiculoPesado.CriarVeiculoPesado(
+                        this.txtMarca.Text,
+                        this.txtModelo.Text,
+                        this.anoVeiculoPesado.Value.Year.ToString(),
+                        this.txtPreco.Text.Substring(2),
+                        this.txtRestricoes.Text
+                    );
+                }
+
                 MessageBox.Show("Veiculo cadastrado com sucesso!");
             }
             else if (resultado == DialogResult.No)

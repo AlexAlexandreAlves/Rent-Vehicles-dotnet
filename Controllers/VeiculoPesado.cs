@@ -66,27 +66,13 @@ namespace Controller
         }
 
          public static Model.VeiculoPesado AtualizarVeiculoPesado(
-            Model.VeiculoPesado veiculoPesado,
-            string stringValor,
-            string stringCampo
+            Model.VeiculoPesado veiculoPesado
+            
         )
         {
-            int Campo = Convert.ToInt32(stringCampo);
-            switch (Campo)
-            {
-                case 1: //Nome;
 
-                return Model.VeiculoPesado.AtualizarVeiculoPesado(veiculoPesado, stringValor, stringCampo);
+                return Model.VeiculoPesado.AtualizarVeiculoPesado(veiculoPesado);
                    
-                  
-                case 2: //CPF;
-                    
-                     return Model.VeiculoPesado.AtualizarVeiculoPesado(veiculoPesado, stringValor, stringCampo);
-                    
-                    default:
-                    throw new Exception("Operação inválida");
-                   
-            }
         }
 
             public static IEnumerable<Model.VeiculoPesado> ListarVeicPesado()

@@ -76,23 +76,11 @@ namespace Model
 
         
         public static VeiculoPesado AtualizarVeiculoPesado(
-          VeiculoPesado veiculoPesado,
-          string stringValor,
-          string stringCampo
+          VeiculoPesado veiculoPesado
+        
       )
         {
-            int Campo = Convert.ToInt32(stringCampo);
-            switch (Campo)
-            {
-                case 1:
-                   veiculoPesado.Marca = stringValor;
-                    break;
-                case 2:
-                   veiculoPesado.Modelo = stringValor;
-                    break;
-
-
-            }
+          
             Context db = new Context();
             db.VeiculosPesados.Update(veiculoPesado);
             db.SaveChanges();
