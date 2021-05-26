@@ -89,19 +89,23 @@ namespace Views
             DialogResult resultado = MessageBox.Show("Deletar Cliente?", "Remover cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-               /* *try
+               try
                 {
-                    Controller.Cliente.RemoverClientes(
-                    this.txtId.Text);
+                    string comboValue = this.cbId.Text; // "1 - João"
+                    int pos = comboValue.IndexOf("-"); // 2
+                    //  01234567
+                    // "1 - João"
+                    string veicLeveId = comboValue.Substring(0, pos - 1); // "1 ".Trim() === "1"
+                    Controller.Cliente.RemoverClientes(veicLeveId);
 
                 }
-                catch (Exception e)
+                catch (Exception error)
                 {
-                    Console.WriteLine(e.Message);
+                    Console.WriteLine("ErroID" + error.Message);
                 }
 
                 MessageBox.Show("Remoção salva com sucesso!");
-            }*/
+          
             
             } else if (resultado == DialogResult.No)
             {

@@ -9,7 +9,8 @@ namespace Views
 {
     public class CadVeicLeveVisual : Form
     {
-
+        
+        private Model.VeiculoLeve veiculoLeve = new Model.VeiculoLeve();
         private Label lblMarca = new Label();       //Label cria o "nome" para as caixas de texto
 
         private Label lblModelo = new Label();
@@ -46,7 +47,7 @@ namespace Views
 
 
 
-        public CadVeicLeveVisual()
+        public CadVeicLeveVisual(string id = "")
         {
             //Visual Cadastrar Nome do Veiculo Leve
 
@@ -84,8 +85,6 @@ namespace Views
             anoVeiculoLeve.CustomFormat = "yyyy";
             anoVeiculoLeve.ShowCheckBox = true;
 
-
-            // anoVeiculoLeve.ShowUpDown = true;
 
 
             //Visual Cadastrar Valor de locação
@@ -134,6 +133,16 @@ namespace Views
             pictureBox.Load("Images\\Logo_rent_vehicles.png");
             pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
+            
+            if (!id.Trim ().Equals ("")) {
+                try {
+                    this.veiculoLeve = Controller.VeiculoLeve.GetVeiculosLeves (id);
+                    this.txtMarca.Text = this.veiculoLeve.Marca;
+                } catch (Exception error) {
+                    throw error;
+                }
+           }
+
 
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
@@ -143,7 +152,6 @@ namespace Views
             this.Controls.Add(lblModelo);
             this.Controls.Add(txtModelo);
             this.Controls.Add(lblAno);
-            // this.Controls.Add(txtAno);
             this.Controls.Add(anoVeiculoLeve);
             this.Controls.Add(lblPreco);
             this.Controls.Add(txtPreco);
@@ -159,6 +167,9 @@ namespace Views
 
             this.Controls.Add(pictureBox);
 
+
+            
+
         }
 
         private void btnConfirmarClick(object sender, EventArgs e)
@@ -166,14 +177,25 @@ namespace Views
             DialogResult resultado = MessageBox.Show("Confirmar cadastro?", "Cadastro de Veiculos Leves", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
+                if(veiculoLeve.Id > 0){
 
-                Controller.VeiculoLeve.CriarVeiculoLeve(
-                   this.txtMarca.Text,
-                   this.txtModelo.Text,
-                   this.anoVeiculoLeve.Value.Year.ToString(),
-                   this.txtPreco.Text.Substring(2),
-                   this.txtCor.Text
-                );
+                    this.veiculoLeve.Marca  = this.txtMarca.Text;
+                    this.veiculoLeve.Modelo = this.txtModelo.Text;
+                    this.veiculoLeve.Ano    = this.anoVeiculoLeve.Value.Year;
+                    this.veiculoLeve.Preco  = Convert.ToDouble(this.txtPreco.Text);
+                    this.veiculoLeve.Cor    = this.txtCor.Text;
+                    Controller.VeiculoLeve.AtualizarVeiculoLeve(this.veiculoLeve);
+      
+                }else{
+                    Controller.VeiculoLeve.CriarVeiculoLeve(
+                        this.txtMarca.Text,
+                        this.txtModelo.Text,
+                        this.anoVeiculoLeve.Value.Year.ToString(),
+                        this.txtPreco.Text.Substring(2),
+                        this.txtCor.Text
+                    );
+                }
+               
                
                 MessageBox.Show("Veiculo cadastrado com sucesso!");
             }

@@ -91,6 +91,23 @@ namespace Views
             DialogResult resultado = MessageBox.Show("Deletar Veiculo?", "Remover Veiculo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
+                    try
+                {
+                    string comboValue = this.cbId.Text; // "1 - João"
+                    int pos = comboValue.IndexOf("-"); // 2
+                    //  01234567
+                    // "1 - João"
+                    string veicPesId = comboValue.Substring(0, pos - 1); // "1 ".Trim() === "1"
+                    Controller.VeiculoPesado.RemoverVeiculosPesados(veicPesId);
+
+                }
+                catch (Exception error)
+                {
+                    Console.WriteLine("ErroID" + error.Message);
+                }
+
+
+
                 MessageBox.Show("Remoção salva com sucesso!");
             }
             else if (resultado == DialogResult.No)

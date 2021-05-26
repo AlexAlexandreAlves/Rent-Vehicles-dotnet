@@ -11,7 +11,8 @@ namespace Model
         public int Id { set; get; }
         public string Cor { set; get; }
 
-        public VeiculoLeve() : base(){
+        public VeiculoLeve() : base()
+        {
 
         }
 
@@ -27,8 +28,8 @@ namespace Model
             this.Cor = Cor;
 
 
-           db.VeiculosLeves.Add(this);
-           db.SaveChanges();
+            db.VeiculosLeves.Add(this);
+            db.SaveChanges();
         }
 
 
@@ -68,28 +69,16 @@ namespace Model
         }
         public static VeiculoLeve GetVeiculoLeve(int Id)
         {
-            Context db = new Context();   
+            Context db = new Context();
             return (from VeiculoLeve in db.VeiculosLeves where VeiculoLeve.Id == Id select VeiculoLeve).First();
         }
 
         public static VeiculoLeve AtualizarVeiculoLeve(
-          VeiculoLeve veiculoLeve,
-          string stringValor,
-          string stringCampo
+          VeiculoLeve veiculoLeve
+
       )
         {
-            int Campo = Convert.ToInt32(stringCampo);
-            switch (Campo)
-            {
-                case 1:
-                   veiculoLeve.Marca = stringValor;
-                    break;
-                case 2:
-                   veiculoLeve.Modelo = stringValor;
-                    break;
 
-
-            }
             Context db = new Context();
             db.VeiculosLeves.Update(veiculoLeve);
             db.SaveChanges();
@@ -101,7 +90,8 @@ namespace Model
         //Remoção de clientes no banco de dados
 
 
-        public static void RemoverVeiculosLeves(int Id) {
+        public static void RemoverVeiculosLeves(int Id)
+        {
             VeiculoLeve veiculoLeve = GetVeiculoLeve(Id);
             Context db = new Context();
             db.VeiculosLeves.Remove(veiculoLeve);

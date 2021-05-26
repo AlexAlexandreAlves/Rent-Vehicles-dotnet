@@ -8,6 +8,7 @@ namespace Views
     public class CadVeicPesaVisual : Form
     {
 
+        private Model.VeiculoLeve veiculoLeve = new Model.VeiculoLeve();
         private Label lblMarca = new Label();       //Label cria o "nome" para as caixas de texto
 
         private Label lblModelo = new Label();

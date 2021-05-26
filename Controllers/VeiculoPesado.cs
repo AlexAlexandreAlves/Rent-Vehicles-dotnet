@@ -57,7 +57,7 @@ namespace Controller
             int Id = Convert.ToInt32(StringId);
             int ListLenght = Model.VeiculoPesado.GetCount();
 
-            if (Id < 0 || ListLenght <= Id)
+            if (Id < 0 || ListLenght < Id)
             {
                 throw new Exception("Id informado é inválido.");
             }

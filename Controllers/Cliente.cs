@@ -40,34 +40,9 @@ namespace Controller
              );
         }
             //Atualização de clientes no banco de dados
-        public static Model.Cliente AtualizarClientes(
-            Model.Cliente cliente,
-            string stringValor,
-            string stringCampo
-        )
+        public static Model.Cliente AtualizarClientes(Model.Cliente cliente)
         {
-            int Campo = Convert.ToInt32(stringCampo);
-            switch (Campo)
-            {
-                case 1: //Nome;
-
-                return Model.Cliente.AtualizarClientes(cliente, stringValor, stringCampo);
-                   
-                  
-                case 2: //CPF;
-                    
-                    Regex rgx = new Regex("^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$");
-                    if (!rgx.IsMatch(stringValor))
-                    {
-                        throw new Exception("C.P.F. Inválido");
-                    }
-
-                   return Model.Cliente.AtualizarClientes(cliente, stringValor, stringCampo);
-                   
-                  
-                    default:
-                    throw new Exception("Operação inválida");
-            }
+            return Model.Cliente.AtualizarClientes(cliente);
         }
 
                //Remoção de clientes no banco de dados
@@ -95,7 +70,7 @@ namespace Controller
             int Id = Convert.ToInt32(StringId);
             int ListLenght = Model.Cliente.GetCount();
 
-            if (Id < 0 || ListLenght <= Id)
+            if (Id < 0 || ListLenght < Id)
             {
                 throw new Exception("Id informado é inválido.");
             }

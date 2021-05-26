@@ -89,6 +89,21 @@ namespace Views
             DialogResult resultado = MessageBox.Show("Deletar Locação?", "Remover locação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
+                try
+                {
+                    string comboValue = this.cbBox.Text; // "1 - João"
+                    int pos = comboValue.IndexOf("-"); // 2
+                    //  01234567
+                    // "1 - João"
+                    string locacaoId = comboValue.Substring(0, pos - 1); // "1 ".Trim() === "1"
+                    Controller.Locacao.RemoverLocacao(locacaoId);
+
+                }
+                catch (Exception error)
+                {
+                    Console.WriteLine("ErroID" + error.Message);
+                }
+
                 MessageBox.Show("Remoção salva com sucesso!");
             }
             else if (resultado == DialogResult.No)

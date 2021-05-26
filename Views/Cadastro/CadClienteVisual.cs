@@ -8,6 +8,7 @@ namespace Views
 {
     public class CadClienteVisual : Form
     {
+        private Model.Cliente cliente = new Model.Cliente();
 
         private Label lblNome = new Label();       //Label cria o "nome" para as caixas de texto
 
@@ -45,17 +46,6 @@ namespace Views
 
             this.Text = "Cadastro de Cliente";
             this.BackColor = Color.White;
-
-           //if (!id.Trim ().Equals ("")) {
-              //  try {
-                  //  this.cliente = Controller.Cliente.GetCliente (id);
-               // } catch (Exception error) {
-                   // throw error;
-              //  }
-               
-           /* */
-
-
             this.AutoScroll = false;
             this.HorizontalScroll.Enabled = false;
             this.HorizontalScroll.Visible = false;
@@ -95,7 +85,6 @@ namespace Views
             nmDiasDevolucao.Minimum = 1;
 
 
-            //cbDiasDevolucao.Items.AddRange(new object[] { "2", "4", "6", "8" });
 
 
             groupBox1.Location = new Point(20, 400);
@@ -131,6 +120,14 @@ namespace Views
             pictureBox.Load("Images\\Logo_rent_vehicles.png");
             pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
+            if (!id.Trim ().Equals ("")) {
+                try {
+                    this.cliente = Controller.Cliente.GetCliente (id);
+                    this.txtNome.Text = this.cliente.Nome;
+                } catch (Exception error) {
+                    throw error;
+                }
+           }
 
 
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
@@ -160,13 +157,23 @@ namespace Views
             DialogResult resultado = MessageBox.Show("Confirmar cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-                Controller.Cliente.CriarCliente(
-                    this.txtNome.Text,
-                    this.txtDataNascimento.Text,
-                    this.txtCpf.Text,
-                    this.nmDiasDevolucao.Value
-
-                );
+                if (cliente.Id > 0) {
+                    this.cliente.Nome = this.txtNome.Text;
+                    this.cliente.DtNascimento = Convert.ToDateTime(this.txtDataNascimento.Text);
+                    this.cliente.Cpf = this.txtCpf.Text;
+                    this.cliente.DiasParaRetorno = Convert.ToInt32(this.nmDiasDevolucao.Value);
+                    Controller.Cliente.AtualizarClientes(
+                        this.cliente
+                    );
+                } else {
+                    Controller.Cliente.CriarCliente(
+                        this.txtNome.Text,
+                        this.txtDataNascimento.Text,
+                        this.txtCpf.Text,
+                        this.nmDiasDevolucao.Value
+                    );
+                }
+                
                 MessageBox.Show("Cliente cadastrado com sucesso!");
             }
             else if (resultado == DialogResult.No)
