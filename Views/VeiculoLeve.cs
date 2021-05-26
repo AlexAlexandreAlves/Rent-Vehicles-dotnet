@@ -54,7 +54,7 @@ namespace Views
 
             try
             {
-                Controller.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, stringCampo, stringValor);
+                Controller.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve);
             }
             catch (Exception e)
             {

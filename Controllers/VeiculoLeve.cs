@@ -59,7 +59,7 @@ namespace Controller
             int Id = Convert.ToInt32(stringId);
             int ListLenght = Model.VeiculoLeve.GetCount();
 
-            if (Id < 0 || ListLenght <= Id)
+            if (Id < 0 || ListLenght < Id)
             {
                 throw new Exception("Id informado é inválido.");
             }
@@ -67,28 +67,11 @@ namespace Controller
             return Model.VeiculoLeve.GetVeiculoLeve(Id);
         }
 
-            public static Model.VeiculoLeve AtualizarVeiculoLeve(
-            Model.VeiculoLeve veiculoLeve,
-            string stringValor,
-            string stringCampo
+        public static Model.VeiculoLeve AtualizarVeiculoLeve(
+            Model.VeiculoLeve veiculoLeve
         )
         {
-            int Campo = Convert.ToInt32(stringCampo);
-            switch (Campo)
-            {
-                case 1: //Nome;
-
-                return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, stringValor, stringCampo);
-                   
-                  
-                case 2: //CPF;
-                    
-                     return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve, stringValor, stringCampo);
-                    
-                    default:
-                    throw new Exception("Operação inválida");
-                   
-            }
+            return Model.VeiculoLeve.AtualizarVeiculoLeve(veiculoLeve);
         }
 
              public static IEnumerable<Model.VeiculoLeve> ListarVeicLeve()

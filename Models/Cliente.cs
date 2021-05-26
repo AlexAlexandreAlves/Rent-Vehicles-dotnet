@@ -103,29 +103,13 @@ namespace Model
         //Atualização de clientes no banco de dados
             
         public static Cliente AtualizarClientes(
-          Cliente cliente,
-          string stringValor,
-          string stringCampo
+          Cliente cliente
       )
         {
-            int Campo = Convert.ToInt32(stringCampo);
-            switch (Campo)
-            {
-                case 1:
-                   cliente.Nome = stringValor;
-                    break;
-                case 2:
-                   cliente.Cpf = stringValor;
-                    break;
-
-
-            }
             Context db = new Context();
             db.Clientes.Update(cliente);
             db.SaveChanges();
             return cliente;
-
-
         }
 
         //Remoção de clientes no banco de dados

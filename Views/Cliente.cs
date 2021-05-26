@@ -52,7 +52,7 @@ namespace Views
 
             try
             {
-                Controller.Cliente.AtualizarClientes(cliente, stringCampo, stringValor);
+                Controller.Cliente.AtualizarClientes(cliente);
             }
             catch (Exception e)
             {

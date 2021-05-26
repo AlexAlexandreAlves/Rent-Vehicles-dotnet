@@ -92,7 +92,14 @@ namespace Views
             DialogResult resultado = MessageBox.Show("Confirmar atualização?", "Atualização de cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-                MessageBox.Show("Atualização salva com sucesso!");
+                string comboValue = this.cbBox.Text; // "1 - João"
+                int pos = comboValue.IndexOf("-"); // 2
+                //  01234567
+                // "1 - João"
+                string clienteId = comboValue.Substring(0, pos - 1); // "1 ".Trim() === "1"
+                CadClienteVisual cadastro = new CadClienteVisual(clienteId);
+                cadastro.Show();
+               
             }
             else if (resultado == DialogResult.No)
             {

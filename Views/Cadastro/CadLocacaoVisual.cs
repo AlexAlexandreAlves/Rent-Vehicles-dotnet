@@ -185,8 +185,10 @@ namespace Views
                 //  01234567
                 // "1 - João"
                 string clienteId = comboValue.Substring(0, pos - 1); // "1 ".Trim() === "1"
+                
                 List<Model.VeiculoLeve> veiculoLeves = new List<Model.VeiculoLeve>();
                 List<Model.VeiculoPesado> veiculoPesados = new List<Model.VeiculoPesado>();
+                
                 Controller.Locacao.CriarLocacao(
                    clienteId,
                    this.calendarioLocacao.SelectionRange.Start,

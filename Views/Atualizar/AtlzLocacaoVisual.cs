@@ -91,8 +91,8 @@ namespace Views
         {  //Cria o Evento do botão (Click)
             DialogResult resultado = MessageBox.Show("Confirmar atualização?", "Atualização de Locação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
-            {
-                MessageBox.Show("Atualização salva com sucesso!");
+             {
+              MessageBox.Show("Atualização salva com sucesso!");
             }
             else if (resultado == DialogResult.No)
             {
