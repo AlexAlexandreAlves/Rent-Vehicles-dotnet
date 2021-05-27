@@ -95,8 +95,8 @@ namespace Views
                     int pos = comboValue.IndexOf("-"); // 2
                     //  01234567
                     // "1 - João"
-                    string veicLeveId = comboValue.Substring(0, pos - 1); // "1 ".Trim() === "1"
-                    Controller.Cliente.RemoverClientes(veicLeveId);
+                    string clienteId = comboValue.Substring(0, pos - 1); // "1 ".Trim() === "1"
+                    Controller.Cliente.RemoverClientes(clienteId);
 
                 }
                 catch (Exception error)
