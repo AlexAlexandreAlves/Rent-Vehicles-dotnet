@@ -47,12 +47,12 @@ namespace Views
             List<string> comboLocaoces = new List<string>();
             foreach (Model.Locacao item in locacoes)
             {
-                comboLocaoces.Add($"{item.Id} - {item.Cliente}");
+                comboLocaoces.Add($"{item.ClienteId} - {item.DataLocacao}");
             }
                 string[] opt = comboLocaoces.ToArray();
             
             
-            cbBox = new LibsCBBox(new Point(20,70), new Size(100,80), opt);
+            cbBox = new LibsCBBox(new Point(20,70), new Size(200,80), opt);
 
             //Criando botões
 
