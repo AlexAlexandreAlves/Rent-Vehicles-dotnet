@@ -87,9 +87,9 @@ namespace Views
             calendarioLocacao.MaxDate = new DateTime(2025, 01, 01);
             calendarioLocacao.SelectionRange = new SelectionRange(dtInicio, new DateTime(2021, 01, 01));
 
-            
-           lblveiculoLeves = new LibsLabel("Veiculo Leve:", new Point(20, 340), new Size(110, 40));
-           
+
+            lblveiculoLeves = new LibsLabel("Veiculo Leve:", new Point(20, 340), new Size(110, 40));
+
             IEnumerable<Model.VeiculoLeve> veiculosLeves;
             try
             {
@@ -105,15 +105,15 @@ namespace Views
             {
                 comboVeicLeve.Add($"{item.Id} - {item.Marca} - {item.Modelo} - {item.Ano} - {item.Cor}");
             }
-                string[] opt = comboVeicLeve.ToArray();
-            
-            cbVeiculoLeves = new LibsCBBox(new Point(20, 400), new Size(200, 80),opt);
+            string[] opt = comboVeicLeve.ToArray();
 
-            
-        
+            cbVeiculoLeves = new LibsCBBox(new Point(20, 400), new Size(200, 80), opt);
+
+
+
             lblveiculoPesados = new LibsLabel("Veiculo Pesado:", new Point(20, 470), new Size(110, 40));
-            
-           IEnumerable<Model.VeiculoPesado> veiculoPesados;
+
+            IEnumerable<Model.VeiculoPesado> veiculoPesados;
             try
             {
                 veiculoPesados = Controller.VeiculoPesado.ListarVeicPesado();
@@ -129,7 +129,7 @@ namespace Views
                 comboVeicPesado.Add($"{item.Id} - {item.Marca} - {item.Modelo} - {item.Ano} - {item.Restricoes}");
             }
             string[] opt1 = comboVeicPesado.ToArray();
-            
+
             cbVeiculoPesados = new LibsCBBox(new Point(20, 520), new Size(200, 80), opt1);
 
 
@@ -167,7 +167,7 @@ namespace Views
             this.Controls.Add(cbVeiculoPesados);
             this.Controls.Add(btnConfirmar);
             this.Controls.Add(btnCancelar);
-            
+
             this.Controls.Add(pictureBox);
 
         }
@@ -183,19 +183,13 @@ namespace Views
                 //  01234567
                 // "1 - João"
                 string clienteId = comboValue.Substring(0, pos - 1); // "1 ".Trim() === "1"
-                
+
                 List<Model.VeiculoLeve> veiculoLeves = new List<Model.VeiculoLeve>();
                 List<Model.VeiculoPesado> veiculoPesados = new List<Model.VeiculoPesado>();
-                
-                Controller.Locacao.CriarLocacao(
-                   clienteId,
-                   this.calendarioLocacao.SelectionRange.Start,
-                   veiculoLeves,
-                   veiculoPesados
-                );
 
-                /*if(this.veiculoLeves){
-                     
+                if (!this.cbVeiculoLeves.Text.Equals(""))
+                {
+
                     string combo = this.cbVeiculoLeves.Text;
                     int posi = comboValue.IndexOf("-");
                     string strId = combo.Substring(0, posi - 1);
@@ -203,11 +197,18 @@ namespace Views
                     Model.VeiculoLeve veiculo = Controller.VeiculoLeve.GetVeiculosLeves(strId);
                     veiculoLeves.Add(veiculo);
 
-                }*/
+                }
 
-                
-               /* if(this.veiculoPesados){
-                     
+                Controller.Locacao.CriarLocacao(
+                   clienteId,
+                   this.calendarioLocacao.SelectionRange.Start,
+                   veiculoLeves,
+                   veiculoPesados
+                );
+
+              /*  if (this.cbVeiculoPesados.Text.Equals(""))
+                {
+
                     string combo = this.cbVeiculoPesados.Text;
                     int posi = comboValue.IndexOf("-");
                     string strId = combo.Substring(0, posi - 1);
@@ -216,6 +217,8 @@ namespace Views
                     veiculoPesados.Add(veiculo);
 
                 }*/
+
+
 
 
                 MessageBox.Show($"Locação cadastrado com sucesso para o Cliente: {clienteId}!");

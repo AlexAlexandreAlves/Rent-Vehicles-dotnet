@@ -36,13 +36,10 @@ namespace Views
 
             listagemLocacoes.Size = new Size(250, 380);
 
-            //IEnumerable<Model.Locacao> Locacoes = Controller.Locacao.ListarLocacao();
-            //foreach (Model.Locacao locacao in Locacoes)
-            //{
-
+    
 
             listagemLocacoes.Columns.Add("ID", -2, HorizontalAlignment.Left);
-            listagemLocacoes.Columns.Add("Nome", -2, HorizontalAlignment.Left);
+            //listagemLocacoes.Columns.Add("Nome", -2, HorizontalAlignment.Left);
             listagemLocacoes.Columns.Add("Data da locação", -2, HorizontalAlignment.Left);
             listagemLocacoes.FullRowSelect = true;
             listagemLocacoes.GridLines = true;
@@ -57,8 +54,8 @@ namespace Views
                 ListViewItem item = new ListViewItem(Convert.ToString(locacao.Id));
 
 
-                item.SubItems.Add(Convert.ToString(locacao.Id));
-                item.SubItems.Add(Convert.ToString(locacao.Cliente));
+                item.SubItems.Add(Convert.ToString(locacao.ClienteId));
+                //item.SubItems.Add(Convert.ToString(locacao.Cliente));
                 item.SubItems.Add(String.Format("{0:d}", locacao.DataLocacao));
 
                 listagemLocacoes.Items.Add(item);
