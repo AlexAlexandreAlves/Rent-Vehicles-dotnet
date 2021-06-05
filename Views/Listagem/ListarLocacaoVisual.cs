@@ -7,6 +7,7 @@ using System.Collections.Generic;
 
 namespace Views
 {
+
     public class ListarLocacaoVisual : Form
     {
 
@@ -17,6 +18,7 @@ namespace Views
         private Button btnCancelar = new Button();
 
         private PictureBox pictureBox = new PictureBox();
+
 
         public ListarLocacaoVisual()
         {
@@ -36,7 +38,7 @@ namespace Views
 
             listagemLocacoes.Size = new Size(250, 380);
 
-    
+
 
             listagemLocacoes.Columns.Add("ID", -2, HorizontalAlignment.Left);
             //listagemLocacoes.Columns.Add("Nome", -2, HorizontalAlignment.Left);
@@ -68,6 +70,7 @@ namespace Views
             btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
 
 
+
             //Criando botões
             btnCancelar = new LibsButtons("Cancelar", new Point(230, 550), new Size(200, 30));
             btnCancelar.Click += new EventHandler(this.btnCancelarClick);
@@ -92,6 +95,24 @@ namespace Views
             this.Controls.Add(pictureBox);
 
         }
+        // Declaração
+       /* public delegate void ExemploDelegate();
+
+        public class Delegate
+        {
+            public static void btnConfirmarClick()
+            {
+                DialogResult resultado = MessageBox.Show("Listagens Executadas?", "Listagem de Locações", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                
+                // Instanciação
+                ExemploDelegate exemploDelegate = new ExemploDelegate(btnConfirmarClick);
+                
+                // Invocação
+                exemploDelegate();
+            }
+
+        */
 
         private void btnConfirmarClick(object sender, EventArgs e)
         {  //Cria o Evento do botão (Click)
