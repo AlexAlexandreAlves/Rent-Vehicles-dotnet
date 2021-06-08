@@ -6,6 +6,7 @@ using Controller;
 
 namespace Views
 {
+
     public class CadClienteVisual : Form
     {
         private Model.Cliente cliente = new Model.Cliente();
@@ -38,11 +39,103 @@ namespace Views
 
         private PictureBox pictureBox = new PictureBox();
 
+        private void btnConfirmarInsert(object sender, EventArgs e)
+        {  //Cria o Evento do botão (Click)
+            DialogResult resultado = MessageBox.Show("Confirmar cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                Controller.Cliente.CriarCliente(
+                    this.txtNome.Text,
+                    this.txtDataNascimento.Text,
+                    this.txtCpf.Text,
+                    this.nmDiasDevolucao.Value
+                );
 
+                MessageBox.Show("Cliente cadastrado com sucesso!");
+            }
+            else if (resultado == DialogResult.No)
+            {
+                MessageBox.Show("Cadastro de cliente não concluído!");
+            }
+            else
+            {
+                MessageBox.Show("Opção desconhecida!");
+            }
+            this.Close();
+
+        }
+
+        private void btnConfirmarUpdate(object sender, EventArgs e)
+        {  //Cria o Evento do botão (Click)
+            DialogResult resultado = MessageBox.Show("Confirmar alteração?", "Alteração de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                this.cliente.Nome = this.txtNome.Text;
+                this.cliente.DtNascimento = Convert.ToDateTime(this.txtDataNascimento.Text);
+                this.cliente.Cpf = this.txtCpf.Text;
+                this.cliente.DiasParaRetorno = Convert.ToInt32(this.nmDiasDevolucao.Value);
+                Controller.Cliente.AtualizarClientes(
+                    this.cliente
+                );
+
+                MessageBox.Show("Cliente alterado com sucesso!");
+            }
+            else if (resultado == DialogResult.No)
+            {
+                MessageBox.Show("Cadastro de cliente não concluído!");
+            }
+            else
+            {
+                MessageBox.Show("Opção desconhecida!");
+            }
+            this.Close();
+
+        }
+
+        private void btnCancelarClick(object sender, EventArgs e)
+        {  //Cria o Evento do botão (Click)
+            DialogResult resultado = MessageBox.Show("Deseja realmente cancelar o cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                MessageBox.Show("Cadastro Cancelado!");
+            }
+            else
+            {
+                MessageBox.Show("Opção desconhecida!");
+            }
+            this.Close();
+
+        }
+
+        public delegate void EventClick(object o, EventArgs e);
+
+        public static EventHandler MethodWithCallback(
+            Model.Cliente cliente, 
+            EventClick confirm, 
+            EventClick update
+        )
+        {
+            if(cliente.Id == 0) {
+                return new EventHandler(confirm);    
+            }
+            return new EventHandler(update);
+        }
 
 
         public CadClienteVisual(string id = "")
-        {
+        {            
+            if (!id.Trim().Equals(""))
+            {
+                try
+                {
+                    this.cliente = Controller.Cliente.GetCliente(id);
+                    this.txtNome.Text = this.cliente.Nome;
+                }
+                catch (Exception error)
+                {
+                    throw error;
+                }
+            }
 
             this.Text = "Cadastro de Cliente";
             this.BackColor = Color.White;
@@ -106,7 +199,11 @@ namespace Views
             //Criando botões
 
             btnConfirmar = new LibsButtons("Confirmar Cadastro", new Point(18, 550), new Size(200, 30));
-            btnConfirmar.Click += new EventHandler(this.btnConfirmarClick);
+            btnConfirmar.Click += MethodWithCallback(
+                cliente, 
+                this.btnConfirmarInsert, 
+                this.btnConfirmarUpdate
+            );
 
 
             //Criando botões
@@ -119,17 +216,6 @@ namespace Views
             pictureBox.Location = new Point(0, 0);
             pictureBox.Load("Images\\Logo_rent_vehicles.png");
             pictureBox.SizeMode = PictureBoxSizeMode.Normal;
-
-            if (!id.Trim ().Equals ("")) {
-                try {
-                    this.cliente = Controller.Cliente.GetCliente (id);
-                    this.txtNome.Text = this.cliente.Nome;
-                } catch (Exception error) {
-                    throw error;
-                }
-           }
-
-
             this.Size = new Size(600, 450);     //Trabalhando com o tamanho da janela   
 
             this.Controls.Add(lblNome);         //Chamando e adicionando os métodos acima 
@@ -149,57 +235,6 @@ namespace Views
             this.Controls.Add(btnCancelar);
 
             this.Controls.Add(pictureBox);
-
-        }
-
-                private void btnConfirmarClick(object sender, EventArgs e)
-        {  //Cria o Evento do botão (Click)
-            DialogResult resultado = MessageBox.Show("Confirmar cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resultado == DialogResult.Yes)
-            {
-                if (cliente.Id > 0) {
-                    this.cliente.Nome = this.txtNome.Text;
-                    this.cliente.DtNascimento = Convert.ToDateTime(this.txtDataNascimento.Text);
-                    this.cliente.Cpf = this.txtCpf.Text;
-                    this.cliente.DiasParaRetorno = Convert.ToInt32(this.nmDiasDevolucao.Value);
-                    Controller.Cliente.AtualizarClientes(
-                        this.cliente
-                    );
-                } else {
-                    Controller.Cliente.CriarCliente(
-                        this.txtNome.Text,
-                        this.txtDataNascimento.Text,
-                        this.txtCpf.Text,
-                        this.nmDiasDevolucao.Value
-                    );
-                }
-                
-                MessageBox.Show("Cliente cadastrado com sucesso!");
-            }
-            else if (resultado == DialogResult.No)
-            {
-                MessageBox.Show("Cadastro de cliente não concluído!");
-            }
-            else
-            {
-                MessageBox.Show("Opção desconhecida!");
-            }
-            this.Close();
-
-        }
-
-             private void btnCancelarClick(object sender, EventArgs e)
-        {  //Cria o Evento do botão (Click)
-            DialogResult resultado = MessageBox.Show("Deseja realmente cancelar o cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resultado == DialogResult.Yes)
-            {
-                MessageBox.Show("Cadastro Cancelado!");
-            }
-            else
-            {
-                MessageBox.Show("Opção desconhecida!");
-            }
-            this.Close();
 
         }
     }
