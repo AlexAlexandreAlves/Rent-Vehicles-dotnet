@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using Views.lib;
 using Controller;
+using System.Text.RegularExpressions;
 
 namespace Views
 {
@@ -24,6 +25,8 @@ namespace Views
         private MaskedTextBox txtDataNascimento = new MaskedTextBox();
 
         private MaskedTextBox txtCpf = new MaskedTextBox();
+
+        private ErrorProvider cpfErroProvider = new ErrorProvider();
 
         private NumericUpDown nmDiasDevolucao = new NumericUpDown();
 
@@ -163,6 +166,11 @@ namespace Views
             lblCpf = new LibsLabel("CPF do Cliente:", new Point(20, 200), new Size(110, 40));
 
             txtCpf = new LibsMaskedTextBox(new Point(20, 250), new Size(100, 80), "000,000,000-00");
+            txtCpf.Validated += new EventHandler(this.cpfValidated);
+
+            cpfErroProvider.SetIconAlignment(this.txtCpf, ErrorIconAlignment.MiddleRight);
+            cpfErroProvider.SetIconPadding(this.txtCpf, 2);
+            cpfErroProvider.BlinkStyle = ErrorBlinkStyle.BlinkIfDifferentError;
 
 
             //Visual Cadastrar Dias para Devolução
@@ -237,6 +245,72 @@ namespace Views
             this.Controls.Add(pictureBox);
 
         }
+<<<<<<< HEAD
+=======
+
+        private void cpfValidated(object sender, EventArgs e) {
+             Regex rgx = new Regex("^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$");
+            if (!rgx.IsMatch(this.txtCpf.Text))
+            {
+                this.cpfErroProvider.SetError(this.txtCpf, "CPF INVALIDO!");
+            }else{
+                this.cpfErroProvider.SetError(this.txtCpf, String.Empty);
+            }
+
+        }
+
+
+                private void btnConfirmarClick(object sender, EventArgs e)
+        {  //Cria o Evento do botão (Click)
+            DialogResult resultado = MessageBox.Show("Confirmar cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                if (cliente.Id > 0) {
+                    this.cliente.Nome = this.txtNome.Text;
+                    this.cliente.DtNascimento = Convert.ToDateTime(this.txtDataNascimento.Text);
+                    this.cliente.Cpf = this.txtCpf.Text;
+                    this.cliente.DiasParaRetorno = Convert.ToInt32(this.nmDiasDevolucao.Value);
+                    Controller.Cliente.AtualizarClientes(
+                        this.cliente
+                    );
+                } else {
+                    Controller.Cliente.CriarCliente(
+                        this.txtNome.Text,
+                        this.txtDataNascimento.Text,
+                        this.txtCpf.Text,
+                        this.nmDiasDevolucao.Value
+                    );
+                }
+                
+                MessageBox.Show("Cliente cadastrado com sucesso!");
+            }
+            else if (resultado == DialogResult.No)
+            {
+                MessageBox.Show("Cadastro de cliente não concluído!");
+            }
+            else
+            {
+                MessageBox.Show("Opção desconhecida!");
+            }
+            this.Close();
+
+        }
+
+             private void btnCancelarClick(object sender, EventArgs e)
+        {  //Cria o Evento do botão (Click)
+            DialogResult resultado = MessageBox.Show("Deseja realmente cancelar o cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                MessageBox.Show("Cadastro Cancelado!");
+            }
+            else
+            {
+                MessageBox.Show("Opção desconhecida!");
+            }
+            this.Close();
+
+        }
+>>>>>>> 7046356e9ffcbf47b906582f67c2ef69013f4b25
     }
 }
 

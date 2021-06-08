@@ -49,9 +49,9 @@ namespace Views
             {
                 comboClientes.Add($"{item.Id} - {item.Nome}");
             }
-                string[] options = comboClientes.ToArray();
+            string[] options = comboClientes.ToArray();
 
-            cbId = new LibsComboBox(new Point(20, 80), new Size(150,80), options);
+            cbId = new LibsComboBox(new Point(20, 80), new Size(150, 80), options);
 
 
             //Criando botões
@@ -89,7 +89,7 @@ namespace Views
             DialogResult resultado = MessageBox.Show("Deletar Cliente?", "Remover cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-               try
+                try
                 {
                     string comboValue = this.cbId.Text; // "1 - João"
                     int pos = comboValue.IndexOf("-"); // 2
@@ -105,9 +105,10 @@ namespace Views
                 }
 
                 MessageBox.Show("Remoção salva com sucesso!");
-          
-            
-            } else if (resultado == DialogResult.No)
+
+
+            }
+            else if (resultado == DialogResult.No)
             {
                 MessageBox.Show("Remoção não concluído!");
             }
