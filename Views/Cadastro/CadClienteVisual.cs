@@ -245,8 +245,6 @@ namespace Views
             this.Controls.Add(pictureBox);
 
         }
-<<<<<<< HEAD
-=======
 
         private void cpfValidated(object sender, EventArgs e) {
              Regex rgx = new Regex("^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$");
@@ -310,7 +308,6 @@ namespace Views
             this.Close();
 
         }
->>>>>>> 7046356e9ffcbf47b906582f67c2ef69013f4b25
     }
 }
 
