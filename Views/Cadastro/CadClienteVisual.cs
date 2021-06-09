@@ -256,58 +256,6 @@ namespace Views
             }
 
         }
-
-
-                private void btnConfirmarClick(object sender, EventArgs e)
-        {  //Cria o Evento do botão (Click)
-            DialogResult resultado = MessageBox.Show("Confirmar cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resultado == DialogResult.Yes)
-            {
-                if (cliente.Id > 0) {
-                    this.cliente.Nome = this.txtNome.Text;
-                    this.cliente.DtNascimento = Convert.ToDateTime(this.txtDataNascimento.Text);
-                    this.cliente.Cpf = this.txtCpf.Text;
-                    this.cliente.DiasParaRetorno = Convert.ToInt32(this.nmDiasDevolucao.Value);
-                    Controller.Cliente.AtualizarClientes(
-                        this.cliente
-                    );
-                } else {
-                    Controller.Cliente.CriarCliente(
-                        this.txtNome.Text,
-                        this.txtDataNascimento.Text,
-                        this.txtCpf.Text,
-                        this.nmDiasDevolucao.Value
-                    );
-                }
-                
-                MessageBox.Show("Cliente cadastrado com sucesso!");
-            }
-            else if (resultado == DialogResult.No)
-            {
-                MessageBox.Show("Cadastro de cliente não concluído!");
-            }
-            else
-            {
-                MessageBox.Show("Opção desconhecida!");
-            }
-            this.Close();
-
-        }
-
-             private void btnCancelarClick(object sender, EventArgs e)
-        {  //Cria o Evento do botão (Click)
-            DialogResult resultado = MessageBox.Show("Deseja realmente cancelar o cadastro?", "Cadastro de Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resultado == DialogResult.Yes)
-            {
-                MessageBox.Show("Cadastro Cancelado!");
-            }
-            else
-            {
-                MessageBox.Show("Opção desconhecida!");
-            }
-            this.Close();
-
-        }
     }
 }
 
