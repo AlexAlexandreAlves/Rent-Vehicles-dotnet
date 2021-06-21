@@ -130,7 +130,7 @@ namespace Views
             pictureBox = new PictureBox();
             pictureBox.Size = new Size(700, 700);
             pictureBox.Location = new Point(0, 0);
-            pictureBox.Load("Images\\Logo_rent_vehicles.png");
+            pictureBox.Load("Logo_rent_vehicles.png");
             pictureBox.SizeMode = PictureBoxSizeMode.Normal;
 
             

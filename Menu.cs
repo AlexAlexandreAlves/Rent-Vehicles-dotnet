@@ -11,7 +11,7 @@ namespace Programa
             Application.Run(new Views.MenuPrincipalVisual());
 
         }
-        public static void Terminal()
+        /*public static void Terminal()
         {
             int opt;
             Console.WriteLine("======= Bem vindo a nossa revenda =======");
@@ -99,7 +99,7 @@ namespace Programa
                         break;
                 }
             } while (opt != 0);
-        }
+        }*/
 
     }
 }
