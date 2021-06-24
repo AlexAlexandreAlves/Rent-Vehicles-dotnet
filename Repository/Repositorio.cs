@@ -15,8 +15,7 @@ namespace Repository
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
 
-            string connStr;
-
+            
             string connUser = "bf07458e8e5095";
             string connPass = "236c2802";
             string connHost = "us-cdbr-east-04.cleardb.com";
@@ -24,14 +23,14 @@ namespace Repository
 
             string connStr = $"server={connHost};Uid={connUser};Pwd={connPass};Database={connDb};SSL Mode=None";
 
-            options.UseMySql(connStr, mySqlOptionsAction: mysqlOptions =>
+            /*options.UseMySql(connStr, mySqlOptionsAction: mysqlOptions =>
             {
                 mysqlOptions.EnableRetryOnFailure(
                 maxRetryCount: 1,
                 maxRetryDelay: TimeSpan.FromSeconds(30),
                 errorNumbersToAdd: null
         );
-            });
+            });*/   
         }
     }
 }
